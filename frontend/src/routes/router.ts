@@ -3,6 +3,7 @@ import { rootRoute } from './root'
 import { homeRoute } from './home'
 import { ourStoryRoute } from './ourStory'
 import { ourTeamRoute } from './ourTeam'
+import { awardsRecognitionsRoute } from './awardsRecognitions'
 import { maintenanceRoute, serverErrorRoute } from './common'
 import { NotFoundPage, ServerErrorPage } from '../pages/common'
 
@@ -10,6 +11,7 @@ const routeTree = rootRoute.addChildren([
   homeRoute,
   ourStoryRoute,
   ourTeamRoute,
+  awardsRecognitionsRoute,
   maintenanceRoute,
   serverErrorRoute,
 ])
