@@ -178,17 +178,10 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
         {item.children.map((child) => (
           <Fragment key={child.id}>
             {child.topDivider && <Divider sx={{ my: 1 }} />}
-            <MenuItem component="a" href={child.href} onClick={handleClose} sx={{ whiteSpace: 'normal', py: 1 }}>
-              <Stack spacing={0.25}>
-                <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                  {child.label}
-                </Typography>
-                {child.description && (
-                  <Typography variant="caption" color="text.secondary">
-                    {child.description}
-                  </Typography>
-                )}
-              </Stack>
+            <MenuItem component="a" href={child.href} onClick={handleClose} sx={{ py: 1 }}>
+              <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                {child.label}
+              </Typography>
             </MenuItem>
           </Fragment>
         ))}

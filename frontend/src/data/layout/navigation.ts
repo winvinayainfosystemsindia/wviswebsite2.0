@@ -30,7 +30,6 @@ export const primaryNavItems: NavItem[] = [
         id: 'winvinaya-foundation',
         label: 'WinVinaya Foundation',
         href: '/about/winvinaya-foundation',
-        description: 'Our social-impact arm',
       },
     ],
   },
@@ -42,43 +41,31 @@ export const primaryNavItems: NavItem[] = [
         id: 'accessibility-audit-testing',
         label: 'Accessibility Audit & Testing',
         href: '/services/accessibility-audit-testing',
-        description:
-          'Manual and assistive-technology testing against WCAG, Section 508, and ADA standards — going beyond automated scans to catch what real users actually hit.',
       },
       {
         id: 'document-accessibility-remediation',
         label: 'Document Accessibility & Remediation',
         href: '/services/document-accessibility-remediation',
-        description:
-          'PDF, Word, and PowerPoint remediation and tagging so your documents are usable with screen readers — not just technically compliant.',
       },
       {
         id: 'corporate-training',
         label: 'Corporate Training',
         href: '/services/corporate-training',
-        description:
-          'Disability-awareness, accessibility, and assistive-technology training for teams who build, write, design, or lead — practical, not just a compliance checkbox.',
       },
       {
         id: 'microsoft-power-platform-solutions',
         label: 'Microsoft Power Platform Solutions',
         href: '/services/microsoft-power-platform-solutions',
-        description:
-          'Power BI dashboards, Power Apps, and Power Automate workflows — built accessible from the ground up, not retrofitted afterward.',
       },
       {
         id: 'agentic-ai-custom-application-development',
         label: 'Agentic AI & Custom Application Development',
         href: '/services/agentic-ai-custom-application-development',
-        description:
-          'AI agents and custom web, mobile, and software solutions that bring automation and intelligence to your organization, with inclusive design built in.',
       },
       {
         id: 'capacity-building-adoption',
         label: 'Capacity Building & Adoption',
         href: '/services/capacity-building-adoption',
-        description:
-          'Beyond delivery — we train your teams to sustain and scale what we build, from digital skilling programs to change management support.',
       },
       { id: 'all-services', label: 'All Services', href: '/services', topDivider: true },
     ],
