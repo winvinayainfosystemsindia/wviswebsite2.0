@@ -10,6 +10,9 @@ export type ButtonTone = 'primary' | 'secondary' | 'accent' | 'success' | 'dange
 export interface ButtonProps extends Omit<MuiButtonProps, 'color'> {
   tone?: ButtonTone
   loading?: boolean
+  /** Only meaningful together with `href` (e.g. `target="_blank"` for external links). */
+  target?: string
+  rel?: string
 }
 
 const resolveToneColor = (theme: Theme, tone: ButtonTone) => {
