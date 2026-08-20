@@ -1,0 +1,7 @@
+export * from './hero'
+export * from './journey'
+export * from './foundation'
+export * from './services'
+export * from './proof'
+export * from './future'
+export * from './cta'
