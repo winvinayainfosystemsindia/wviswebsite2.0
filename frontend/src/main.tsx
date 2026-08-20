@@ -1,8 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { AppThemeProvider } from './themes'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <div>Hello</div>
+    <AppThemeProvider>
+      <div>Hello</div>
+    </AppThemeProvider>
   </StrictMode>,
 )
