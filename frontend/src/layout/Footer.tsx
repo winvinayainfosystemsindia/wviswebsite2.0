@@ -19,19 +19,15 @@ const SOCIAL_ICONS: Record<string, typeof LinkedInIcon> = {
   facebook: FacebookIcon,
 }
 
-const FOOTER_BG = '#0B1220'
-const FOOTER_TEXT = '#CBD5E1'
-const FOOTER_HEADING = '#F1F5F9'
-
-const Root = styled('footer')({
-  backgroundColor: FOOTER_BG,
-  color: FOOTER_TEXT,
-})
+const Root = styled('footer')(({ theme }) => ({
+  backgroundColor: theme.palette.inverse.main,
+  color: theme.palette.inverse.contrastText,
+}))
 
 const FooterLink = styled('a')(({ theme }) => ({
-  color: FOOTER_TEXT,
+  color: alpha(theme.palette.inverse.contrastText, 0.75),
   textDecoration: 'none',
-  fontSize: '0.9375rem',
+  fontSize: theme.typography.pxToRem(15),
   transition: theme.transitions.create('color'),
   '&:hover': { color: theme.palette.accent.light },
   '&:focus-visible': {
@@ -42,8 +38,8 @@ const FooterLink = styled('a')(({ theme }) => ({
 }))
 
 const socialButtonSx = (theme: Theme) => ({
-  color: FOOTER_TEXT,
-  border: `1px solid ${alpha(FOOTER_TEXT, 0.25)}`,
+  color: alpha(theme.palette.inverse.contrastText, 0.75),
+  border: `1px solid ${alpha(theme.palette.inverse.contrastText, 0.25)}`,
   '&:hover': {
     color: theme.palette.accent.light,
     borderColor: theme.palette.accent.light,
@@ -53,7 +49,7 @@ const socialButtonSx = (theme: Theme) => ({
 
 /**
  * Corporate footer: brand column with the full logo, tagline and social
- * links, plus link groups sourced from `data/footer.ts`. Deliberately kept
+ * links, plus link groups sourced from `data/layout/footer.ts`. Deliberately kept
  * on a fixed dark surface regardless of the active light/dark theme mode,
  * a common corporate treatment for brand consistency at the page edge.
  */
@@ -72,7 +68,10 @@ export const Footer = () => {
                 alt="WinVinaya Infosystems"
                 sx={{ height: 40, width: 'auto' }}
               />
-              <Typography variant="body2" sx={{ color: FOOTER_TEXT, maxWidth: 280 }}>
+              <Typography
+                variant="body2"
+                sx={(theme) => ({ color: alpha(theme.palette.inverse.contrastText, 0.75), maxWidth: 280 })}
+              >
                 {footerTagline}
               </Typography>
               <Stack direction="row" spacing={1.5} aria-label="Social media">
@@ -98,7 +97,7 @@ export const Footer = () => {
           {footerLinkGroups.map((group) => (
             <Grid key={group.id} size={{ xs: 6, md: 2 }}>
               <Stack spacing={1.75} component="nav" aria-label={group.title}>
-                <Typography variant="overline" sx={{ color: FOOTER_HEADING }}>
+                <Typography variant="overline" color="inverse.contrastText">
                   {group.title}
                 </Typography>
                 {group.links.map((link) => (
@@ -111,14 +110,16 @@ export const Footer = () => {
           ))}
         </Grid>
 
-        <Divider sx={{ my: { xs: 5, md: 6 }, borderColor: alpha(FOOTER_TEXT, 0.15) }} />
+        <Divider
+          sx={(theme) => ({ my: { xs: 5, md: 6 }, borderColor: alpha(theme.palette.inverse.contrastText, 0.15) })}
+        />
 
         <Stack
           direction={{ xs: 'column', sm: 'row' }}
           spacing={2}
           sx={{ alignItems: { xs: 'flex-start', sm: 'center' }, justifyContent: 'space-between' }}
         >
-          <Typography variant="body2" sx={{ color: alpha(FOOTER_TEXT, 0.8) }}>
+          <Typography variant="body2" sx={(theme) => ({ color: alpha(theme.palette.inverse.contrastText, 0.6) })}>
             © {year} WinVinaya Infosystems. All rights reserved.
           </Typography>
           <Stack direction="row" spacing={3}>

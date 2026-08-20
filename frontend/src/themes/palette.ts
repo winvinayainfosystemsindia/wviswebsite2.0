@@ -3,68 +3,84 @@ import type { PaletteMode, PaletteOptions } from '@mui/material/styles'
 declare module '@mui/material/styles' {
   interface Palette {
     accent: Palette['primary']
+    /** Fixed dark brand surface used where a section is deliberately kept
+     * dark regardless of the active light/dark mode (e.g. the footer). */
+    inverse: Palette['primary']
   }
   interface PaletteOptions {
     accent?: PaletteOptions['primary']
+    inverse?: PaletteOptions['primary']
   }
 }
 
+// Fixed dark brand surface, identical in both modes by design.
+const inverseSurface = {
+  main: '#241A10',
+  light: '#3A2A1A',
+  dark: '#160F09',
+  contrastText: '#F5EEE4',
+}
+
+// Palette derived from the WinVinaya Infosystems logo: flame orange,
+// leaf green, earthy brown, and the wordmark's warm gray.
 const lightPalette: PaletteOptions = {
   mode: 'light',
   primary: {
-    main: '#0F172A',
-    light: '#334155',
-    dark: '#020617',
+    main: '#E07B0E',
+    light: '#F7941D',
+    dark: '#A85D0A',
     contrastText: '#FFFFFF',
   },
   secondary: {
-    main: '#334155',
-    light: '#475569',
-    dark: '#1E293B',
+    main: '#7A4522',
+    light: '#96602F',
+    dark: '#5C3216',
     contrastText: '#FFFFFF',
   },
   accent: {
-    main: '#0369A1',
-    light: '#0EA5E9',
-    dark: '#075985',
+    main: '#6FA82E',
+    light: '#8DC63F',
+    dark: '#548021',
     contrastText: '#FFFFFF',
   },
-  success: { main: '#16A34A', contrastText: '#FFFFFF' },
+  success: { main: '#4C9A2A', contrastText: '#FFFFFF' },
   warning: { main: '#D97706', contrastText: '#FFFFFF' },
   error: { main: '#DC2626', contrastText: '#FFFFFF' },
-  info: { main: '#0369A1', contrastText: '#FFFFFF' },
-  background: { default: '#F8FAFC', paper: '#FFFFFF' },
-  text: { primary: '#020617', secondary: '#475569', disabled: '#94A3B8' },
-  divider: '#E2E8F0',
+  info: { main: '#3B7EA8', contrastText: '#FFFFFF' },
+  background: { default: '#FFFBF5', paper: '#FFFFFF' },
+  text: { primary: '#231F1C', secondary: '#58595B', disabled: '#A7A8AA' },
+  divider: '#E9E3D9',
+  inverse: inverseSurface,
 }
 
 const darkPalette: PaletteOptions = {
   mode: 'dark',
   primary: {
-    main: '#38BDF8',
-    light: '#7DD3FC',
-    dark: '#0369A1',
-    contrastText: '#0B1220',
+    main: '#F7941D',
+    light: '#FFB84D',
+    dark: '#D9720A',
+    contrastText: '#1A1512',
   },
   secondary: {
-    main: '#94A3B8',
-    light: '#CBD5E1',
-    dark: '#64748B',
-    contrastText: '#0B1220',
+    main: '#C99A6B',
+    light: '#DCB68C',
+    dark: '#96602F',
+    contrastText: '#1A1512',
   },
   accent: {
-    main: '#38BDF8',
-    light: '#7DD3FC',
-    dark: '#0284C7',
-    contrastText: '#0B1220',
+    main: '#8DC63F',
+    light: '#A9D66C',
+    dark: '#6FA82E',
+    contrastText: '#1A1512',
   },
-  success: { main: '#22C55E', contrastText: '#052E14' },
+  success: { main: '#8DC63F', contrastText: '#1A1512' },
   warning: { main: '#F59E0B', contrastText: '#3A1D03' },
   error: { main: '#F87171', contrastText: '#450A0A' },
-  info: { main: '#38BDF8', contrastText: '#0B1220' },
-  background: { default: '#0B1220', paper: '#111827' },
-  text: { primary: '#F1F5F9', secondary: '#94A3B8', disabled: '#64748B' },
-  divider: 'rgba(226, 232, 240, 0.12)',
+  info: { main: '#7DB8DC', contrastText: '#1A1512' },
+  background: { default: '#1A1512', paper: '#241D18' },
+  text: { primary: '#F5F1EC', secondary: '#C9C4BC', disabled: '#8A8580' },
+  divider: 'rgba(233, 227, 217, 0.12)',
+  inverse: inverseSurface,
 }
 
 export const getPalette = (mode: PaletteMode): PaletteOptions =>

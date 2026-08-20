@@ -25,7 +25,7 @@ export interface CardProps {
 const Surface = styled(MuiCard)(({ theme }) => ({
   borderRadius: Number(theme.shape.borderRadius) * 1.4,
   border: `1px solid ${theme.palette.divider}`,
-  boxShadow: '0 1px 3px rgba(15, 23, 42, 0.06)',
+  boxShadow: `0 1px 3px ${alpha(theme.palette.common.black, 0.06)}`,
   transition: theme.transitions.create(['box-shadow', 'transform', 'border-color']),
   overflow: 'hidden',
   backgroundColor: theme.palette.background.paper,

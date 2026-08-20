@@ -31,7 +31,7 @@ const HeaderRoot = styled('header', {
   backgroundColor: alpha(theme.palette.background.paper, 0.92),
   backdropFilter: 'blur(8px)',
   borderBottom: `1px solid ${elevated ? theme.palette.divider : 'transparent'}`,
-  boxShadow: elevated ? '0 8px 24px -16px rgba(15, 23, 42, 0.35)' : 'none',
+  boxShadow: elevated ? `0 8px 24px -16px ${alpha(theme.palette.common.black, 0.35)}` : 'none',
   transition: theme.transitions.create(['box-shadow', 'border-color']),
 }))
 
@@ -56,7 +56,7 @@ const NavLink = styled('a')(({ theme }) => ({
   textDecoration: 'none',
   fontFamily: theme.typography.fontFamily,
   fontWeight: 600,
-  fontSize: '0.9375rem',
+  fontSize: theme.typography.pxToRem(15),
   padding: theme.spacing(1, 0.5),
   transition: theme.transitions.create('color'),
   '&:hover': { color: theme.palette.accent.main },
@@ -79,7 +79,7 @@ const NavTrigger = styled('button', {
   color: open ? theme.palette.accent.main : theme.palette.text.primary,
   fontFamily: theme.typography.fontFamily,
   fontWeight: 600,
-  fontSize: '0.9375rem',
+  fontSize: theme.typography.pxToRem(15),
   padding: theme.spacing(1, 0.5),
   transition: theme.transitions.create('color'),
   '&:hover': { color: theme.palette.accent.main },
@@ -101,7 +101,7 @@ const MobileNavLink = styled('a')(({ theme }) => ({
   textDecoration: 'none',
   fontFamily: theme.typography.fontFamily,
   fontWeight: 600,
-  fontSize: '1.0625rem',
+  fontSize: theme.typography.pxToRem(17),
   padding: theme.spacing(1.5, 0),
   '&:focus-visible': {
     outline: `3px solid ${alpha(theme.palette.accent.main, 0.6)}`,
@@ -116,7 +116,7 @@ const MobileChildLink = styled('a')(({ theme }) => ({
   textDecoration: 'none',
   fontFamily: theme.typography.fontFamily,
   fontWeight: 500,
-  fontSize: '0.9375rem',
+  fontSize: theme.typography.pxToRem(15),
   padding: theme.spacing(1, 0),
   '&:hover': { color: theme.palette.accent.main },
   '&:focus-visible': {
@@ -166,7 +166,13 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
         transformOrigin={{ vertical: 'top', horizontal: 'left' }}
         slotProps={{
           list: { 'aria-labelledby': triggerId, sx: { minWidth: 280, py: 1 } },
-          paper: { sx: { mt: 1, borderRadius: 2, boxShadow: '0 20px 45px -20px rgba(15, 23, 42, 0.35)' } },
+          paper: {
+            sx: (theme) => ({
+              mt: 1,
+              borderRadius: 2,
+              boxShadow: `0 20px 45px -20px ${alpha(theme.palette.common.black, 0.35)}`,
+            }),
+          },
         }}
       >
         {item.children.map((child) => (
