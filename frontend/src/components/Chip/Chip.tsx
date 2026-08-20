@@ -7,6 +7,10 @@ export type ChipTone = 'neutral' | 'info' | 'success' | 'warning' | 'danger' | '
 
 export interface ChipProps extends Omit<MuiChipProps, 'color'> {
   tone?: ChipTone
+  component?: React.ElementType
+  href?: string
+  target?: string
+  rel?: string
 }
 
 const resolveToneColor = (theme: Theme, tone: ChipTone) => {

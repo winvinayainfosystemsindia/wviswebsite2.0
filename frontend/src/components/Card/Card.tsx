@@ -7,8 +7,13 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
+import { IconBadge } from '../IconBadge'
+import type { IconBadgeProps } from '../IconBadge'
 
 export interface CardProps {
+  /** Leading icon badge rendered above the eyebrow/title (service and feature cards). */
+  icon?: IconBadgeProps['icon']
+  iconTone?: IconBadgeProps['tone']
   eyebrow?: string
   title?: ReactNode
   subtitle?: ReactNode
@@ -17,18 +22,23 @@ export interface CardProps {
   children?: ReactNode
   /** Makes the whole card a single focusable, clickable control. */
   interactive?: boolean
+  /** Stretches the card to fill its grid cell, so a row of cards with uneven copy lengths stays level. */
+  fullHeight?: boolean
   href?: string
   onClick?: () => void
   'aria-label'?: string
 }
 
-const Surface = styled(MuiCard)(({ theme }) => ({
+const Surface = styled(MuiCard, {
+  shouldForwardProp: (prop) => prop !== 'fullHeight',
+})<{ fullHeight?: boolean }>(({ theme, fullHeight }) => ({
   borderRadius: Number(theme.shape.borderRadius) * 1.4,
   border: `1px solid ${theme.palette.divider}`,
   boxShadow: `0 1px 3px ${alpha(theme.palette.common.black, 0.06)}`,
   transition: theme.transitions.create(['box-shadow', 'transform', 'border-color']),
   overflow: 'hidden',
   backgroundColor: theme.palette.background.paper,
+  ...(fullHeight && { height: '100%', display: 'flex', flexDirection: 'column' as const }),
 }))
 
 const InteractiveSurface = styled(Surface)(({ theme }) => ({
@@ -39,9 +49,21 @@ const InteractiveSurface = styled(Surface)(({ theme }) => ({
   },
 }))
 
-const Body = ({ eyebrow, title, subtitle, children }: Pick<CardProps, 'eyebrow' | 'title' | 'subtitle' | 'children'>) => (
+const Body = ({
+  icon,
+  iconTone,
+  eyebrow,
+  title,
+  subtitle,
+  children,
+}: Pick<CardProps, 'icon' | 'iconTone' | 'eyebrow' | 'title' | 'subtitle' | 'children'>) => (
   <CardContent>
     <Stack spacing={1}>
+      {icon && (
+        <Stack sx={{ mb: 0.5 }}>
+          <IconBadge icon={icon} tone={iconTone ?? 'accent'} />
+        </Stack>
+      )}
       {eyebrow && (
         <Typography variant="eyebrow" color="accent.main">
           {eyebrow}
@@ -65,6 +87,8 @@ const Body = ({ eyebrow, title, subtitle, children }: Pick<CardProps, 'eyebrow' 
  * instead of relying on hover alone.
  */
 export const Card = ({
+  icon,
+  iconTone,
   eyebrow,
   title,
   subtitle,
@@ -72,6 +96,7 @@ export const Card = ({
   actions,
   children,
   interactive = false,
+  fullHeight = false,
   href,
   onClick,
   'aria-label': ariaLabel,
@@ -80,15 +105,15 @@ export const Card = ({
 
   if (interactive) {
     return (
-      <InteractiveSurface>
+      <InteractiveSurface fullHeight={fullHeight}>
         <CardActionArea
           {...(href ? { href } : {})}
           onClick={onClick}
           aria-label={ariaLabel}
-          sx={{ height: '100%', alignItems: 'stretch', display: 'block' }}
+          sx={{ height: '100%', alignItems: 'stretch', display: 'flex', flexDirection: 'column' }}
         >
           {mediaEl}
-          <Body eyebrow={eyebrow} title={title} subtitle={subtitle}>
+          <Body icon={icon} iconTone={iconTone} eyebrow={eyebrow} title={title} subtitle={subtitle}>
             {children}
           </Body>
         </CardActionArea>
@@ -98,9 +123,9 @@ export const Card = ({
   }
 
   return (
-    <Surface>
+    <Surface fullHeight={fullHeight}>
       {mediaEl}
-      <Body eyebrow={eyebrow} title={title} subtitle={subtitle}>
+      <Body icon={icon} iconTone={iconTone} eyebrow={eyebrow} title={title} subtitle={subtitle}>
         {children}
       </Body>
       {actions && <CardActions sx={{ px: 2, pb: 2 }}>{actions}</CardActions>}

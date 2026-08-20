@@ -25,10 +25,15 @@ const inverseSurface = {
 // leaf green, earthy brown, and the wordmark's warm gray.
 const lightPalette: PaletteOptions = {
   mode: 'light',
+  // `main` shades are tuned to clear WCAG AA (4.5:1) as white-on-solid
+  // buttons and as text-on-white/cream — the vivid logo tones (flame
+  // orange, leaf green) read beautifully but fail contrast at that size,
+  // so they're kept as `light` for decorative use (washes, dark-surface
+  // accents, large graphics) rather than for text or button fills.
   primary: {
-    main: '#E07B0E',
+    main: '#A85D0A',
     light: '#F7941D',
-    dark: '#A85D0A',
+    dark: '#8F4E08',
     contrastText: '#FFFFFF',
   },
   secondary: {
@@ -38,15 +43,15 @@ const lightPalette: PaletteOptions = {
     contrastText: '#FFFFFF',
   },
   accent: {
-    main: '#6FA82E',
+    main: '#548021',
     light: '#8DC63F',
-    dark: '#548021',
+    dark: '#3F6614',
     contrastText: '#FFFFFF',
   },
-  success: { main: '#4C9A2A', contrastText: '#FFFFFF' },
-  warning: { main: '#D97706', contrastText: '#FFFFFF' },
-  error: { main: '#DC2626', contrastText: '#FFFFFF' },
-  info: { main: '#3B7EA8', contrastText: '#FFFFFF' },
+  success: { main: '#33681A', contrastText: '#FFFFFF' },
+  warning: { main: '#7A6000', contrastText: '#FFFFFF' },
+  error: { main: '#C81E1E', contrastText: '#FFFFFF' },
+  info: { main: '#336E94', contrastText: '#FFFFFF' },
   background: { default: '#FFFBF5', paper: '#FFFFFF' },
   text: { primary: '#231F1C', secondary: '#58595B', disabled: '#A7A8AA' },
   divider: '#E9E3D9',

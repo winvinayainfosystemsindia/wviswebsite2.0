@@ -1,0 +1,8 @@
+export { HeroSection } from './HeroSection'
+export { AboutTeaserSection } from './AboutTeaserSection'
+export { ServicesSection } from './ServicesSection'
+export { WhyWinVinayaSection } from './WhyWinVinayaSection'
+export { ImpactSection } from './ImpactSection'
+export { FoundationSection } from './FoundationSection'
+export { ResourcesTeaserSection } from './ResourcesTeaserSection'
+export { FinalCtaSection } from './FinalCtaSection'
