@@ -11,7 +11,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import { footerLinkGroups, legalLinks, socialLinks, footerTagline } from '../data'
-import fullLogo from '../assets/logo/winvinayainfosystems_fulllogo.png'
+import logo from '../assets/logo/winvinayainfosystems_logo.png'
 
 const SOCIAL_ICONS: Record<string, typeof LinkedInIcon> = {
   linkedin: LinkedInIcon,
@@ -48,10 +48,8 @@ const socialButtonSx = (theme: Theme) => ({
 })
 
 /**
- * Corporate footer: brand column with the full logo, tagline and social
- * links, plus link groups sourced from `data/layout/footer.ts`. Deliberately kept
- * on a fixed dark surface regardless of the active light/dark theme mode,
- * a common corporate treatment for brand consistency at the page edge.
+ * Corporate footer: brand column with logo, tagline and social
+ * links (left section), plus link groups (right section).
  */
 export const Footer = () => {
   const year = new Date().getFullYear()
@@ -59,18 +57,19 @@ export const Footer = () => {
   return (
     <Root>
       <Container maxWidth="xl" sx={{ py: { xs: 6, md: 8 } }}>
-        <Grid container spacing={{ xs: 5, md: 4 }}>
-          <Grid size={{ xs: 12, md: 4 }}>
+        <Grid container spacing={{ xs: 5, lg: 6 }}>
+          {/* Left Side Section: Brand info */}
+          <Grid size={{ xs: 12, lg: 4 }}>
             <Stack spacing={2.5}>
               <Box
                 component="img"
-                src={fullLogo}
+                src={logo}
                 alt="WinVinaya Infosystems"
-                sx={{ height: 40, width: 'auto' }}
+                sx={{ height: 48, width: 'auto', alignSelf: 'flex-start' }}
               />
               <Typography
                 variant="body2"
-                sx={(theme) => ({ color: alpha(theme.palette.inverse.contrastText, 0.75), maxWidth: 280 })}
+                sx={(theme) => ({ color: alpha(theme.palette.inverse.contrastText, 0.75), maxWidth: 320 })}
               >
                 {footerTagline}
               </Typography>
@@ -94,20 +93,25 @@ export const Footer = () => {
             </Stack>
           </Grid>
 
-          {footerLinkGroups.map((group) => (
-            <Grid key={group.id} size={{ xs: 6, md: 2 }}>
-              <Stack spacing={1.75} component="nav" aria-label={group.title}>
-                <Typography variant="overline" color="inverse.contrastText">
-                  {group.title}
-                </Typography>
-                {group.links.map((link) => (
-                  <FooterLink key={link.id} href={link.href}>
-                    {link.label}
-                  </FooterLink>
-                ))}
-              </Stack>
+          {/* Right Side Section: Navigation Link Groups */}
+          <Grid size={{ xs: 12, lg: 8 }}>
+            <Grid container spacing={{ xs: 4, sm: 3 }}>
+              {footerLinkGroups.map((group) => (
+                <Grid key={group.id} size={{ xs: 6, sm: 3 }}>
+                  <Stack spacing={1.75} component="nav" aria-label={group.title}>
+                    <Typography variant="overline" color="inverse.contrastText" sx={{ fontWeight: 700, letterSpacing: '0.08em' }}>
+                      {group.title}
+                    </Typography>
+                    {group.links.map((link) => (
+                      <FooterLink key={link.id} href={link.href}>
+                        {link.label}
+                      </FooterLink>
+                    ))}
+                  </Stack>
+                </Grid>
+              ))}
             </Grid>
-          ))}
+          </Grid>
         </Grid>
 
         <Divider

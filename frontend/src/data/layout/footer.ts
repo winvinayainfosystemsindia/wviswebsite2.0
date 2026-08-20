@@ -23,6 +23,7 @@ export const footerLinkGroups: FooterLinkGroup[] = [
 export const legalLinks: NavChildItem[] = [
   { id: 'privacy-policy', label: 'Privacy Policy', href: '/privacy-policy' },
   { id: 'terms-of-service', label: 'Terms of Service', href: '/terms-of-service' },
+  { id: 'cookie-policy', label: 'Cookie Policy', href: '/cookie-policy' },
 ]
 
 export interface SocialLink {

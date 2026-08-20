@@ -2,8 +2,8 @@ export interface FinalCtaContent {
   heading: string
   body: string
   cta: { label: string; href: string }
-  phone: { label: string; href: string }
-  email: { label: string; href: string }
+  phone?: { label: string; href: string }
+  email?: { label: string; href: string }
 }
 
 export const finalCta: FinalCtaContent = {
