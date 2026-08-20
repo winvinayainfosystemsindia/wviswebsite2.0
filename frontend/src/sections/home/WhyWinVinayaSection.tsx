@@ -45,12 +45,12 @@ const StepCard = styled(Box)(({ theme }) => ({
 export const WhyWinVinayaSection = () => (
   <Root aria-labelledby="why-us-heading">
     <Container maxWidth="xl" sx={{ py: { xs: 8, md: 12 } }}>
-      <Stack spacing={{ xs: 8, md: 10 }}>
+      <Stack spacing={{ xs: 8, md: 10 }} sx={{ alignItems: 'center' }}>
         {/* Top: 4 Core Differentiators */}
-        <Stack spacing={{ xs: 6, md: 8 }}>
+        <Stack spacing={{ xs: 6, md: 8 }} sx={{ width: '100%', alignItems: 'center' }}>
           <SectionHeading headingId="why-us-heading" eyebrow={whyUs.eyebrow} heading={whyUs.heading} maxWidth={640} />
 
-          <Grid container spacing={3}>
+          <Grid container spacing={3} sx={{ width: '100%' }}>
             {whyUs.items.map((item) => (
               <Grid key={item.id} size={{ xs: 12, sm: 6, lg: 3 }} sx={{ display: 'flex' }}>
                 <Card
@@ -66,17 +66,15 @@ export const WhyWinVinayaSection = () => (
         </Stack>
 
         {/* Bottom: 4-Step Engagement Process */}
-        <Stack spacing={4}>
-          <Box sx={{ textAlign: 'center', maxWidth: 600, mx: 'auto' }}>
-            <Typography variant="overline" color="accent.main" sx={{ fontWeight: 700, letterSpacing: '0.08em' }}>
-              HOW WE WORK
-            </Typography>
-            <Typography variant="h3" sx={{ mt: 0.5 }}>
-              {whyUs.workflowHeading}
-            </Typography>
-          </Box>
+        <Stack spacing={4} sx={{ width: '100%', alignItems: 'center' }}>
+          <SectionHeading
+            eyebrow="HOW WE WORK"
+            heading={whyUs.workflowHeading}
+            headingVariant="h3"
+            maxWidth={600}
+          />
 
-          <Grid container spacing={3}>
+          <Grid container spacing={3} sx={{ width: '100%' }}>
             {whyUs.workflowSteps.map((step) => (
               <Grid key={step.stepNumber} size={{ xs: 12, sm: 6, md: 3 }}>
                 <StepCard>

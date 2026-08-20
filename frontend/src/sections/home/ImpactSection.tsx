@@ -46,7 +46,7 @@ const QuotePanel = styled(Box)(({ theme }) => ({
 export const ImpactSection = () => (
   <Box component="section" aria-labelledby="impact-heading" sx={{ bgcolor: 'background.paper' }}>
     <Container maxWidth="xl" sx={{ py: { xs: 8, md: 12 } }}>
-      <Stack spacing={{ xs: 6, md: 8 }}>
+      <Stack spacing={{ xs: 6, md: 8 }} sx={{ alignItems: 'center' }}>
         <SectionHeading
           headingId="impact-heading"
           eyebrow={impact.eyebrow}
@@ -55,7 +55,7 @@ export const ImpactSection = () => (
           maxWidth={620}
         />
 
-        <Grid container spacing={3}>
+        <Grid container spacing={3} sx={{ width: '100%' }}>
           {impact.stats.map((stat) => (
             <Grid key={stat.id} size={{ xs: 12, sm: 6, md: 3 }}>
               <StatCard>

@@ -41,8 +41,10 @@ export const SectionHeading = ({
       sx={{
         alignItems: align === 'center' ? 'center' : 'flex-start',
         textAlign: align,
+        width: '100%',
         maxWidth,
         mx: align === 'center' ? 'auto' : 0,
+        alignSelf: align === 'center' ? 'center' : 'flex-start',
       }}
     >
       {eyebrow && (
@@ -63,11 +65,11 @@ export const SectionHeading = ({
           }}
         />
       )}
-      <Typography id={headingId} variant={headingVariant} sx={{ color: headingColor }}>
+      <Typography id={headingId} variant={headingVariant} sx={{ color: headingColor, textAlign: align }}>
         {heading}
       </Typography>
       {description && (
-        <Typography variant="body1" sx={{ color: descriptionColor, opacity: tone === 'inverse' ? 0.85 : 1 }}>
+        <Typography variant="body1" sx={{ color: descriptionColor, opacity: tone === 'inverse' ? 0.85 : 1, textAlign: align }}>
           {description}
         </Typography>
       )}

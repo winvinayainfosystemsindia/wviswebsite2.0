@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 import Diversity2OutlinedIcon from '@mui/icons-material/Diversity2Outlined'
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import { Button, IconBadge } from '../../components'
+import { Button, IconBadge, SectionHeading } from '../../components'
 import { foundationTeaser } from '../../data'
 
 const Root = styled('section')(({ theme }) => ({
@@ -27,15 +27,13 @@ export const FoundationSection = () => (
     <Container maxWidth="xl" sx={{ py: { xs: 8, md: 12 } }}>
       <Stack spacing={3.5} sx={{ maxWidth: 720, mx: 'auto', alignItems: 'center', textAlign: 'center' }}>
         <IconBadge icon={<Diversity2OutlinedIcon />} tone="accent" size="lg" />
-        <Typography variant="overline" color="accent.main" sx={{ fontWeight: 700, letterSpacing: '0.08em' }}>
-          {foundationTeaser.eyebrow}
-        </Typography>
-        <Typography id="foundation-heading" variant="h2">
-          {foundationTeaser.heading}
-        </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.05rem', lineHeight: 1.65 }}>
-          {foundationTeaser.body}
-        </Typography>
+        <SectionHeading
+          headingId="foundation-heading"
+          eyebrow={foundationTeaser.eyebrow}
+          heading={foundationTeaser.heading}
+          description={foundationTeaser.body}
+          maxWidth={720}
+        />
 
         {/* Impact Highlights */}
         <Stack direction="row" spacing={2} sx={{ flexWrap: 'wrap', justifyContent: 'center', gap: 1.5, py: 1 }}>

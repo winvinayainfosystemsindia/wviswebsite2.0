@@ -56,7 +56,7 @@ const ServiceCard = styled('a')(({ theme }) => ({
 export const ServicesSection = () => (
   <Box component="section" aria-labelledby="services-heading" sx={{ bgcolor: 'background.paper' }}>
     <Container maxWidth="xl" sx={{ py: { xs: 8, md: 12 } }}>
-      <Stack spacing={{ xs: 6, md: 8 }}>
+      <Stack spacing={{ xs: 6, md: 8 }} sx={{ alignItems: 'center' }}>
         <SectionHeading
           headingId="services-heading"
           eyebrow={servicesTeaser.eyebrow}
@@ -65,7 +65,7 @@ export const ServicesSection = () => (
           maxWidth={660}
         />
 
-        <Grid container spacing={3.5}>
+        <Grid container spacing={3.5} sx={{ width: '100%' }}>
           {servicesTeaser.items.map((service) => (
             <Grid key={service.id} size={{ xs: 12, sm: 6, lg: 4 }} sx={{ display: 'flex' }}>
               <ServiceCard href={service.href} aria-label={service.title}>

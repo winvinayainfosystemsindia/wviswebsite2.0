@@ -8,7 +8,7 @@ import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined'
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import { Button, Chip } from '../../components'
+import { Button, SectionHeading } from '../../components'
 import { aboutTeaser } from '../../data'
 
 const Highlight = styled(Box)(({ theme }) => ({
@@ -40,35 +40,33 @@ const PillarCard = styled(Box)(({ theme }) => ({
 export const AboutTeaserSection = () => (
   <Box component="section" aria-labelledby="about-heading" sx={{ bgcolor: 'background.default' }}>
     <Container maxWidth="xl" sx={{ py: { xs: 8, md: 12 } }}>
-      <Grid container spacing={{ xs: 6, md: 8 }} sx={{ alignItems: 'center' }}>
-        {/* Left Column: Story & Narrative */}
-        <Grid size={{ xs: 12, md: 6 }}>
-          <Stack spacing={3.5}>
-            <Chip
-              label={aboutTeaser.eyebrow}
-              tone="accent"
-              variant="outlined"
-              size="small"
-              sx={{ alignSelf: 'flex-start', textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.75rem', fontWeight: 700 }}
-            />
-            <Typography id="about-heading" variant="h2">
-              {aboutTeaser.heading}
-            </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.05rem', lineHeight: 1.7 }}>
-              {aboutTeaser.body}
-            </Typography>
-            <Highlight>
-              <Typography variant="subtitle1" sx={{ fontStyle: 'italic', color: 'text.primary', fontWeight: 600 }}>
-                {aboutTeaser.highlight}
+      <Stack spacing={{ xs: 6, md: 8 }} sx={{ alignItems: 'center' }}>
+        <SectionHeading
+          headingId="about-heading"
+          eyebrow={aboutTeaser.eyebrow}
+          heading={aboutTeaser.heading}
+          maxWidth={720}
+        />
+
+        <Grid container spacing={{ xs: 6, md: 8 }} sx={{ width: '100%', alignItems: 'center' }}>
+          {/* Left Column: Story & Narrative */}
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Stack spacing={3}>
+              <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.05rem', lineHeight: 1.7 }}>
+                {aboutTeaser.body}
               </Typography>
-            </Highlight>
-            <Box>
-              <Button tone="accent" variant="contained" href={aboutTeaser.cta.href} endIcon={<ArrowForwardIcon />}>
-                {aboutTeaser.cta.label}
-              </Button>
-            </Box>
-          </Stack>
-        </Grid>
+              <Highlight>
+                <Typography variant="subtitle1" sx={{ fontStyle: 'italic', color: 'text.primary', fontWeight: 600 }}>
+                  {aboutTeaser.highlight}
+                </Typography>
+              </Highlight>
+              <Box>
+                <Button tone="accent" variant="contained" href={aboutTeaser.cta.href} endIcon={<ArrowForwardIcon />}>
+                  {aboutTeaser.cta.label}
+                </Button>
+              </Box>
+            </Stack>
+          </Grid>
 
         {/* Right Column: 3 Core Pillars */}
         <Grid size={{ xs: 12, md: 6 }}>
@@ -144,6 +142,7 @@ export const AboutTeaserSection = () => (
           </Stack>
         </Grid>
       </Grid>
-    </Container>
-  </Box>
+    </Stack>
+  </Container>
+</Box>
 )

@@ -59,7 +59,7 @@ const ResourceCard = styled('a')(({ theme }) => ({
 export const ResourcesTeaserSection = () => (
   <Box component="section" aria-labelledby="resources-heading" sx={{ bgcolor: 'background.default' }}>
     <Container maxWidth="xl" sx={{ py: { xs: 8, md: 12 } }}>
-      <Stack spacing={{ xs: 6, md: 8 }}>
+      <Stack spacing={{ xs: 6, md: 8 }} sx={{ alignItems: 'center' }}>
         <SectionHeading
           headingId="resources-heading"
           eyebrow={resourcesTeaser.eyebrow}
@@ -68,7 +68,7 @@ export const ResourcesTeaserSection = () => (
           maxWidth={620}
         />
 
-        <Grid container spacing={3}>
+        <Grid container spacing={3} sx={{ width: '100%' }}>
           {resourceLinks.map((link) => (
             <Grid key={link.id} size={{ xs: 12, sm: 6, lg: 3 }} sx={{ display: 'flex' }}>
               <ResourceCard href={link.href} aria-label={link.label}>
