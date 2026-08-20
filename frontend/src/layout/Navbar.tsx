@@ -243,7 +243,7 @@ export const Navbar = () => {
               component="img"
               src={fullLogo}
               alt="WinVinaya Infosystems"
-              sx={{ height: { xs: 36, md: 44 }, width: 'auto' }}
+              sx={{ height: { xs: 36, md: 54 }, width: 'auto' }}
             />
           </LogoLink>
 

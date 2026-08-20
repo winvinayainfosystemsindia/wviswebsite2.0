@@ -30,18 +30,18 @@ const ServiceCard = styled('a')(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'space-between',
   height: '100%',
-  padding: theme.spacing(3.5),
-  borderRadius: Number(theme.shape.borderRadius) * 2,
+  padding: theme.spacing(2.5),
+  borderRadius: Number(theme.shape.borderRadius) * 1.5,
   backgroundColor: theme.palette.background.paper,
   border: `1px solid ${theme.palette.divider}`,
   textDecoration: 'none',
   color: 'inherit',
   transition: theme.transitions.create(['border-color', 'box-shadow', 'transform']),
-  boxShadow: `0 4px 16px -4px ${alpha(theme.palette.common.black, 0.05)}`,
+  boxShadow: `0 2px 10px -2px ${alpha(theme.palette.common.black, 0.04)}`,
   '&:hover': {
     borderColor: alpha(theme.palette.accent.main, 0.5),
-    boxShadow: `0 16px 36px -8px ${alpha(theme.palette.accent.main, 0.15)}`,
-    transform: 'translateY(-4px)',
+    boxShadow: `0 10px 24px -6px ${alpha(theme.palette.accent.main, 0.12)}`,
+    transform: 'translateY(-3px)',
     '& .arrow-icon': {
       transform: 'translateX(4px)',
       color: theme.palette.accent.main,
@@ -55,8 +55,8 @@ const ServiceCard = styled('a')(({ theme }) => ({
 
 export const ServicesSection = () => (
   <Box component="section" aria-labelledby="services-heading" sx={{ bgcolor: 'background.paper' }}>
-    <Container maxWidth="xl" sx={{ py: { xs: 8, md: 12 } }}>
-      <Stack spacing={{ xs: 6, md: 8 }} sx={{ alignItems: 'center' }}>
+    <Container maxWidth="xl" sx={{ py: { xs: 8, md: 10 } }}>
+      <Stack spacing={{ xs: 5, md: 6 }} sx={{ alignItems: 'center' }}>
         <SectionHeading
           headingId="services-heading"
           eyebrow={servicesTeaser.eyebrow}
@@ -65,53 +65,56 @@ export const ServicesSection = () => (
           maxWidth={660}
         />
 
-        <Grid container spacing={3.5} sx={{ width: '100%' }}>
+        <Grid container spacing={2.5} sx={{ width: '100%' }}>
           {servicesTeaser.items.map((service) => (
             <Grid key={service.id} size={{ xs: 12, sm: 6, lg: 4 }} sx={{ display: 'flex' }}>
               <ServiceCard href={service.href} aria-label={service.title}>
-                <Stack spacing={2.5}>
-                  <Box
-                    sx={(theme) => ({
-                      width: 52,
-                      height: 52,
-                      borderRadius: Number(theme.shape.borderRadius) * 1.5,
-                      bgcolor: alpha(theme.palette.accent.main, 0.1),
-                      color: theme.palette.accent.main,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '1.75rem',
-                    })}
-                  >
-                    {SERVICE_ICONS[service.id]}
-                  </Box>
+                <Stack spacing={1.75}>
+                  <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center' }}>
+                    <Box
+                      sx={(theme) => ({
+                        width: 40,
+                        height: 40,
+                        borderRadius: Number(theme.shape.borderRadius),
+                        bgcolor: alpha(theme.palette.accent.main, 0.1),
+                        color: theme.palette.accent.main,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '1.25rem',
+                        flexShrink: 0,
+                      })}
+                    >
+                      {SERVICE_ICONS[service.id]}
+                    </Box>
 
-                  <Typography variant="h5" sx={{ fontSize: '1.25rem', fontWeight: 700 }}>
-                    {service.title}
-                  </Typography>
+                    <Typography variant="h6" sx={{ fontSize: '1.05rem', fontWeight: 700, lineHeight: 1.3 }}>
+                      {service.title}
+                    </Typography>
+                  </Stack>
 
-                  <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.65 }}>
+                  <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.85rem', lineHeight: 1.5 }}>
                     {service.description}
                   </Typography>
 
                   {/* Deliverable Badges */}
-                  <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap', gap: 1, pt: 0.5 }}>
+                  <Stack direction="row" spacing={0.75} sx={{ flexWrap: 'wrap', gap: 0.75, pt: 0.25 }}>
                     {service.deliverables.map((item, idx) => (
                       <Box
                         key={idx}
                         sx={(theme) => ({
                           display: 'inline-flex',
                           alignItems: 'center',
-                          gap: 0.5,
-                          py: 0.5,
-                          px: 1.25,
+                          gap: 0.4,
+                          py: 0.25,
+                          px: 1,
                           borderRadius: 999,
                           bgcolor: alpha(theme.palette.text.primary, 0.04),
                           border: `1px solid ${theme.palette.divider}`,
                         })}
                       >
-                        <CheckOutlinedIcon sx={{ fontSize: 12, color: 'accent.main' }} />
-                        <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.secondary', fontSize: '0.72rem' }}>
+                        <CheckOutlinedIcon sx={{ fontSize: 11, color: 'accent.main' }} />
+                        <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.secondary', fontSize: '0.7rem' }}>
                           {item}
                         </Typography>
                       </Box>
@@ -119,14 +122,14 @@ export const ServicesSection = () => (
                   </Stack>
                 </Stack>
 
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, pt: 3, mt: 'auto' }}>
-                  <Typography variant="subtitle2" sx={{ fontWeight: 700, color: 'accent.main' }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, pt: 2, mt: 'auto' }}>
+                  <Typography variant="subtitle2" sx={{ fontWeight: 700, color: 'accent.main', fontSize: '0.825rem' }}>
                     Learn More
                   </Typography>
                   <ArrowForwardIcon
                     className="arrow-icon"
-                    fontSize="small"
                     sx={(theme) => ({
+                      fontSize: '0.9rem',
                       transition: theme.transitions.create(['transform', 'color']),
                       color: theme.palette.accent.main,
                     })}
@@ -137,7 +140,7 @@ export const ServicesSection = () => (
           ))}
         </Grid>
 
-        <Box sx={{ textAlign: 'center' }}>
+        <Box sx={{ textAlign: 'center', pt: 1 }}>
           <Button tone="primary" variant="contained" href={servicesTeaser.cta.href} size="large" endIcon={<ArrowForwardIcon />}>
             {servicesTeaser.cta.label}
           </Button>
