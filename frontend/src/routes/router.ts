@@ -5,6 +5,7 @@ import { ourStoryRoute } from './ourStory'
 import { ourTeamRoute } from './ourTeam'
 import { awardsRecognitionsRoute } from './awardsRecognitions'
 import { winVinayaFoundationRoute } from './winVinayaFoundation'
+import { accessibilityAuditRoute } from './accessibilityAudit'
 import { maintenanceRoute, serverErrorRoute } from './common'
 import { NotFoundPage, ServerErrorPage } from '../pages/common'
 
@@ -14,6 +15,7 @@ const routeTree = rootRoute.addChildren([
   ourTeamRoute,
   awardsRecognitionsRoute,
   winVinayaFoundationRoute,
+  accessibilityAuditRoute,
   maintenanceRoute,
   serverErrorRoute,
 ])
