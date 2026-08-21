@@ -11,9 +11,9 @@ import { Avatar, Button, SectionHeading, Stat } from '../../components'
 import { impact } from '../../data'
 
 const StatCard = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(3),
-  borderRadius: Number(theme.shape.borderRadius) * 1.5,
-  backgroundColor: theme.palette.background.default,
+  padding: theme.spacing(3.5, 3),
+  borderRadius: Number(theme.shape.borderRadius) * 1.8,
+  backgroundColor: theme.palette.background.paper,
   border: `1px solid ${theme.palette.divider}`,
   textAlign: 'center',
   height: '100%',
@@ -21,25 +21,26 @@ const StatCard = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'center',
   transition: theme.transitions.create(['transform', 'box-shadow', 'border-color']),
+  boxShadow: `0 4px 16px ${alpha(theme.palette.text.primary, 0.04)}`,
   '&:hover': {
-    transform: 'translateY(-2px)',
-    borderColor: alpha(theme.palette.primary.main, 0.3),
-    boxShadow: `0 10px 24px -6px ${alpha(theme.palette.primary.main, 0.1)}`,
+    transform: 'translateY(-3px)',
+    borderColor: alpha(theme.palette.primary.main, 0.4),
+    boxShadow: `0 14px 28px ${alpha(theme.palette.primary.main, 0.12)}`,
   },
 }))
 
 const QuotePanel = styled(Box)(({ theme }) => ({
   position: 'relative',
-  maxWidth: 800,
+  maxWidth: 840,
   margin: '0 auto',
-  padding: theme.spacing(4, 5),
-  borderRadius: Number(theme.shape.borderRadius) * 2,
-  backgroundColor: theme.palette.background.default,
+  padding: theme.spacing(4.5, 5),
+  borderRadius: Number(theme.shape.borderRadius) * 2.2,
+  backgroundColor: theme.palette.background.paper,
   border: `1px solid ${theme.palette.divider}`,
-  boxShadow: `0 16px 36px -12px ${alpha(theme.palette.common.black, 0.08)}`,
+  boxShadow: `0 16px 40px ${alpha(theme.palette.text.primary, 0.06)}`,
   '& .quote-mark': {
-    color: alpha(theme.palette.accent.main, 0.3),
-    fontSize: '3.5rem',
+    color: alpha(theme.palette.accent.main, 0.25),
+    fontSize: '3.75rem',
   },
 }))
 
@@ -52,7 +53,7 @@ export const ImpactSection = () => (
           eyebrow={impact.eyebrow}
           heading={impact.heading}
           description={impact.subheading}
-          maxWidth={620}
+          maxWidth={640}
         />
 
         <Grid container spacing={3} sx={{ width: '100%' }}>
@@ -75,14 +76,14 @@ export const ImpactSection = () => (
               ))}
             </Stack>
 
-            <Typography variant="h6" component="blockquote" sx={{ fontStyle: 'italic', fontWeight: 500, m: 0, lineHeight: 1.65 }}>
+            <Typography variant="h6" component="blockquote" sx={{ fontStyle: 'italic', fontWeight: 500, m: 0, lineHeight: 1.65, color: 'text.primary' }}>
               "{impact.testimonial.quote}"
             </Typography>
 
             <Stack direction="row" spacing={2} sx={{ alignItems: 'center', pt: 1 }}>
               <Avatar name={impact.testimonial.name} size="md" />
               <Stack spacing={0.25}>
-                <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+                <Typography variant="subtitle1" sx={{ fontWeight: 700, color: 'text.primary' }}>
                   {impact.testimonial.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">

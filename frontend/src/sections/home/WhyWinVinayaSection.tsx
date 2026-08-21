@@ -20,25 +20,27 @@ const WHY_US_ICONS: Record<string, ReactNode> = {
 }
 
 const Root = styled('section')(({ theme }) => ({
-  backgroundColor: alpha(theme.palette.accent.light, 0.06),
+  backgroundColor: alpha(theme.palette.accent.light, 0.05),
+  borderTop: `1px solid ${theme.palette.divider}`,
+  borderBottom: `1px solid ${theme.palette.divider}`,
 }))
 
 const StepCard = styled(Box)(({ theme }) => ({
   position: 'relative',
-  padding: theme.spacing(3),
-  borderRadius: Number(theme.shape.borderRadius) * 1.5,
+  padding: theme.spacing(3.25),
+  borderRadius: Number(theme.shape.borderRadius) * 1.8,
   backgroundColor: theme.palette.background.paper,
   border: `1px solid ${theme.palette.divider}`,
-  boxShadow: `0 4px 14px -2px ${alpha(theme.palette.common.black, 0.05)}`,
+  boxShadow: `0 4px 16px ${alpha(theme.palette.text.primary, 0.04)}`,
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
-  gap: theme.spacing(1.5),
+  gap: theme.spacing(1.75),
   transition: theme.transitions.create(['transform', 'border-color', 'box-shadow']),
   '&:hover': {
-    transform: 'translateY(-3px)',
+    transform: 'translateY(-4px)',
     borderColor: theme.palette.primary.main,
-    boxShadow: `0 12px 28px -6px ${alpha(theme.palette.primary.main, 0.15)}`,
+    boxShadow: `0 14px 30px ${alpha(theme.palette.primary.main, 0.14)}`,
   },
 }))
 
@@ -83,18 +85,19 @@ export const WhyWinVinayaSection = () => (
                       display: 'inline-flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      width: 40,
-                      height: 40,
+                      width: 42,
+                      height: 42,
                       borderRadius: 999,
-                      bgcolor: alpha(theme.palette.accent.main, 0.12),
+                      bgcolor: alpha(theme.palette.accent.main, 0.14),
                       color: theme.palette.accent.main,
                       fontWeight: 800,
-                      fontSize: '0.9rem',
+                      fontSize: '0.95rem',
+                      border: `1px solid ${alpha(theme.palette.accent.main, 0.25)}`,
                     })}
                   >
                     {step.stepNumber}
                   </Box>
-                  <Typography variant="h6" sx={{ fontWeight: 700, fontSize: '1.1rem' }}>
+                  <Typography variant="h6" sx={{ fontWeight: 700, fontSize: '1.1rem', color: 'text.primary' }}>
                     {step.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>

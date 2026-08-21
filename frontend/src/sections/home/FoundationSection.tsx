@@ -10,7 +10,7 @@ import { Button, IconBadge, SectionHeading } from '../../components'
 import { foundationTeaser } from '../../data'
 
 const Root = styled('section')(({ theme }) => ({
-  backgroundColor: alpha(theme.palette.accent.light, 0.08),
+  backgroundColor: alpha(theme.palette.accent.light, 0.07),
   borderTop: `1px solid ${theme.palette.divider}`,
   borderBottom: `1px solid ${theme.palette.divider}`,
 }))
@@ -25,14 +25,14 @@ const IMPACT_HIGHLIGHTS = [
 export const FoundationSection = () => (
   <Root aria-labelledby="foundation-heading">
     <Container maxWidth="xl" sx={{ py: { xs: 8, md: 12 } }}>
-      <Stack spacing={3.5} sx={{ maxWidth: 720, mx: 'auto', alignItems: 'center', textAlign: 'center' }}>
+      <Stack spacing={3.5} sx={{ maxWidth: 740, mx: 'auto', alignItems: 'center', textAlign: 'center' }}>
         <IconBadge icon={<Diversity2OutlinedIcon />} tone="accent" size="lg" />
         <SectionHeading
           headingId="foundation-heading"
           eyebrow={foundationTeaser.eyebrow}
           heading={foundationTeaser.heading}
           description={foundationTeaser.body}
-          maxWidth={720}
+          maxWidth={740}
         />
 
         {/* Impact Highlights */}
@@ -44,16 +44,16 @@ export const FoundationSection = () => (
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: 1,
-                py: 0.75,
-                px: 1.75,
+                py: 0.85,
+                px: 2,
                 borderRadius: 999,
                 bgcolor: theme.palette.background.paper,
-                border: `1px solid ${alpha(theme.palette.accent.main, 0.2)}`,
-                boxShadow: `0 2px 8px -2px ${alpha(theme.palette.common.black, 0.04)}`,
+                border: `1px solid ${alpha(theme.palette.accent.main, 0.25)}`,
+                boxShadow: `0 4px 12px ${alpha(theme.palette.text.primary, 0.04)}`,
               })}
             >
-              <CheckCircleOutlinedIcon sx={{ fontSize: 16, color: 'accent.main' }} />
-              <Typography variant="caption" sx={{ fontWeight: 700, color: 'text.primary', fontSize: '0.8rem' }}>
+              <CheckCircleOutlinedIcon sx={{ fontSize: 18, color: 'accent.main' }} />
+              <Typography variant="caption" sx={{ fontWeight: 700, color: 'text.primary', fontSize: '0.825rem' }}>
                 {item}
               </Typography>
             </Box>
