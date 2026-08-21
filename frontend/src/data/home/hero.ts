@@ -15,7 +15,6 @@ export interface HeroContent {
   primaryCta: HeroCta
   secondaryCta: HeroCta
   badges: HeroBadge[]
-  trustPillars: string[]
 }
 
 export const heroContent: HeroContent = {
@@ -29,11 +28,5 @@ export const heroContent: HeroContent = {
     { label: 'WCAG 2.1 & 2.2', sublabel: 'Level AA / AAA Standard' },
     { label: '50%+ PwD Testers', sublabel: 'Lived Experience Auditing' },
     { label: '100% Usable', sublabel: 'Beyond Checklist Compliance' },
-  ],
-  trustPillars: [
-    'WCAG 2.1 & 2.2 AA Compliance',
-    'Section 508 & ADA Auditing',
-    'VPAT & ACR Documentation',
-    'Lived Experience Verification',
   ],
 }

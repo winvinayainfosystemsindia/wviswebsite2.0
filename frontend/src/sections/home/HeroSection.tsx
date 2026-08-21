@@ -5,7 +5,6 @@ import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined'
-import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined'
 import RecordVoiceOverOutlinedIcon from '@mui/icons-material/RecordVoiceOverOutlined'
 import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
@@ -175,35 +174,6 @@ export const HeroSection = () => (
           </CardContainer>
         </Grid>
       </Grid>
-
-      {/* Trust Pillars Bar */}
-      <Box
-        sx={(theme) => ({
-          mt: { xs: 6, md: 10 },
-          pt: 4,
-          borderTop: `1px dashed ${theme.palette.divider}`,
-        })}
-      >
-        <Grid container spacing={2} sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
-          <Grid size={{ xs: 12, md: 3 }}>
-            <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 700, letterSpacing: '0.1em' }}>
-              OUR CORE STANDARDS
-            </Typography>
-          </Grid>
-          <Grid size={{ xs: 12, md: 9 }}>
-            <Stack direction="row" spacing={3} sx={{ flexWrap: 'wrap', gap: 2, justifyContent: { xs: 'flex-start', md: 'flex-end' } }}>
-              {heroContent.trustPillars.map((pillar, idx) => (
-                <Stack key={idx} direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-                  <VerifiedOutlinedIcon fontSize="small" color="primary" />
-                  <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                    {pillar}
-                  </Typography>
-                </Stack>
-              ))}
-            </Stack>
-          </Grid>
-        </Grid>
-      </Box>
     </Container>
   </Root>
 )
