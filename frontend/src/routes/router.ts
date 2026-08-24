@@ -13,6 +13,7 @@ import { powerPlatformRoute } from './powerPlatform'
 import { capacityBuildingRoute } from './capacityBuilding'
 import { successStoriesRoute } from './successStories'
 import { testimonialsRoute } from './testimonials'
+import { approvalsCertificationsRoute } from './approvalsCertifications'
 import { maintenanceRoute, serverErrorRoute } from './common'
 import { NotFoundPage, ServerErrorPage } from '../pages/common'
 
@@ -30,9 +31,11 @@ const routeTree = rootRoute.addChildren([
   capacityBuildingRoute,
   successStoriesRoute,
   testimonialsRoute,
+  approvalsCertificationsRoute,
   maintenanceRoute,
   serverErrorRoute,
 ])
+
 
 
 

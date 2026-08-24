@@ -11,7 +11,9 @@ export { PowerPlatformPage } from './PowerPlatformPage'
 export { CapacityBuildingPage } from './CapacityBuildingPage'
 export { SuccessStoriesPage } from './SuccessStoriesPage'
 export { TestimonialsPage } from './TestimonialsPage'
+export { ApprovalsCertificationsPage } from './ApprovalsCertificationsPage'
 export * from './common'
+
 
 
 

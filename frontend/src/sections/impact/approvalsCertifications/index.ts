@@ -1,0 +1,5 @@
+export * from './CertificationsHeroSection'
+export * from './OrganizationalApprovalsSection'
+export * from './IaapCertificationsSection'
+export * from './StandardsMatrixSection'
+export * from './CertificationsCtaSection'
