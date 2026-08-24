@@ -10,7 +10,9 @@ export { AgenticAiCustomAppsPage } from './AgenticAiCustomAppsPage'
 export { PowerPlatformPage } from './PowerPlatformPage'
 export { CapacityBuildingPage } from './CapacityBuildingPage'
 export { SuccessStoriesPage } from './SuccessStoriesPage'
+export { TestimonialsPage } from './TestimonialsPage'
 export * from './common'
+
 
 
 
