@@ -9,6 +9,7 @@ import { accessibilityAuditRoute } from './accessibilityAudit'
 import { documentRemediationRoute } from './documentRemediation'
 import { corporateTrainingRoute } from './corporateTraining'
 import { agenticAiCustomAppsRoute } from './agenticAiCustomApps'
+import { powerPlatformRoute } from './powerPlatform'
 import { maintenanceRoute, serverErrorRoute } from './common'
 import { NotFoundPage, ServerErrorPage } from '../pages/common'
 
@@ -22,9 +23,11 @@ const routeTree = rootRoute.addChildren([
   documentRemediationRoute,
   corporateTrainingRoute,
   agenticAiCustomAppsRoute,
+  powerPlatformRoute,
   maintenanceRoute,
   serverErrorRoute,
 ])
+
 
 
 
