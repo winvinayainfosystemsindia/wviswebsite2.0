@@ -13,7 +13,11 @@ export { SuccessStoriesPage } from './SuccessStoriesPage'
 export { TestimonialsPage } from './TestimonialsPage'
 export { ApprovalsCertificationsPage } from './ApprovalsCertificationsPage'
 export { ClientsPartnersPage } from './ClientsPartnersPage'
+export { BlogsPage } from './BlogsPage'
+export { BlogDetailsPage } from './BlogDetailsPage'
 export * from './common'
+
+
 
 
 

@@ -15,6 +15,7 @@ import { successStoriesRoute } from './successStories'
 import { testimonialsRoute } from './testimonials'
 import { approvalsCertificationsRoute } from './approvalsCertifications'
 import { clientsPartnersRoute } from './clientsPartners'
+import { blogsRoute, blogAliasRoute, blogDetailsRoute, blogDetailsAliasRoute } from './blogs'
 import { maintenanceRoute, serverErrorRoute } from './common'
 import { NotFoundPage, ServerErrorPage } from '../pages/common'
 
@@ -34,9 +35,15 @@ const routeTree = rootRoute.addChildren([
   testimonialsRoute,
   approvalsCertificationsRoute,
   clientsPartnersRoute,
+  blogsRoute,
+  blogAliasRoute,
+  blogDetailsRoute,
+  blogDetailsAliasRoute,
   maintenanceRoute,
   serverErrorRoute,
 ])
+
+
 
 
 
