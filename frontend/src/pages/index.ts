@@ -6,6 +6,8 @@ export { WinVinayaFoundationPage } from './WinVinayaFoundationPage'
 export { AccessibilityAuditPage } from './AccessibilityAuditPage'
 export { DocumentRemediationPage } from './DocumentRemediationPage'
 export { CorporateTrainingPage } from './CorporateTrainingPage'
+export { AgenticAiCustomAppsPage } from './AgenticAiCustomAppsPage'
 export * from './common'
+
 
 
