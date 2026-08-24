@@ -8,7 +8,9 @@ export { DocumentRemediationPage } from './DocumentRemediationPage'
 export { CorporateTrainingPage } from './CorporateTrainingPage'
 export { AgenticAiCustomAppsPage } from './AgenticAiCustomAppsPage'
 export { PowerPlatformPage } from './PowerPlatformPage'
+export { CapacityBuildingPage } from './CapacityBuildingPage'
 export * from './common'
+
 
 
 

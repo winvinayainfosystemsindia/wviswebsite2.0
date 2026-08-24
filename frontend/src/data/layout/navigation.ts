@@ -67,9 +67,9 @@ export const primaryNavItems: NavItem[] = [
         label: 'Capacity Building & Adoption',
         href: '/services/capacity-building-adoption',
       },
-      { id: 'all-services', label: 'All Services', href: '/services', topDivider: true },
     ],
   },
+
   {
     id: 'impact',
     label: 'Impact',
