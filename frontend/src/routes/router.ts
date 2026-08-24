@@ -7,6 +7,7 @@ import { awardsRecognitionsRoute } from './awardsRecognitions'
 import { winVinayaFoundationRoute } from './winVinayaFoundation'
 import { accessibilityAuditRoute } from './accessibilityAudit'
 import { documentRemediationRoute } from './documentRemediation'
+import { corporateTrainingRoute } from './corporateTraining'
 import { maintenanceRoute, serverErrorRoute } from './common'
 import { NotFoundPage, ServerErrorPage } from '../pages/common'
 
@@ -18,9 +19,11 @@ const routeTree = rootRoute.addChildren([
   winVinayaFoundationRoute,
   accessibilityAuditRoute,
   documentRemediationRoute,
+  corporateTrainingRoute,
   maintenanceRoute,
   serverErrorRoute,
 ])
+
 
 
 export const router = createRouter({

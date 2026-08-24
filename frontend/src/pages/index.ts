@@ -5,5 +5,7 @@ export { AwardsRecognitionsPage } from './AwardsRecognitionsPage'
 export { WinVinayaFoundationPage } from './WinVinayaFoundationPage'
 export { AccessibilityAuditPage } from './AccessibilityAuditPage'
 export { DocumentRemediationPage } from './DocumentRemediationPage'
+export { CorporateTrainingPage } from './CorporateTrainingPage'
 export * from './common'
+
 
