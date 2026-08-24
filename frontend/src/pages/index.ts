@@ -3,4 +3,7 @@ export { OurStoryPage } from './OurStoryPage'
 export { OurTeamPage } from './OurTeamPage'
 export { AwardsRecognitionsPage } from './AwardsRecognitionsPage'
 export { WinVinayaFoundationPage } from './WinVinayaFoundationPage'
+export { AccessibilityAuditPage } from './AccessibilityAuditPage'
+export { DocumentRemediationPage } from './DocumentRemediationPage'
 export * from './common'
+
