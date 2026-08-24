@@ -104,7 +104,7 @@ export const OrganizationalApprovalsSection = () => (
                 <Box
                   sx={(theme) => ({
                     p: 3.5,
-                    borderRadius: Number(theme.shape.borderRadius) * 1.8,
+                    borderRadius: Number(theme.shape.borderRadius) * 0.1,
                     bgcolor: alpha(theme.palette.primary.main, 0.05),
                     border: `1px solid ${alpha(theme.palette.primary.main, 0.25)}`,
                     display: 'flex',
