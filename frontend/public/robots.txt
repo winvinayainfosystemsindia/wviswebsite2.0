@@ -1,0 +1,9 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*?*
+
+# Sitemaps
+Sitemap: https://winvinayainfosystems.com/sitemap.xml

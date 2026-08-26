@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "generate:seo": "node scripts/generate-seo.js",
+    "prebuild": "node scripts/generate-seo.js",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview"
