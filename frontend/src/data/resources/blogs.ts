@@ -46,7 +46,6 @@ export const blogsHeroData = {
   headlineHighlight: 'Blog',
   subheadline:
     'Stories, ideas, and honest field notes from our work building inclusive workplaces, accessible digital systems, and empowering diverse teams across India.',
-  searchPlaceholder: 'Search articles by title, topic, or keyword...',
 }
 
 export const featuredBlogPost: BlogPostItem = {

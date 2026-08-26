@@ -16,6 +16,7 @@ import { testimonialsRoute } from './testimonials'
 import { approvalsCertificationsRoute } from './approvalsCertifications'
 import { clientsPartnersRoute } from './clientsPartners'
 import { blogsRoute, blogAliasRoute, blogDetailsRoute, blogDetailsAliasRoute } from './blogs'
+import { newslettersRoute, newsletterAliasRoute } from './newsletters'
 import { maintenanceRoute, serverErrorRoute } from './common'
 import { NotFoundPage, ServerErrorPage } from '../pages/common'
 
@@ -39,6 +40,8 @@ const routeTree = rootRoute.addChildren([
   blogAliasRoute,
   blogDetailsRoute,
   blogDetailsAliasRoute,
+  newslettersRoute,
+  newsletterAliasRoute,
   maintenanceRoute,
   serverErrorRoute,
 ])

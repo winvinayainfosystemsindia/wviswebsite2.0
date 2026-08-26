@@ -15,6 +15,7 @@ export { ApprovalsCertificationsPage } from './ApprovalsCertificationsPage'
 export { ClientsPartnersPage } from './ClientsPartnersPage'
 export { BlogsPage } from './BlogsPage'
 export { BlogDetailsPage } from './BlogDetailsPage'
+export { NewslettersPage } from './NewslettersPage'
 export * from './common'
 
 

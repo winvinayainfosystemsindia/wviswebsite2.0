@@ -4,7 +4,7 @@ import Container from '@mui/material/Container'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { Chip } from '../../../components'
-import { blogsHeroData } from '../../../data/resources/blogs'
+import { newslettersHeroData } from '../../../data/resources/newsletters'
 
 const pulseGlow = keyframes`
   0% { transform: scale(0.95); opacity: 0.8; }
@@ -87,8 +87,8 @@ const GradientText = styled('span')(({ theme }) => ({
   display: 'inline-block',
 }))
 
-export const BlogsHeroSection = () => (
-  <Root aria-labelledby="blogs-hero-heading">
+export const NewslettersHeroSection = () => (
+  <Root aria-labelledby="newsletters-hero-heading">
     <AmbientGlow aria-hidden="true" />
     <GridPattern aria-hidden="true" />
 
@@ -96,7 +96,7 @@ export const BlogsHeroSection = () => (
       <Stack spacing={3} sx={{ alignItems: 'center', textAlign: 'center' }}>
         <Chip
           icon={<PulseDot />}
-          label={blogsHeroData.eyebrow}
+          label={newslettersHeroData.eyebrow}
           variant="outlined"
           size="medium"
           sx={(theme) => ({
@@ -114,7 +114,7 @@ export const BlogsHeroSection = () => (
         />
 
         <Typography
-          id="blogs-hero-heading"
+          id="newsletters-hero-heading"
           variant="display"
           component="h1"
           sx={(theme) => ({
@@ -125,7 +125,7 @@ export const BlogsHeroSection = () => (
             letterSpacing: '-0.02em',
           })}
         >
-          {blogsHeroData.headline} <GradientText>{blogsHeroData.headlineHighlight}</GradientText>
+          {newslettersHeroData.headline} <GradientText>{newslettersHeroData.headlineHighlight}</GradientText>
         </Typography>
 
         <Typography
@@ -135,10 +135,10 @@ export const BlogsHeroSection = () => (
             lineHeight: 1.75,
             color: theme.palette.text.secondary,
             fontWeight: 450,
-            maxWidth: 720,
+            maxWidth: 760,
           })}
         >
-          {blogsHeroData.subheadline}
+          {newslettersHeroData.subheadline}
         </Typography>
       </Stack>
     </Container>

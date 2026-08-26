@@ -8,7 +8,6 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
 import SearchOffIcon from '@mui/icons-material/SearchOff'
-import { Button } from '../../../components'
 import type { BlogPostItem } from '../../../data/resources/blogs'
 
 const BlogCard = styled('a')(({ theme }) => ({
@@ -38,10 +37,9 @@ const BlogCard = styled('a')(({ theme }) => ({
 
 interface BlogsGridSectionProps {
   posts: BlogPostItem[]
-  onResetFilters: () => void
 }
 
-export const BlogsGridSection = ({ posts, onResetFilters }: BlogsGridSectionProps) => (
+export const BlogsGridSection = ({ posts }: BlogsGridSectionProps) => (
   <Box
     component="section"
     id="blogs-grid"
@@ -90,12 +88,9 @@ export const BlogsGridSection = ({ posts, onResetFilters }: BlogsGridSectionProp
           <Typography variant="h5" sx={{ fontWeight: 800, color: 'text.primary', mb: 1 }}>
             No Articles Found
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-            We couldn't find any articles matching your search query. Try searching with different keywords or reset your filters.
+          <Typography variant="body2" color="text.secondary">
+            Stay tuned for upcoming articles and thought leadership pieces.
           </Typography>
-          <Button tone="primary" variant="outlined" onClick={onResetFilters}>
-            Reset Filters
-          </Button>
         </Box>
       ) : (
         <Grid container spacing={3.5}>
