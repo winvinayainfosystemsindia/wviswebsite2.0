@@ -20,6 +20,8 @@ export interface BlogPostItem {
   authorRole: string
   publishedDate: string
   readTime: string
+  tileImage: string
+  bannerImage: string
   isFeatured?: boolean
   tags: string[]
   highlightBadge?: string
@@ -61,6 +63,10 @@ export const featuredBlogPost: BlogPostItem = {
   authorRole: 'Workforce Inclusion Research',
   publishedDate: '13 Aug 2026',
   readTime: '3 min read',
+  tileImage:
+    'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+  bannerImage:
+    'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1600&q=80',
   isFeatured: true,
   highlightBadge: 'Flagship Article',
   tags: ['Disability Employment', 'Workforce Diversity', 'Hiring Strategy', 'Talent Pipeline', 'ROI of Inclusion'],
@@ -118,6 +124,10 @@ export const blogPostsData: BlogPostItem[] = [
     authorRole: 'Master Sign Language Instructor',
     publishedDate: '30 Jul 2026',
     readTime: '2 min read',
+    tileImage:
+      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80',
+    bannerImage:
+      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80',
     tags: ['Indian Sign Language', 'Deaf Culture', 'Inclusive Communication', 'ISL Basics'],
     coverCaption: 'Experiencing the expressive grammar and spatial dynamics of Indian Sign Language.',
     sections: [
@@ -164,6 +174,10 @@ export const blogPostsData: BlogPostItem[] = [
     authorRole: 'D&I Workshop Lead',
     publishedDate: '16 Jul 2026',
     readTime: '2 min read',
+    tileImage:
+      'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80',
+    bannerImage:
+      'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80',
     tags: ['Sensitization', 'Workplace Culture', 'Empathy Building', 'Inclusive Teams'],
     coverCaption: 'Interactive sensitization sessions bridging understanding across corporate teams.',
     sections: [
@@ -203,6 +217,10 @@ export const blogPostsData: BlogPostItem[] = [
     authorRole: 'Principal Inclusion Consultant',
     publishedDate: '2 Jul 2026',
     readTime: '3 min read',
+    tileImage:
+      'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80',
+    bannerImage:
+      'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1600&q=80',
     tags: ['Mythbusting', 'HR Strategy', 'Accommodation Costs', 'Talent Acquisition'],
     coverCaption: 'Dissecting and dispelling persistent workplace myths regarding disability employment.',
     sections: [
@@ -239,6 +257,10 @@ export const blogPostsData: BlogPostItem[] = [
     authorRole: 'Lead Accessibility Engineer (WAS)',
     publishedDate: '18 Jun 2026',
     readTime: '2 min read',
+    tileImage:
+      'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80',
+    bannerImage:
+      'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=80',
     tags: ['Screen Readers', 'Web Accessibility', 'ARIA', 'Developer Guide', 'NVDA / JAWS'],
     coverCaption: 'Understanding screen reader semantics, DOM hierarchy, and developer best practices.',
     sections: [
@@ -274,6 +296,10 @@ export const blogPostsData: BlogPostItem[] = [
     authorRole: 'Career Development Director',
     publishedDate: '4 Jun 2026',
     readTime: '2 min read',
+    tileImage:
+      'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=80',
+    bannerImage:
+      'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=80',
     tags: ['Career Placement', 'IT Training', 'Inclusive Hiring', 'Project-Based Learning'],
     coverCaption: 'Tracing the transition pipeline from hands-on incubation to corporate placement.',
     sections: [
@@ -304,6 +330,10 @@ export const blogPostsData: BlogPostItem[] = [
     authorRole: 'Principal AI Architect',
     publishedDate: '22 May 2026',
     readTime: '4 min read',
+    tileImage:
+      'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80',
+    bannerImage:
+      'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1600&q=80',
     tags: ['Agentic AI', 'Accessible Architecture', 'Multi-Modal UI', 'Keyboard Navigation'],
     coverCaption: 'Architecting Agentic AI solutions with accessibility embedded at the root level.',
     sections: [
@@ -334,6 +364,10 @@ export const blogPostsData: BlogPostItem[] = [
     authorRole: 'Senior Accessibility Auditor (CPACC)',
     publishedDate: '10 May 2026',
     readTime: '3 min read',
+    tileImage:
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
+    bannerImage:
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
     tags: ['SEBI Mandate', 'Capital Markets', 'Regulatory Compliance', 'Fintech Accessibility'],
     coverCaption: 'Deciphering SEBI digital accessibility circulars and compliance audit protocols.',
     sections: [
@@ -364,6 +398,10 @@ export const blogPostsData: BlogPostItem[] = [
     authorRole: 'Power Platform Lead Consultant',
     publishedDate: '28 Apr 2026',
     readTime: '3 min read',
+    tileImage:
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+    bannerImage:
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80',
     tags: ['Power BI', 'Nonprofit MIS', 'Data Transformation', 'Donor Reporting'],
     coverCaption: 'Empowering non-profits with automated Power BI dashboards and mission analytics.',
     sections: [

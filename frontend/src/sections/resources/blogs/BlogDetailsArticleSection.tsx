@@ -14,35 +14,31 @@ import FormatQuoteIcon from '@mui/icons-material/FormatQuote'
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined'
 import type { BlogPostItem } from '../../../data/resources/blogs'
 import { getAdjacentPosts } from '../../../data/resources/blogs'
 
 const ArticleWrapper = styled('article')({
-  maxWidth: 840,
+  maxWidth: 860,
   margin: '0 auto',
 })
 
-const HeroVisualBanner = styled(Box)(({ theme }) => ({
+const ArticleBannerWrapper = styled(Box)(({ theme }) => ({
   width: '100%',
-  minHeight: 280,
-  borderRadius: Number(theme.shape.borderRadius) * 2.2,
-  background: `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.12)} 0%, ${alpha(theme.palette.accent.main, 0.16)} 100%)`,
-  border: `1px solid ${alpha(theme.palette.primary.main, 0.25)}`,
-  boxShadow: `0 16px 40px -12px ${alpha(theme.palette.primary.main, 0.15)}`,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  padding: theme.spacing(4),
-  textAlign: 'center',
-  position: 'relative',
+  borderRadius: Number(theme.shape.borderRadius) * 2,
   overflow: 'hidden',
+  border: `1px solid ${theme.palette.divider}`,
+  boxShadow: `0 12px 32px ${alpha(theme.palette.text.primary, 0.08)}`,
   marginBottom: theme.spacing(5),
-  [theme.breakpoints.up('md')]: {
-    minHeight: 340,
-    padding: theme.spacing(6),
-  },
+  backgroundColor: theme.palette.background.default,
+}))
+
+const ArticleBannerImage = styled('img')(() => ({
+  width: '100%',
+  height: 'auto',
+  maxHeight: 460,
+  minHeight: 260,
+  objectFit: 'cover',
+  display: 'block',
 }))
 
 const CalloutQuoteBox = styled(Box)(({ theme }) => ({
@@ -76,7 +72,6 @@ const NavCard = styled('a')(({ theme }) => ({
     boxShadow: `0 12px 28px ${alpha(theme.palette.primary.main, 0.12)}`,
   },
 }))
-
 
 interface BlogDetailsArticleSectionProps {
   post: BlogPostItem
@@ -176,7 +171,7 @@ export const BlogDetailsArticleSection = ({ post }: BlogDetailsArticleSectionPro
               {post.title}
             </Typography>
 
-            {/* Metadata Row */}
+            {/* Metadata Row: Author, Role, Date, Read Time */}
             <Stack
               direction="row"
               spacing={{ xs: 2, sm: 3 }}
@@ -191,11 +186,16 @@ export const BlogDetailsArticleSection = ({ post }: BlogDetailsArticleSectionPro
                 borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
               }}
             >
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
-                <PersonOutlineOutlinedIcon sx={{ fontSize: 18, color: 'primary.main' }} />
-                <Typography variant="caption" sx={{ fontWeight: 700, color: 'text.primary', fontSize: '0.875rem' }}>
-                  {post.author}
-                </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <PersonOutlineOutlinedIcon sx={{ fontSize: 20, color: 'primary.main' }} />
+                <Box>
+                  <Typography variant="caption" sx={{ fontWeight: 700, color: 'text.primary', fontSize: '0.875rem', display: 'block' }}>
+                    {post.author}
+                  </Typography>
+                  <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: '0.75rem' }}>
+                    {post.authorRole}
+                  </Typography>
+                </Box>
               </Box>
 
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
@@ -214,18 +214,21 @@ export const BlogDetailsArticleSection = ({ post }: BlogDetailsArticleSectionPro
             </Stack>
           </Stack>
 
-          {/* Hero Feature Visual Banner */}
-          <HeroVisualBanner>
-            <AutoStoriesOutlinedIcon sx={{ fontSize: 56, color: 'primary.main', mb: 1.5, opacity: 0.85 }} />
-            <Typography variant="h5" sx={{ fontWeight: 800, color: 'text.primary', maxWidth: 640, mb: 1, fontSize: { xs: '1.25rem', sm: '1.5rem' } }}>
-              {post.title}
-            </Typography>
+          {/* Article Banner Image */}
+          <ArticleBannerWrapper>
+            <ArticleBannerImage
+              src={post.bannerImage}
+              alt={post.title}
+              loading="eager"
+            />
             {post.coverCaption && (
-              <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 500, maxWidth: 540 }}>
-                {post.coverCaption}
-              </Typography>
+              <Box sx={{ p: 1.5, px: 2.5, bgcolor: 'background.paper', borderTop: (theme) => `1px solid ${theme.palette.divider}` }}>
+                <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 500, display: 'block', textAlign: 'center' }}>
+                  {post.coverCaption}
+                </Typography>
+              </Box>
             )}
-          </HeroVisualBanner>
+          </ArticleBannerWrapper>
 
           {/* Main Article Body */}
           <Box sx={{ color: 'text.primary', typography: 'body1' }}>
@@ -405,7 +408,6 @@ export const BlogDetailsArticleSection = ({ post }: BlogDetailsArticleSectionPro
                     </Stack>
                   </NavCard>
                 ) : (
-
                   <Box />
                 )}
               </Grid>
