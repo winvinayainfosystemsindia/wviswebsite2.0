@@ -87,7 +87,6 @@ export const primaryNavItems: NavItem[] = [
       { id: 'blogs', label: 'Blogs', href: '/resources/blogs' },
       { id: 'newsletters', label: 'Newsletters', href: '/resources/newsletters' },
       { id: 'ebooks-guides', label: 'eBooks & Guides', href: '/resources/ebooks-guides' },
-      { id: 'webinars-events', label: 'Webinars & Events', href: '/resources/webinars-events' },
     ],
   },
   { id: 'careers', label: 'Careers', href: '/careers' },
