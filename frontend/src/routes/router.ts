@@ -17,6 +17,12 @@ import { approvalsCertificationsRoute } from './approvalsCertifications'
 import { clientsPartnersRoute } from './clientsPartners'
 import { blogsRoute, blogAliasRoute, blogDetailsRoute, blogDetailsAliasRoute } from './blogs'
 import { newslettersRoute, newsletterAliasRoute } from './newsletters'
+import {
+  ebooksGuidesRoute,
+  ebookAliasRoute,
+  ebooksAliasRoute,
+  guidesAliasRoute,
+} from './ebooks'
 import { maintenanceRoute, serverErrorRoute } from './common'
 import { NotFoundPage, ServerErrorPage } from '../pages/common'
 
@@ -42,6 +48,10 @@ const routeTree = rootRoute.addChildren([
   blogDetailsAliasRoute,
   newslettersRoute,
   newsletterAliasRoute,
+  ebooksGuidesRoute,
+  ebookAliasRoute,
+  ebooksAliasRoute,
+  guidesAliasRoute,
   maintenanceRoute,
   serverErrorRoute,
 ])

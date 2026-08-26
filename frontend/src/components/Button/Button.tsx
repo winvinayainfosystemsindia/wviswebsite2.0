@@ -13,6 +13,7 @@ export interface ButtonProps extends Omit<MuiButtonProps, 'color'> {
   /** Only meaningful together with `href` (e.g. `target="_blank"` for external links). */
   target?: string
   rel?: string
+  download?: boolean | string
 }
 
 const resolveToneColor = (theme: Theme, tone: ButtonTone) => {

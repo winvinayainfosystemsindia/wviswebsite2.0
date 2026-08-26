@@ -16,6 +16,7 @@ export { ClientsPartnersPage } from './ClientsPartnersPage'
 export { BlogsPage } from './BlogsPage'
 export { BlogDetailsPage } from './BlogDetailsPage'
 export { NewslettersPage } from './NewslettersPage'
+export { EbooksGuidesPage } from './EbooksGuidesPage'
 export * from './common'
 
 
