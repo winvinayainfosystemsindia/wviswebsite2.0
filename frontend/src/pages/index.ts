@@ -18,6 +18,7 @@ export { BlogDetailsPage } from './BlogDetailsPage'
 export { NewslettersPage } from './NewslettersPage'
 export { EbooksGuidesPage } from './EbooksGuidesPage'
 export { CareersPage } from './CareersPage'
+export { ContactUsPage } from './ContactUsPage'
 export * from './common'
 
 

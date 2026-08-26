@@ -75,7 +75,7 @@ export const Footer = () => {
           sx={(theme) => ({
             p: { xs: 3, md: 4 },
             mb: { xs: 6, md: 8 },
-            borderRadius: Number(theme.shape.borderRadius) * 2,
+            borderRadius: Number(theme.shape.borderRadius) * 0.1,
             backgroundColor: theme.palette.background.paper,
             border: `1px solid ${alpha(theme.palette.accent.main, 0.2)}`,
             boxShadow: `0 4px 20px -4px ${alpha(theme.palette.accent.main, 0.08)}`,
