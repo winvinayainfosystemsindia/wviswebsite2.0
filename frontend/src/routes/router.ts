@@ -23,6 +23,7 @@ import {
   ebooksAliasRoute,
   guidesAliasRoute,
 } from './ebooks'
+import { careersRoute } from './careers'
 import { maintenanceRoute, serverErrorRoute } from './common'
 import { NotFoundPage, ServerErrorPage } from '../pages/common'
 
@@ -52,6 +53,7 @@ const routeTree = rootRoute.addChildren([
   ebookAliasRoute,
   ebooksAliasRoute,
   guidesAliasRoute,
+  careersRoute,
   maintenanceRoute,
   serverErrorRoute,
 ])
