@@ -456,7 +456,7 @@ export const AdminDashboardPage = () => {
           elevation={0}
           sx={{
             p: 3.5,
-            borderRadius: (theme) => Number(theme.shape.borderRadius) * 2,
+            borderRadius: (theme) => Number(theme.shape.borderRadius) * 0.1,
             border: (theme) => `1px solid ${theme.palette.divider}`,
           }}
         >
