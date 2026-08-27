@@ -25,11 +25,21 @@ apiClient.interceptors.request.use(
 // Response Interceptor: Format error messages clearly
 apiClient.interceptors.response.use(
   (response) => response,
-  (error: AxiosError<{ message?: string; errors?: Record<string, string[]> }>) => {
-    const customMessage =
-      error.response?.data?.message ||
-      error.message ||
-      'An unexpected network error occurred. Please try again.'
+  (error: AxiosError<{ message?: string; errors?: Array<{ field?: string; message?: string }> | Record<string, string[]> }>) => {
+    let customMessage = error.response?.data?.message
+
+    if (error.response?.data?.errors) {
+      if (Array.isArray(error.response.data.errors)) {
+        const detailStr = error.response.data.errors.map((e) => e.message || '').filter(Boolean).join('. ')
+        if (detailStr && (!customMessage || customMessage === 'Validation failed')) {
+          customMessage = detailStr
+        }
+      }
+    }
+
+    if (!customMessage) {
+      customMessage = error.message || 'An unexpected network error occurred. Please try again.'
+    }
 
     // If 401 unauthorized on protected route, clean up auth storage
     if (error.response?.status === 401 && !error.config?.url?.includes('/auth/login')) {

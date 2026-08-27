@@ -58,6 +58,11 @@ export const ContactMainSection = () => {
   })
   const { submitInquiry, submitting, successMessage, errorMessage, resetStatus } = useContact()
 
+  const handleChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }))
+    if (errorMessage) resetStatus()
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const ok = await submitInquiry(formData)
@@ -313,7 +318,7 @@ export const ContactMainSection = () => {
                     fullWidth
                     variant="outlined"
                     value={formData.name}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
+                    onChange={(e) => handleChange('name', e.target.value)}
                     placeholder="e.g. Priya Sharma"
                     slotProps={{
                       inputLabel: { required: true },
@@ -330,7 +335,7 @@ export const ContactMainSection = () => {
                     fullWidth
                     variant="outlined"
                     value={formData.email}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
+                    onChange={(e) => handleChange('email', e.target.value)}
                     placeholder="e.g. priya@company.com"
                     slotProps={{
                       inputLabel: { required: true },
@@ -346,7 +351,7 @@ export const ContactMainSection = () => {
                       name="reason"
                       value={formData.reason}
                       label="Why are you contacting us?"
-                      onChange={(e) => setFormData((prev) => ({ ...prev, reason: e.target.value }))}
+                      onChange={(e) => handleChange('reason', e.target.value)}
                     >
                       <MenuItem value="" disabled>
                         <em>Select a reason for contacting us</em>
@@ -370,7 +375,7 @@ export const ContactMainSection = () => {
                     rows={4}
                     variant="outlined"
                     value={formData.message}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
+                    onChange={(e) => handleChange('message', e.target.value)}
                     placeholder="Please describe your requirements, project scope, timelines, or specific questions..."
                     slotProps={{
                       inputLabel: { required: true },

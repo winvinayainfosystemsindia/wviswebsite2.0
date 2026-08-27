@@ -2,11 +2,11 @@ import { z } from 'zod';
 
 export const submitContactInquirySchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Valid email address is required'),
+  email: z.string().email('Please enter a valid email address'),
   phone: z.string().optional().nullable(),
   organization: z.string().optional().nullable(),
   reason: z.string().min(2, 'Please select a reason for contact'),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
+  message: z.string().min(2, 'Message must be at least 2 characters'),
 });
 
 export const updateContactStatusSchema = z.object({
