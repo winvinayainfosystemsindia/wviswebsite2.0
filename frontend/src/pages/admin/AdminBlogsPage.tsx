@@ -506,6 +506,7 @@ export const AdminBlogsPage = () => {
                   <FileUploadField
                     label="Tile / Card Image"
                     required
+                    folder="blogs"
                     value={formData.tileImage}
                     onChange={(url) => setFormData({ ...formData, tileImage: url })}
                     helperText="Upload JPG/PNG for article cards & thumbnails"
@@ -514,6 +515,7 @@ export const AdminBlogsPage = () => {
                   <FileUploadField
                     label="Banner Header Image"
                     required
+                    folder="blogs"
                     value={formData.bannerImage}
                     onChange={(url) => setFormData({ ...formData, bannerImage: url })}
                     helperText="Upload high-res banner for article detail header"

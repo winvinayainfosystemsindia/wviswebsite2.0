@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import { AppError } from '../middleware/errorHandler';
+import { uploadBaseDir } from '../lib/upload';
 
 export const handleFileUpload = (req: Request, res: Response, next: NextFunction): void => {
   try {
@@ -8,15 +9,9 @@ export const handleFileUpload = (req: Request, res: Response, next: NextFunction
       throw new AppError('No file was uploaded', 400);
     }
 
-    // Generate public accessible URL path
-    let subFolder = 'documents';
-    if (req.file.mimetype.startsWith('image/')) {
-      subFolder = 'images';
-    } else if (req.file.mimetype === 'application/pdf') {
-      subFolder = 'newsletters';
-    }
-
-    const relativeUrl = `/uploads/${subFolder}/${path.basename(req.file.path)}`;
+    // Compute relative URL starting with /uploads/
+    const relativeToUploads = path.relative(uploadBaseDir, req.file.path).replace(/\\/g, '/');
+    const relativeUrl = `/uploads/${relativeToUploads}`;
 
     res.status(201).json({
       success: true,

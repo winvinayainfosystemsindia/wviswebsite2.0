@@ -373,6 +373,7 @@ export const AdminNewslettersPage = () => {
                 <FileUploadField
                   label="Cover Image"
                   required
+                  folder="newsletters"
                   value={formData.coverImage}
                   onChange={(url) => setFormData({ ...formData, coverImage: url })}
                   helperText="Upload JPG/PNG newsletter edition cover"
@@ -381,6 +382,7 @@ export const AdminNewslettersPage = () => {
                 <FileUploadField
                   label="PDF Newsletter Document"
                   required
+                  folder="newsletters"
                   fileType="document"
                   accept=".pdf,application/pdf"
                   value={formData.pdfUrl}

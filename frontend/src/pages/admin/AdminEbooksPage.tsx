@@ -383,6 +383,7 @@ export const AdminEbooksPage = () => {
                 <FileUploadField
                   label="Cover / Tile Image"
                   required
+                  folder="ebooks"
                   value={formData.tileImage}
                   onChange={(url) => setFormData({ ...formData, tileImage: url })}
                   helperText="Upload JPG/PNG eBook cover image"
@@ -391,6 +392,7 @@ export const AdminEbooksPage = () => {
                 <FileUploadField
                   label="PDF Document File"
                   required
+                  folder="ebooks"
                   fileType="document"
                   accept=".pdf,application/pdf"
                   value={formData.pdfUrl}
@@ -400,6 +402,7 @@ export const AdminEbooksPage = () => {
 
                 <FileUploadField
                   label="EPUB Document File (Optional)"
+                  folder="ebooks"
                   fileType="document"
                   accept=".epub,application/epub+zip"
                   value={formData.epubUrl}

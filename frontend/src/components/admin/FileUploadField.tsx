@@ -68,6 +68,7 @@ export interface FileUploadFieldProps {
   helperText?: string
   required?: boolean
   fileType?: 'image' | 'document' | 'any'
+  folder?: 'blogs' | 'newsletters' | 'ebooks' | 'testimonials' | 'stories' | 'documents' | string
 }
 
 export const FileUploadField = ({
@@ -78,6 +79,7 @@ export const FileUploadField = ({
   helperText,
   required = false,
   fileType = 'image',
+  folder = 'blogs',
 }: FileUploadFieldProps) => {
   const [isDragOver, setIsDragOver] = useState(false)
   const [uploading, setUploading] = useState(false)
@@ -85,8 +87,15 @@ export const FileUploadField = ({
   const [error, setError] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  const isImage = fileType === 'image' || (value && (value.match(/\.(jpg|jpeg|png|webp|gif|svg)$/i) || value.includes('/uploads/images/')))
-  const isPdf = value && (value.match(/\.pdf$/i) || value.includes('/uploads/newsletters/') || value.includes('/uploads/documents/'))
+  const isImage =
+    fileType === 'image' ||
+    (value && (value.match(/\.(jpg|jpeg|png|webp|gif|svg)$/i) || value.includes('/uploads/images/') || value.includes('/uploads/blogs/')))
+  const isPdf =
+    value &&
+    (value.match(/\.pdf$/i) ||
+      value.includes('/uploads/newsletters/') ||
+      value.includes('/uploads/ebooks/') ||
+      value.includes('/uploads/documents/'))
 
   const handleUpload = async (file: File) => {
     setError(null)
@@ -94,7 +103,7 @@ export const FileUploadField = ({
     setProgress(0)
 
     try {
-      const res = await uploadService.uploadFile(file, (percent) => {
+      const res = await uploadService.uploadFile(file, folder, (percent) => {
         setProgress(percent)
       })
 

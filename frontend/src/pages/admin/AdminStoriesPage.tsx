@@ -429,6 +429,7 @@ export const AdminStoriesPage = () => {
 
                 <FileUploadField
                   label="Candidate Photo"
+                  folder="stories"
                   value={formData.image}
                   onChange={(url) => setFormData({ ...formData, image: url })}
                   helperText="Upload JPG/PNG candidate photo"

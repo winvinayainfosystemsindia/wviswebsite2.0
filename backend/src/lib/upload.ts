@@ -3,29 +3,39 @@ import path from 'path';
 import fs from 'fs';
 import { env } from '../env';
 
-const uploadBaseDir = path.resolve(process.cwd(), env.UPLOAD_DIR);
+export const uploadBaseDir = path.resolve(process.cwd(), env.UPLOAD_DIR);
 
-// Ensure directories exist
-const ensureDirExists = (dirPath: string) => {
+// Ensure directories exist recursively
+export const ensureDirExists = (dirPath: string) => {
   if (!fs.existsSync(dirPath)) {
     fs.mkdirSync(dirPath, { recursive: true });
   }
 };
 
 ensureDirExists(uploadBaseDir);
-ensureDirExists(path.join(uploadBaseDir, 'images'));
-ensureDirExists(path.join(uploadBaseDir, 'documents'));
-ensureDirExists(path.join(uploadBaseDir, 'newsletters'));
 
 const storage = multer.diskStorage({
-  destination: (_req, file, cb) => {
-    let subDir = 'documents';
-    if (file.mimetype.startsWith('image/')) {
-      subDir = 'images';
-    } else if (file.mimetype === 'application/pdf') {
-      subDir = 'newsletters';
+  destination: (req, file, cb) => {
+    // Extract target module/folder name (e.g. blogs, newsletters, ebooks, testimonials, stories)
+    let folder = ((req.query?.folder as string) || (req.body?.folder as string) || '').toLowerCase().trim();
+    folder = folder.replace(/[^a-z0-9_-]/g, '');
+
+    if (!folder) {
+      if (file.mimetype.startsWith('image/')) {
+        folder = 'blogs';
+      } else if (file.mimetype === 'application/pdf') {
+        folder = 'newsletters';
+      } else {
+        folder = 'documents';
+      }
     }
-    const targetDir = path.join(uploadBaseDir, subDir);
+
+    // Year (YYYY) and Month (MMM) e.g., 2026 and Aug
+    const now = new Date();
+    const year = now.getFullYear().toString();
+    const month = now.toLocaleString('en-US', { month: 'short' }); // e.g. "Jan", "Feb", "Mar", "Aug", etc.
+
+    const targetDir = path.join(uploadBaseDir, folder, year, month);
     ensureDirExists(targetDir);
     cb(null, targetDir);
   },

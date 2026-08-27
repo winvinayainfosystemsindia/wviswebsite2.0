@@ -12,13 +12,15 @@ export interface UploadedFileResult {
 export const uploadService = {
   async uploadFile(
     file: File,
+    folder: string = 'blogs',
     onProgress?: (progressPercent: number) => void
   ): Promise<ApiResponse<{ file: UploadedFileResult }>> {
     const formData = new FormData()
     formData.append('file', file)
+    formData.append('folder', folder)
 
     const response = await apiClient.post<ApiResponse<{ file: UploadedFileResult }>>(
-      '/admin/upload',
+      `/admin/upload?folder=${encodeURIComponent(folder)}`,
       formData,
       {
         headers: {

@@ -357,6 +357,7 @@ export const AdminTestimonialsPage = () => {
 
                 <FileUploadField
                   label="Avatar / Headshot Photo"
+                  folder="testimonials"
                   value={formData.avatar}
                   onChange={(url) => setFormData({ ...formData, avatar: url })}
                   helperText="Upload JPG/PNG client or partner avatar"
