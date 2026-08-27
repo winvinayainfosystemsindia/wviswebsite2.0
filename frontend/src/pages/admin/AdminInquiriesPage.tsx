@@ -96,18 +96,33 @@ export const AdminInquiriesPage = () => {
     }
   }
 
-  const getStatusColor = (status: string) => {
+  const getStatusStyles = (status: string, theme: any) => {
     switch (status) {
       case 'NEW':
-        return 'error'
+        return {
+          bgcolor: alpha(theme.palette.error?.main || '#d32f2f', 0.12),
+          color: theme.palette.error?.dark || '#c62828',
+          borderColor: alpha(theme.palette.error?.main || '#d32f2f', 0.3),
+        }
       case 'IN_PROGRESS':
-        return 'warning'
+        return {
+          bgcolor: alpha(theme.palette.warning?.main || '#ed6c02', 0.12),
+          color: theme.palette.warning?.dark || '#e65100',
+          borderColor: alpha(theme.palette.warning?.main || '#ed6c02', 0.3),
+        }
       case 'RESOLVED':
-        return 'success'
+        return {
+          bgcolor: alpha(theme.palette.success?.main || '#2e7d32', 0.12),
+          color: theme.palette.success?.dark || '#1b5e20',
+          borderColor: alpha(theme.palette.success?.main || '#2e7d32', 0.3),
+        }
       case 'ARCHIVED':
-        return 'default'
       default:
-        return 'primary'
+        return {
+          bgcolor: alpha(theme.palette.text?.primary || '#333', 0.08),
+          color: theme.palette.text?.secondary || '#666',
+          borderColor: alpha(theme.palette.text?.primary || '#333', 0.2),
+        }
     }
   }
 
@@ -247,12 +262,18 @@ export const AdminInquiriesPage = () => {
                           <Select
                             value={row.status}
                             onChange={(e) => handleUpdateStatus(row.id, e.target.value)}
-                            sx={{
-                              fontSize: '0.75rem',
-                              fontWeight: 800,
-                              height: 28,
-                              bgcolor: (theme) => alpha(theme.palette[getStatusColor(row.status) as 'primary'].main, 0.1),
-                              color: `${getStatusColor(row.status)}.dark`,
+                            sx={(theme) => {
+                              const style = getStatusStyles(row.status, theme)
+                              return {
+                                fontSize: '0.75rem',
+                                fontWeight: 800,
+                                height: 28,
+                                bgcolor: style.bgcolor,
+                                color: style.color,
+                                '& .MuiOutlinedInput-notchedOutline': {
+                                  borderColor: style.borderColor,
+                                },
+                              }
                             }}
                           >
                             <MenuItem value="NEW">NEW</MenuItem>
