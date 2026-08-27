@@ -58,7 +58,10 @@ interface CareersInternshipSectionProps {
 }
 
 export const CareersInternshipSection = ({ domains: propDomains }: CareersInternshipSectionProps = {}) => {
-  const domains = propDomains && propDomains.length > 0 ? propDomains : internshipProgramData.domains
+  const filtered = (propDomains || []).filter(
+    (d) => (d.type || '').toLowerCase().includes('intern') || !(d.type || '').toLowerCase().includes('full')
+  )
+  const domains = filtered.length > 0 ? filtered : internshipProgramData.domains
 
   const mailtoUrl = `mailto:${internshipProgramData.applyEmail}?subject=${encodeURIComponent(
     internshipProgramData.applySubject,
