@@ -20,6 +20,8 @@ export { EbooksGuidesPage } from './EbooksGuidesPage'
 export { CareersPage } from './CareersPage'
 export { ContactUsPage } from './ContactUsPage'
 export * from './common'
+export * from './admin'
+
 
 
 

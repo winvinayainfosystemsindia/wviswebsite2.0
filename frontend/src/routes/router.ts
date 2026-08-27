@@ -25,6 +25,7 @@ import {
 } from './ebooks'
 import { careersRoute } from './careers'
 import { contactUsRoute, contactAliasRoute } from './contact'
+import { adminLoginRoute, adminDashboardRoute, adminRootRoute } from './admin'
 import { maintenanceRoute, serverErrorRoute } from './common'
 import { NotFoundPage, ServerErrorPage } from '../pages/common'
 
@@ -57,6 +58,9 @@ const routeTree = rootRoute.addChildren([
   careersRoute,
   contactUsRoute,
   contactAliasRoute,
+  adminLoginRoute,
+  adminDashboardRoute,
+  adminRootRoute,
   maintenanceRoute,
   serverErrorRoute,
 ])

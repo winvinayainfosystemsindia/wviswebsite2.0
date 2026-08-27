@@ -30,14 +30,24 @@ const SkipLink = styled('a')(({ theme }) => ({
 /**
  * Page shell: skip link, sticky navbar, main content landmark, footer.
  * Wrap route content with this so every page gets consistent nav/footer.
+ * If viewing /admin routes, bypass the public navbar/footer.
  */
-export const MainLayout = ({ children }: MainLayoutProps) => (
-  <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
-    <SkipLink href="#main-content">Skip to main content</SkipLink>
-    <Navbar />
-    <Box component="main" id="main-content" sx={{ flex: 1 }}>
-      {children}
+export const MainLayout = ({ children }: MainLayoutProps) => {
+  const isAdminRoute =
+    typeof window !== 'undefined' && window.location.pathname.startsWith('/admin')
+
+  if (isAdminRoute) {
+    return <>{children}</>
+  }
+
+  return (
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
+      <SkipLink href="#main-content">Skip to main content</SkipLink>
+      <Navbar />
+      <Box component="main" id="main-content" sx={{ flex: 1 }}>
+        {children}
+      </Box>
+      <Footer />
     </Box>
-    <Footer />
-  </Box>
-)
+  )
+}
