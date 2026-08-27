@@ -7,7 +7,7 @@ async function main() {
   console.log('🌱 Starting database seeding...');
 
   // 1. Seed Superadmin User
-  const adminEmail = 'admin@winvinaya.com';
+  const adminEmail = 'info@winvinaya.com';
   const existingAdmin = await prisma.user.findUnique({
     where: { email: adminEmail },
   });
@@ -25,7 +25,7 @@ async function main() {
         role: Role.SUPERADMIN,
       },
     });
-    console.log('✅ Created Superadmin user: admin@winvinaya.com (password: WinVinaya@2026!)');
+    console.log('✅ Created Superadmin user: info@winvinaya.com (password: WinVinaya@2026!)');
   }
 
   // 2. Seed Categories

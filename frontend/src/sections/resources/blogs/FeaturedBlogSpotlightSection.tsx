@@ -47,130 +47,138 @@ const FeaturedImage = styled('img')(() => ({
   display: 'block',
 }))
 
-export const FeaturedBlogSpotlightSection = () => (
-  <Box component="section" aria-labelledby="featured-blog-heading" sx={{ bgcolor: 'background.default', pb: { xs: 6, md: 8 } }}>
-    <Container maxWidth="xl">
-      <SpotlightContainer>
-        <Grid container spacing={{ xs: 3.5, md: 6 }} sx={{ alignItems: 'center' }}>
-          {/* Left Visual Tile Image */}
-          <Grid size={{ xs: 12, md: 5 }}>
-            <ImageWrapper>
-              <FeaturedImage
-                src={featuredBlogPost.tileImage}
-                alt={featuredBlogPost.title}
-                loading="lazy"
-              />
-            </ImageWrapper>
-          </Grid>
+interface FeaturedBlogSpotlightSectionProps {
+  post?: any
+}
 
-          {/* Right Details */}
-          <Grid size={{ xs: 12, md: 7 }}>
-            <Stack spacing={2.5}>
-              {/* Category & Badge & Date */}
-              <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center', flexWrap: 'wrap', gap: 1 }}>
-                <Box
+export const FeaturedBlogSpotlightSection = ({ post: propPost }: FeaturedBlogSpotlightSectionProps = {}) => {
+  const post = propPost || featuredBlogPost
+
+  return (
+    <Box component="section" aria-labelledby="featured-blog-heading" sx={{ bgcolor: 'background.default', pb: { xs: 6, md: 8 } }}>
+      <Container maxWidth="xl">
+        <SpotlightContainer>
+          <Grid container spacing={{ xs: 3.5, md: 6 }} sx={{ alignItems: 'center' }}>
+            {/* Left Visual Tile Image */}
+            <Grid size={{ xs: 12, md: 5 }}>
+              <ImageWrapper>
+                <FeaturedImage
+                  src={post.tileImage}
+                  alt={post.title}
+                  loading="lazy"
+                />
+              </ImageWrapper>
+            </Grid>
+
+            {/* Right Details */}
+            <Grid size={{ xs: 12, md: 7 }}>
+              <Stack spacing={2.5}>
+                {/* Category & Badge & Date */}
+                <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center', flexWrap: 'wrap', gap: 1 }}>
+                  <Box
+                    sx={(theme) => ({
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 0.5,
+                      px: 1.5,
+                      py: 0.4,
+                      borderRadius: 99,
+                      bgcolor: alpha(theme.palette.accent.main, 0.15),
+                      color: theme.palette.accent.dark,
+                      fontSize: '0.75rem',
+                      fontWeight: 800,
+                    })}
+                  >
+                    <StarIcon sx={{ fontSize: 14 }} />
+                    {post.highlightBadge || 'Featured'}
+                  </Box>
+
+                  <Box
+                    sx={(theme) => ({
+                      px: 1.25,
+                      py: 0.4,
+                      borderRadius: 99,
+                      bgcolor: alpha(theme.palette.primary.main, 0.1),
+                      color: theme.palette.primary.main,
+                      fontSize: '0.75rem',
+                      fontWeight: 700,
+                    })}
+                  >
+                    {post.categoryLabel}
+                  </Box>
+
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, color: 'text.secondary', fontSize: '0.8125rem' }}>
+                    <CalendarTodayIcon sx={{ fontSize: 14 }} />
+                    <span>{post.publishedDate}</span>
+                  </Box>
+                </Stack>
+
+                {/* Title */}
+                <Typography
+                  id="featured-blog-heading"
+                  variant="h3"
                   sx={(theme) => ({
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 0.5,
-                    px: 1.5,
-                    py: 0.4,
-                    borderRadius: 99,
-                    bgcolor: alpha(theme.palette.accent.main, 0.15),
-                    color: theme.palette.accent.dark,
-                    fontSize: '0.75rem',
+                    fontSize: { xs: '1.6rem', sm: '2rem', md: '2.25rem' },
+                    lineHeight: 1.25,
                     fontWeight: 800,
+                    color: theme.palette.text.primary,
                   })}
                 >
-                  <StarIcon sx={{ fontSize: 14 }} />
-                  {featuredBlogPost.highlightBadge || 'Featured'}
-                </Box>
+                  {post.title}
+                </Typography>
 
-                <Box
+                {/* Summary / Excerpt */}
+                <Typography
+                  variant="body1"
                   sx={(theme) => ({
-                    px: 1.25,
-                    py: 0.4,
-                    borderRadius: 99,
-                    bgcolor: alpha(theme.palette.primary.main, 0.1),
-                    color: theme.palette.primary.main,
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
+                    color: theme.palette.text.secondary,
+                    lineHeight: 1.75,
+                    fontSize: { xs: '1rem', sm: '1.0625rem' },
                   })}
                 >
-                  {featuredBlogPost.categoryLabel}
-                </Box>
+                  {post.excerpt}
+                </Typography>
 
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, color: 'text.secondary', fontSize: '0.8125rem' }}>
-                  <CalendarTodayIcon sx={{ fontSize: 14 }} />
-                  <span>{featuredBlogPost.publishedDate}</span>
-                </Box>
-              </Stack>
-
-              {/* Title */}
-              <Typography
-                id="featured-blog-heading"
-                variant="h3"
-                sx={(theme) => ({
-                  fontSize: { xs: '1.6rem', sm: '2rem', md: '2.25rem' },
-                  lineHeight: 1.25,
-                  fontWeight: 800,
-                  color: theme.palette.text.primary,
-                })}
-              >
-                {featuredBlogPost.title}
-              </Typography>
-
-              {/* Summary / Excerpt */}
-              <Typography
-                variant="body1"
-                sx={(theme) => ({
-                  color: theme.palette.text.secondary,
-                  lineHeight: 1.75,
-                  fontSize: { xs: '1rem', sm: '1.0625rem' },
-                })}
-              >
-                {featuredBlogPost.excerpt}
-              </Typography>
-
-              {/* Author & CTA Row */}
-              <Stack
-                direction={{ xs: 'column', sm: 'row' }}
-                spacing={2}
-                sx={{
-                  alignItems: { xs: 'flex-start', sm: 'center' },
-                  justifyContent: 'space-between',
-                  pt: 2,
-                  borderTop: (theme) => `1px solid ${theme.palette.divider}`,
-                }}
-              >
-                <Box>
-                  <Typography variant="subtitle2" sx={{ fontWeight: 800, color: 'text.primary', fontSize: '0.9375rem' }}>
-                    {featuredBlogPost.author}
-                  </Typography>
-                  <Typography variant="caption" sx={(theme) => ({ color: theme.palette.text.secondary, fontSize: '0.78125rem' })}>
-                    {featuredBlogPost.authorRole}
-                  </Typography>
-                </Box>
-
-                <Button
-                  tone="primary"
-                  variant="contained"
-                  size="medium"
-                  href={`/resources/blogs/${featuredBlogPost.slug}`}
-                  endIcon={<ArrowForwardIcon />}
+                {/* Author & CTA Row */}
+                <Stack
+                  direction={{ xs: 'column', sm: 'row' }}
+                  spacing={2}
                   sx={{
-                    px: 3,
-                    py: 1.25,
-                    fontWeight: 700,
+                    alignItems: { xs: 'flex-start', sm: 'center' },
+                    justifyContent: 'space-between',
+                    pt: 2,
+                    borderTop: (theme) => `1px solid ${theme.palette.divider}`,
                   }}
                 >
-                  Read Article
-                </Button>
+                  <Box>
+                    <Typography variant="subtitle2" sx={{ fontWeight: 800, color: 'text.primary', fontSize: '0.9375rem' }}>
+                      {post.author}
+                    </Typography>
+                    <Typography variant="caption" sx={(theme) => ({ color: theme.palette.text.secondary, fontSize: '0.78125rem' })}>
+                      {post.authorRole}
+                    </Typography>
+                  </Box>
+
+                  <Button
+                    tone="primary"
+                    variant="contained"
+                    size="medium"
+                    href={`/resources/blogs/${post.slug}`}
+                    endIcon={<ArrowForwardIcon />}
+                    sx={{
+                      px: 3,
+                      py: 1.25,
+                      fontWeight: 700,
+                    }}
+                  >
+                    Read Article
+                  </Button>
+                </Stack>
               </Stack>
-            </Stack>
+            </Grid>
           </Grid>
-        </Grid>
-      </SpotlightContainer>
-    </Container>
-  </Box>
-)
+        </SpotlightContainer>
+      </Container>
+    </Box>
+  )
+}

@@ -1,21 +1,40 @@
+import { useEffect } from 'react'
 import { useParams } from '@tanstack/react-router'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
+import CircularProgress from '@mui/material/CircularProgress'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import SearchOffIcon from '@mui/icons-material/SearchOff'
 import { Button } from '../components'
-import {
-  BlogDetailsArticleSection,
-} from '../sections/resources/blogs'
-import { getBlogPostBySlug } from '../data/resources/blogs'
+import { BlogDetailsArticleSection } from '../sections/resources/blogs'
+import { useBlogDetails } from '../hooks'
 
-/** Blog Details Page — Full long-form reading experience for individual blog posts. */
+/** Blog Details Page — Full long-form reading experience for individual blog posts with live backend connection. */
 export const BlogDetailsPage = () => {
   const params = useParams({ strict: false }) as { slug?: string }
   const slug = params.slug || ''
-  const post = getBlogPostBySlug(slug)
+  const { post, loading } = useBlogDetails(slug)
+
+  useEffect(() => {
+    if (post?.title) {
+      document.title = `${post.title} | WinVinaya Blog`
+    }
+  }, [post])
+
+  if (loading && !post) {
+    return (
+      <Box sx={{ py: 18, bgcolor: 'background.default', textAlign: 'center' }}>
+        <Container maxWidth="sm">
+          <CircularProgress size={48} color="primary" />
+          <Typography variant="body1" sx={{ mt: 3, color: 'text.secondary', fontWeight: 600 }}>
+            Loading article...
+          </Typography>
+        </Container>
+      </Box>
+    )
+  }
 
   if (!post) {
     return (
@@ -44,9 +63,5 @@ export const BlogDetailsPage = () => {
     )
   }
 
-  return (
-    <>
-      <BlogDetailsArticleSection post={post} />
-    </>
-  )
+  return <BlogDetailsArticleSection post={post as any} />
 }

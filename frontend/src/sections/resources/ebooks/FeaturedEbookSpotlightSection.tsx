@@ -48,10 +48,16 @@ const FeaturedImage = styled('img')(() => ({
   display: 'block',
 }))
 
-export const FeaturedEbookSpotlightSection = () => {
+interface FeaturedEbookSpotlightSectionProps {
+  ebook?: any
+}
+
+export const FeaturedEbookSpotlightSection = ({ ebook: propEbook }: FeaturedEbookSpotlightSectionProps = {}) => {
+  const ebook = propEbook || featuredEbook
+
   const handleOpenPdf = (e: React.MouseEvent) => {
     e.stopPropagation()
-    window.open(featuredEbook.pdfUrl, '_blank', 'noopener,noreferrer')
+    window.open(ebook.pdfUrl, '_blank', 'noopener,noreferrer')
   }
 
   return (
@@ -67,8 +73,8 @@ export const FeaturedEbookSpotlightSection = () => {
             <Grid size={{ xs: 12, md: 5 }}>
               <ImageWrapper>
                 <FeaturedImage
-                  src={featuredEbook.tileImage}
-                  alt={featuredEbook.title}
+                  src={ebook.tileImage}
+                  alt={ebook.title}
                   loading="lazy"
                 />
               </ImageWrapper>
@@ -108,7 +114,7 @@ export const FeaturedEbookSpotlightSection = () => {
                       fontWeight: 700,
                     })}
                   >
-                    {featuredEbook.category}
+                    {ebook.category}
                   </Box>
                 </Stack>
 
@@ -123,14 +129,14 @@ export const FeaturedEbookSpotlightSection = () => {
                     color: theme.palette.text.primary,
                   })}
                 >
-                  {featuredEbook.title}
+                  {ebook.title}
                 </Typography>
 
                 {/* Author Name */}
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, color: 'text.secondary', fontSize: '0.875rem' }}>
                   <PersonOutlineOutlinedIcon sx={{ fontSize: 18, color: 'primary.main' }} />
                   <Typography variant="body2" sx={{ fontWeight: 700, color: 'text.primary' }}>
-                    Author: {featuredEbook.author}
+                    Author: {ebook.author}
                   </Typography>
                 </Box>
 
@@ -143,7 +149,7 @@ export const FeaturedEbookSpotlightSection = () => {
                     fontSize: { xs: '0.975rem', sm: '1.05rem' },
                   })}
                 >
-                  {featuredEbook.description}
+                  {ebook.description}
                 </Typography>
 
                 {/* Dual Action Buttons */}
@@ -153,7 +159,7 @@ export const FeaturedEbookSpotlightSection = () => {
                     variant="contained"
                     size="large"
                     component="a"
-                    href={featuredEbook.pdfUrl}
+                    href={ebook.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     endIcon={<OpenInNewIcon />}
@@ -170,24 +176,26 @@ export const FeaturedEbookSpotlightSection = () => {
                     Read PDF
                   </Button>
 
-                  <Button
-                    tone="primary"
-                    variant="outlined"
-                    size="large"
-                    component="a"
-                    href={featuredEbook.epubUrl}
-                    download
-                    startIcon={<FileDownloadOutlinedIcon />}
-                    sx={{
-                      px: 3,
-                      py: 1.25,
-                      fontWeight: 700,
-                      textTransform: 'none',
-                      fontSize: '0.9375rem',
-                    }}
-                  >
-                    Download ePub
-                  </Button>
+                  {ebook.epubUrl && (
+                    <Button
+                      tone="primary"
+                      variant="outlined"
+                      size="large"
+                      component="a"
+                      href={ebook.epubUrl}
+                      download
+                      startIcon={<FileDownloadOutlinedIcon />}
+                      sx={{
+                        px: 3,
+                        py: 1.25,
+                        fontWeight: 700,
+                        textTransform: 'none',
+                        fontSize: '0.9375rem',
+                      }}
+                    >
+                      Download ePub
+                    </Button>
+                  )}
                 </Stack>
               </Stack>
             </Grid>

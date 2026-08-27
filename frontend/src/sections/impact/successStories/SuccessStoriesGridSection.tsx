@@ -91,13 +91,18 @@ const PhaseBlock = ({
   </Box>
 )
 
-export const SuccessStoriesGridSection = () => {
+interface SuccessStoriesGridSectionProps {
+  stories?: any[]
+}
+
+export const SuccessStoriesGridSection = ({ stories: propStories }: SuccessStoriesGridSectionProps = {}) => {
   const [activeCategory, setActiveCategory] = useState<string>('all')
+  const baseStories = propStories && propStories.length > 0 ? propStories : successStoriesData
 
   const filteredStories =
     activeCategory === 'all'
-      ? successStoriesData
-      : successStoriesData.filter((story) => story.category === activeCategory)
+      ? baseStories
+      : baseStories.filter((story) => story.category === activeCategory)
 
   return (
     <Box
@@ -260,7 +265,7 @@ export const SuccessStoriesGridSection = () => {
                     {/* Metrics Row */}
                     {story.metrics && (
                       <Grid container spacing={1.5} sx={{ pt: 0.5 }}>
-                        {story.metrics.map((metric, idx) => (
+                        {story.metrics.map((metric: any, idx: number) => (
                           <Grid key={idx} size={{ xs: 4 }}>
                             <Box
                               sx={(theme) => ({
@@ -285,7 +290,7 @@ export const SuccessStoriesGridSection = () => {
 
                     {/* Tags List */}
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75, pt: 1, borderTop: (theme) => `1px solid ${theme.palette.divider}` }}>
-                      {story.tags.map((tag, tagIdx) => (
+                      {story.tags && story.tags.map((tag: string, tagIdx: number) => (
                         <Box
                           key={tagIdx}
                           sx={(theme) => ({

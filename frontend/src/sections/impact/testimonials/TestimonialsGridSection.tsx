@@ -29,13 +29,18 @@ const TestimonialCard = styled(Box)(({ theme }) => ({
   },
 }))
 
-export const TestimonialsGridSection = () => {
+interface TestimonialsGridSectionProps {
+  testimonials?: any[]
+}
+
+export const TestimonialsGridSection = ({ testimonials: propTestimonials }: TestimonialsGridSectionProps = {}) => {
   const [activeCategory, setActiveCategory] = useState<string>('all')
+  const baseTestimonials = propTestimonials && propTestimonials.length > 0 ? propTestimonials : testimonialsData
 
   const filteredTestimonials =
     activeCategory === 'all'
-      ? testimonialsData
-      : testimonialsData.filter((item) => item.serviceCategory === activeCategory)
+      ? baseTestimonials
+      : baseTestimonials.filter((item) => item.serviceCategory === activeCategory)
 
   return (
     <Box
@@ -170,7 +175,7 @@ export const TestimonialsGridSection = () => {
 
                     {/* Tags List */}
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75, pt: 1, borderTop: (theme) => `1px solid ${theme.palette.divider}` }}>
-                      {item.tags.map((tag, tagIdx) => (
+                      {item.tags && item.tags.map((tag: string, tagIdx: number) => (
                         <Box
                           key={tagIdx}
                           sx={(theme) => ({

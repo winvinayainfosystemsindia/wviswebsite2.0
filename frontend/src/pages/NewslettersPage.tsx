@@ -5,10 +5,12 @@ import {
   NewslettersGridSection,
   NewsletterSubscribeSection,
 } from '../sections/resources/newsletters'
-import { pastNewslettersData } from '../data/resources/newsletters'
+import { useNewsletters } from '../hooks'
 
 /** Resources: Newsletter Archive Page — Monthly publications, impact updates, and training cohort stories. */
 export const NewslettersPage = () => {
+  const { newsletters, latest } = useNewsletters()
+
   useEffect(() => {
     document.title = 'Newsletter Archive | WinVinaya'
   }, [])
@@ -16,8 +18,8 @@ export const NewslettersPage = () => {
   return (
     <>
       <NewslettersHeroSection />
-      <FeaturedNewsletterSpotlightSection />
-      <NewslettersGridSection newsletters={pastNewslettersData} />
+      <FeaturedNewsletterSpotlightSection item={latest} />
+      <NewslettersGridSection newsletters={newsletters as any} />
       <NewsletterSubscribeSection />
     </>
   )

@@ -47,10 +47,16 @@ const FeaturedImage = styled('img')(() => ({
   display: 'block',
 }))
 
-export const FeaturedNewsletterSpotlightSection = () => {
+interface FeaturedNewsletterSpotlightSectionProps {
+  item?: any
+}
+
+export const FeaturedNewsletterSpotlightSection = ({ item: propItem }: FeaturedNewsletterSpotlightSectionProps = {}) => {
+  const item = propItem || latestNewsletter
+
   const handleOpenPdf = (e: React.MouseEvent) => {
     e.stopPropagation()
-    window.open(latestNewsletter.pdfUrl, '_blank', 'noopener,noreferrer')
+    window.open(item.pdfUrl, '_blank', 'noopener,noreferrer')
   }
 
   return (
@@ -66,8 +72,8 @@ export const FeaturedNewsletterSpotlightSection = () => {
             <Grid size={{ xs: 12, md: 5 }}>
               <ImageWrapper>
                 <FeaturedImage
-                  src={latestNewsletter.coverImage}
-                  alt={latestNewsletter.title}
+                  src={item.coverImage}
+                  alt={item.title}
                   loading="lazy"
                 />
               </ImageWrapper>
@@ -107,7 +113,7 @@ export const FeaturedNewsletterSpotlightSection = () => {
                     color: theme.palette.text.primary,
                   })}
                 >
-                  {latestNewsletter.title}
+                  {item.title}
                 </Typography>
 
                 {/* Excerpt Description */}
@@ -119,14 +125,14 @@ export const FeaturedNewsletterSpotlightSection = () => {
                     fontSize: { xs: '0.975rem', sm: '1.05rem' },
                   })}
                 >
-                  {latestNewsletter.excerpt}
+                  {item.excerpt}
                 </Typography>
 
                 {/* Published Date */}
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, color: 'text.secondary', fontSize: '0.875rem' }}>
                   <CalendarTodayIcon sx={{ fontSize: 16 }} />
                   <Typography variant="body2" sx={{ fontWeight: 600, color: 'text.secondary' }}>
-                    Published {latestNewsletter.publishedDate}
+                    Published {item.publishedDate}
                   </Typography>
                 </Box>
 
@@ -137,7 +143,7 @@ export const FeaturedNewsletterSpotlightSection = () => {
                     variant="contained"
                     size="large"
                     component="a"
-                    href={latestNewsletter.pdfUrl}
+                    href={item.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     endIcon={<OpenInNewIcon />}

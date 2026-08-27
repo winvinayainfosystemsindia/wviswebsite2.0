@@ -19,6 +19,7 @@ import SendIcon from '@mui/icons-material/Send'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { Button } from '../../components'
 import { contactInfoData, contactReasonOptions } from '../../data/contact/contact'
+import { useContact } from '../../hooks'
 
 const InfoCard = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -55,19 +56,14 @@ export const ContactMainSection = () => {
     reason: '',
     message: '',
   })
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const { submitInquiry, submitting, successMessage, errorMessage, resetStatus } = useContact()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setLoading(true)
-
-    // Simulate reliable async submission feedback
-    setTimeout(() => {
-      setLoading(false)
-      setSubmitted(true)
+    const ok = await submitInquiry(formData)
+    if (ok) {
       setFormData({ name: '', email: '', reason: '', message: '' })
-    }, 600)
+    }
   }
 
   return (
@@ -286,13 +282,23 @@ export const ContactMainSection = () => {
                 </Typography>
               </Box>
 
-              {submitted && (
+              {successMessage && (
                 <Alert
                   severity="success"
-                  onClose={() => setSubmitted(false)}
+                  onClose={resetStatus}
                   sx={{ mb: 3, borderRadius: 2 }}
                 >
-                  <strong>Thank you for reaching out!</strong> Your message has been received. Our team will review your inquiry and connect with you shortly.
+                  <strong>Thank you for reaching out!</strong> {successMessage}
+                </Alert>
+              )}
+
+              {errorMessage && (
+                <Alert
+                  severity="error"
+                  onClose={resetStatus}
+                  sx={{ mb: 3, borderRadius: 2 }}
+                >
+                  <strong>Submission Error:</strong> {errorMessage}
                 </Alert>
               )}
 
@@ -377,7 +383,7 @@ export const ContactMainSection = () => {
                     variant="contained"
                     size="large"
                     type="submit"
-                    loading={loading}
+                    loading={submitting}
                     disabled={!formData.name || !formData.email || !formData.reason || !formData.message}
                     endIcon={<SendIcon />}
                     sx={{

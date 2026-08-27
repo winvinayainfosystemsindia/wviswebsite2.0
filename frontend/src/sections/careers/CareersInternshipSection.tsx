@@ -53,7 +53,13 @@ const BenefitCard = styled(Box)(({ theme }) => ({
   border: `1px solid ${alpha(theme.palette.primary.main, 0.15)}`,
 }))
 
-export const CareersInternshipSection = () => {
+interface CareersInternshipSectionProps {
+  domains?: any[]
+}
+
+export const CareersInternshipSection = ({ domains: propDomains }: CareersInternshipSectionProps = {}) => {
+  const domains = propDomains && propDomains.length > 0 ? propDomains : internshipProgramData.domains
+
   const mailtoUrl = `mailto:${internshipProgramData.applyEmail}?subject=${encodeURIComponent(
     internshipProgramData.applySubject,
   )}`
@@ -164,7 +170,7 @@ export const CareersInternshipSection = () => {
             </Typography>
 
             <Grid container spacing={3.5}>
-              {internshipProgramData.domains.map((domain) => (
+              {domains.map((domain) => (
                 <Grid key={domain.id} size={{ xs: 12, md: 6, lg: 4 }}>
                   <DomainCard>
                     <Stack spacing={2}>
@@ -182,7 +188,7 @@ export const CareersInternshipSection = () => {
                         Tools & Technologies:
                       </Typography>
                       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75 }}>
-                        {domain.skills.map((skill, sIdx) => (
+                        {domain.skills.map((skill: string, sIdx: number) => (
                           <Box
                             key={sIdx}
                             sx={(theme) => ({
