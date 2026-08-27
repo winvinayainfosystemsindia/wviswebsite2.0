@@ -1,0 +1,199 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  SUPERADMIN
+  ADMIN
+  EDITOR
+}
+
+enum InquiryStatus {
+  NEW
+  IN_PROGRESS
+  RESOLVED
+  ARCHIVED
+}
+
+model User {
+  id           String     @id @default(uuid())
+  email        String     @unique
+  passwordHash String
+  name         String
+  role         Role       @default(ADMIN)
+  isActive     Boolean    @default(true)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  blogPosts    BlogPost[]
+
+  @@map("users")
+}
+
+model BlogPost {
+  id             String   @id @default(uuid())
+  slug           String   @unique
+  aliases        String[] @default([])
+  title          String
+  excerpt        String   @db.Text
+  category       String
+  categoryLabel  String
+  author         String
+  authorRole     String
+  publishedDate  String
+  readTime       String
+  tileImage      String
+  bannerImage    String
+  isFeatured     Boolean  @default(false)
+  isPublished    Boolean  @default(true)
+  tags           String[] @default([])
+  highlightBadge String?
+  coverCaption   String?
+  sections       Json     @default("[]")
+  views          Int      @default(0)
+  authorUserId   String?
+  authorUser     User?    @relation(fields: [authorUserId], references: [id], onDelete: SetNull)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([category])
+  @@index([isPublished])
+  @@index([isFeatured])
+  @@map("blog_posts")
+}
+
+model Newsletter {
+  id            String   @id @default(uuid())
+  title         String
+  publishedDate String
+  year          String
+  excerpt       String   @db.Text
+  coverImage    String
+  pdfUrl        String
+  isFeatured    Boolean  @default(false)
+  isPublished   Boolean  @default(true)
+  sortOrder     Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([year])
+  @@index([isPublished])
+  @@map("newsletters")
+}
+
+model Ebook {
+  id          String   @id @default(uuid())
+  title       String
+  category    String
+  author      String
+  description String   @db.Text
+  tileImage   String
+  pdfUrl      String
+  epubUrl     String?
+  isFeatured  Boolean  @default(false)
+  isPublished Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([isPublished])
+  @@map("ebooks")
+}
+
+model CareerDomain {
+  id               String   @id @default(uuid())
+  title            String
+  department       String   @default("Engineering")
+  type             String   @default("Internship")
+  location         String   @default("Bengaluru / Remote")
+  skills           String[] @default([])
+  description      String   @db.Text
+  responsibilities String[] @default([])
+  requirements     String[] @default([])
+  isPublished      Boolean  @default(true)
+  sortOrder        Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([isPublished])
+  @@map("career_domains")
+}
+
+model ContactInquiry {
+  id           String        @id @default(uuid())
+  name         String
+  email        String
+  phone        String?
+  organization String?
+  reason       String
+  message      String        @db.Text
+  status       InquiryStatus @default(NEW)
+  notes        String?       @db.Text
+  ipAddress    String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("contact_inquiries")
+}
+
+model Testimonial {
+  id           String   @id @default(uuid())
+  name         String
+  role         String
+  organization String
+  avatar       String?
+  content      String   @db.Text
+  rating       Int      @default(5)
+  category     String   @default("Client")
+  isFeatured   Boolean  @default(false)
+  isPublished  Boolean  @default(true)
+  sortOrder    Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([category])
+  @@index([isPublished])
+  @@map("testimonials")
+}
+
+model Story {
+  id             String   @id @default(uuid())
+  slug           String   @unique
+  title          String
+  personName     String
+  personRole     String
+  organization   String?
+  disabilityType String?
+  summary        String   @db.Text
+  content        Json?    @default("[]")
+  image          String?
+  videoUrl       String?
+  isFeatured     Boolean  @default(false)
+  isPublished    Boolean  @default(true)
+  sortOrder      Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([isPublished])
+  @@map("stories")
+}
+
+model Category {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  name        String
+  type        String   @default("blog")
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([type])
+  @@map("categories")
+}
