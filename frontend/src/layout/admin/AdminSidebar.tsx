@@ -16,7 +16,6 @@ import ContactMailOutlinedIcon from '@mui/icons-material/ContactMailOutlined'
 import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined'
 import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined'
 import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined'
-import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined'
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined'
 import { useAppDispatch, logoutUser, useAppSelector } from '../../stores'
 
@@ -70,15 +69,14 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { id: 'dashboard', label: 'Dashboard', href: '/admin/dashboard', icon: <DashboardOutlinedIcon /> },
-  { id: 'blogs', label: 'Blogs & Articles', href: '/admin/dashboard', icon: <ArticleOutlinedIcon /> },
-  { id: 'newsletters', label: 'Newsletters', href: '/admin/dashboard', icon: <MailOutlineOutlinedIcon /> },
-  { id: 'ebooks', label: 'eBooks & Guides', href: '/admin/dashboard', icon: <MenuBookOutlinedIcon /> },
-  { id: 'careers', label: 'Careers & Roles', href: '/admin/dashboard', icon: <WorkOutlineOutlinedIcon /> },
-  { id: 'inquiries', label: 'Contact Inquiries', href: '/admin/dashboard', icon: <ContactMailOutlinedIcon /> },
-  { id: 'testimonials', label: 'Testimonials', href: '/admin/dashboard', icon: <StarOutlineOutlinedIcon /> },
-  { id: 'stories', label: 'Success Stories', href: '/admin/dashboard', icon: <EmojiEventsOutlinedIcon /> },
-  { id: 'categories', label: 'Categories', href: '/admin/dashboard', icon: <CategoryOutlinedIcon /> },
-  { id: 'uploads', label: 'Media & Uploads', href: '/admin/dashboard', icon: <CloudUploadOutlinedIcon /> },
+  { id: 'blogs', label: 'Blogs & Articles', href: '/admin/blogs', icon: <ArticleOutlinedIcon /> },
+  { id: 'newsletters', label: 'Newsletters', href: '/admin/newsletters', icon: <MailOutlineOutlinedIcon /> },
+  { id: 'ebooks', label: 'eBooks & Guides', href: '/admin/ebooks', icon: <MenuBookOutlinedIcon /> },
+  { id: 'careers', label: 'Careers & Roles', href: '/admin/careers', icon: <WorkOutlineOutlinedIcon /> },
+  { id: 'inquiries', label: 'Contact Inquiries', href: '/admin/inquiries', icon: <ContactMailOutlinedIcon /> },
+  { id: 'testimonials', label: 'Testimonials', href: '/admin/testimonials', icon: <StarOutlineOutlinedIcon /> },
+  { id: 'stories', label: 'Success Stories', href: '/admin/stories', icon: <EmojiEventsOutlinedIcon /> },
+  { id: 'categories', label: 'Categories', href: '/admin/categories', icon: <CategoryOutlinedIcon /> },
 ]
 
 interface AdminSidebarProps {

@@ -4,7 +4,7 @@ export const createTestimonialSchema = z.object({
   name: z.string().min(2, 'Name is required'),
   role: z.string().min(2, 'Role is required'),
   organization: z.string().min(2, 'Organization is required'),
-  avatar: z.string().url('Avatar must be a valid URL or path').optional().nullable(),
+  avatar: z.string().optional().nullable(),
   content: z.string().min(10, 'Content must be at least 10 characters'),
   rating: z.coerce.number().min(1).max(5).default(5),
   category: z.string().default('Client'),

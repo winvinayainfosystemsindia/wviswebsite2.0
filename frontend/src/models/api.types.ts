@@ -13,6 +13,8 @@ export interface ApiResponse<T> {
   stats?: Record<string, number>
 }
 
+export type PaginatedResponse<T> = ApiResponse<T[]>
+
 export interface ApiErrorResponse {
   success: false
   message: string

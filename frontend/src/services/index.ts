@@ -8,3 +8,5 @@ export * from './testimonialsService'
 export * from './storiesService'
 export * from './categoryService'
 export * from './authService'
+export * from './uploadService'
+
