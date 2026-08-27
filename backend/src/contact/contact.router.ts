@@ -23,4 +23,5 @@ adminContactRouter.use(requireAuth);
 adminContactRouter.get('/', validateQuery(contactQuerySchema), getAdminInquiries);
 adminContactRouter.get('/:id', getAdminInquiryById);
 adminContactRouter.patch('/:id', validateBody(updateContactStatusSchema), updateInquiryStatus);
+adminContactRouter.patch('/:id/status', validateBody(updateContactStatusSchema), updateInquiryStatus);
 adminContactRouter.delete('/:id', deleteInquiry);
