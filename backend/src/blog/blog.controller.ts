@@ -8,7 +8,7 @@ export const getPublicBlogs = async (req: Request, res: Response, next: NextFunc
   try {
     const query = req.query as unknown as BlogQueryInput;
     const page = Number(query.page) || 1;
-    const limit = Number(query.limit) || 10;
+    const limit = Number(query.limit) || 50;
     const skip = (page - 1) * limit;
 
     const where: Prisma.BlogPostWhereInput = {

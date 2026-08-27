@@ -104,7 +104,7 @@ export const FeaturedBlogSpotlightSection = ({ post: propPost }: FeaturedBlogSpo
                       fontWeight: 700,
                     })}
                   >
-                    {post.categoryLabel}
+                    {post.categoryLabel || post.category || 'Featured Article'}
                   </Box>
 
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, color: 'text.secondary', fontSize: '0.8125rem' }}>

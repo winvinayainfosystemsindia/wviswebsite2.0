@@ -63,15 +63,15 @@ const initialFormState: BlogFormState = {
   categoryLabel: 'Accessibility & Tech',
   author: 'WinVinaya Editorial Team',
   authorRole: 'Accessibility & Digital Inclusion Practice',
-  publishedDate: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
-  readTime: '5 min read',
-  tileImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80',
-  bannerImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1600&auto=format&fit=crop&q=80',
+  publishedDate: new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }),
+  readTime: '4 min read',
+  tileImage: '',
+  bannerImage: '',
   isFeatured: false,
   isPublished: true,
-  tags: 'WCAG, Accessibility, Digital Inclusion',
-  highlightBadge: 'Editorial Focus',
-  paragraphs: 'Write your comprehensive article content here. Paragraphs can be separated by double newlines.',
+  tags: '',
+  highlightBadge: '',
+  paragraphs: '',
 }
 
 export const AdminBlogsPage = () => {

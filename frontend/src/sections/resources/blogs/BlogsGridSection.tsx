@@ -149,7 +149,7 @@ export const BlogsGridSection = ({ posts }: BlogsGridSectionProps) => (
                           fontWeight: 700,
                         })}
                       >
-                        {post.categoryLabel}
+                        {post.categoryLabel || post.category || 'Article'}
                       </Box>
 
                       <Box

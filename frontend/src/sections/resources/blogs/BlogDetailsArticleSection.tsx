@@ -78,7 +78,7 @@ interface BlogDetailsArticleSectionProps {
 }
 
 export const BlogDetailsArticleSection = ({ post }: BlogDetailsArticleSectionProps) => {
-  const { prevPost, nextPost } = getAdjacentPosts(post.id)
+  const { prevPost, nextPost } = getAdjacentPosts(post.slug || post.id)
 
   return (
     <Box
@@ -153,7 +153,7 @@ export const BlogDetailsArticleSection = ({ post }: BlogDetailsArticleSectionPro
                 letterSpacing: '0.02em',
               })}
             >
-              {post.categoryLabel}
+              {post.categoryLabel || post.category || 'Article'}
             </Box>
 
             {/* H1 Article Title */}
@@ -232,39 +232,46 @@ export const BlogDetailsArticleSection = ({ post }: BlogDetailsArticleSectionPro
 
           {/* Main Article Body */}
           <Box sx={{ color: 'text.primary', typography: 'body1' }}>
-            {post.sections.map((section, sIdx) => (
-              <Box key={sIdx} sx={{ mb: 4 }}>
-                {section.heading && (
-                  <Typography
-                    variant="h2"
-                    sx={(theme) => ({
-                      fontSize: { xs: '1.35rem', sm: '1.65rem' },
-                      fontWeight: 800,
-                      color: theme.palette.text.primary,
-                      mt: sIdx === 0 ? 0 : 4,
-                      mb: 2,
-                      letterSpacing: '-0.01em',
-                    })}
-                  >
-                    {section.heading}
-                  </Typography>
-                )}
+            {(Array.isArray(post.sections) ? post.sections : []).map((section, sIdx) => {
+              const paragraphs = Array.isArray(section.paragraphs)
+                ? section.paragraphs
+                : typeof (section as any).content === 'string'
+                  ? (section as any).content.split('\n\n').map((p: string) => p.trim()).filter(Boolean)
+                  : []
 
-                {section.paragraphs.map((p, pIdx) => (
-                  <Typography
-                    key={pIdx}
-                    variant="body1"
-                    sx={{
-                      fontSize: { xs: '1.05rem', sm: '1.125rem' },
-                      lineHeight: 1.85,
-                      color: 'text.secondary',
-                      mb: 2.25,
-                      fontWeight: 400,
-                    }}
-                  >
-                    {p}
-                  </Typography>
-                ))}
+              return (
+                <Box key={sIdx} sx={{ mb: 4 }}>
+                  {section.heading && (
+                    <Typography
+                      variant="h2"
+                      sx={(theme) => ({
+                        fontSize: { xs: '1.35rem', sm: '1.65rem' },
+                        fontWeight: 800,
+                        color: theme.palette.text.primary,
+                        mt: sIdx === 0 ? 0 : 4,
+                        mb: 2,
+                        letterSpacing: '-0.01em',
+                      })}
+                    >
+                      {section.heading}
+                    </Typography>
+                  )}
+
+                  {paragraphs.map((p: string, pIdx: number) => (
+                    <Typography
+                      key={pIdx}
+                      variant="body1"
+                      sx={{
+                        fontSize: { xs: '1.05rem', sm: '1.125rem' },
+                        lineHeight: 1.85,
+                        color: 'text.secondary',
+                        mb: 2.25,
+                        fontWeight: 400,
+                      }}
+                    >
+                      {p}
+                    </Typography>
+                  ))}
 
                 {section.quoteCallout && (
                   <CalloutQuoteBox>
@@ -338,7 +345,8 @@ export const BlogDetailsArticleSection = ({ post }: BlogDetailsArticleSectionPro
                   </Box>
                 )}
               </Box>
-            ))}
+            )
+          })}
           </Box>
 
           {/* Article Tags Footer */}
@@ -347,7 +355,7 @@ export const BlogDetailsArticleSection = ({ post }: BlogDetailsArticleSectionPro
               Article Topics & Tags:
             </Typography>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-              {post.tags.map((tag, idx) => (
+              {(Array.isArray(post.tags) ? post.tags : []).map((tag, idx) => (
                 <Box
                   key={idx}
                   sx={(theme) => ({

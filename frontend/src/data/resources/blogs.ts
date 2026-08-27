@@ -434,9 +434,15 @@ export const getBlogPostBySlug = (slug: string): BlogPostItem | undefined => {
 
 /** Get adjacent (previous and next) blog posts for bottom navigation. */
 export const getAdjacentPosts = (
-  currentId: string
+  currentIdOrSlug: string
 ): { prevPost?: BlogPostItem; nextPost?: BlogPostItem } => {
-  const currentIndex = blogPostsData.findIndex((p) => p.id === currentId)
+  const norm = (currentIdOrSlug || '').toLowerCase()
+  const currentIndex = blogPostsData.findIndex(
+    (p) =>
+      p.id.toLowerCase() === norm ||
+      p.slug.toLowerCase() === norm ||
+      p.aliases?.some((a) => a.toLowerCase() === norm)
+  )
   if (currentIndex === -1) return {}
 
   const prevPost = currentIndex > 0 ? blogPostsData[currentIndex - 1] : undefined
