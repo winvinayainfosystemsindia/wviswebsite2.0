@@ -61,6 +61,13 @@ wviswebsite2.0/
 │   ├── wvis-http-only.conf   # Initial HTTP starter config (for Certbot SSL setup)
 │   └── README.md             # Nginx-specific configuration guide
 │
+├── deploy/                   # Automated AWS EC2 Deployment Scripts
+│   ├── setup-ec2.sh          # One-click Ubuntu + Node + Postgres + Nginx setup
+│   ├── deploy.sh             # One-click fullstack build & PM2 zero-downtime reload
+│   ├── setup-nginx-ssl.sh    # Automated Let's Encrypt SSL certificate setup
+│   ├── ecosystem.config.cjs  # PM2 production configuration
+│   └── README.md             # Deployment scripts usage guide
+│
 ├── doc/                      # Central Project Documentation & Runbooks
 │   ├── README.md             # Documentation hub & architecture map
 │   ├── aws-ec2-initial-deployment.md # Master step-by-step AWS EC2 deployment guide
@@ -142,6 +149,7 @@ npm run dev
 
 Detailed production deployment guides are available in the [`doc/`](./doc/) directory:
 
+- 🚀 [**Automated Deployment Scripts (`deploy/`)**](./deploy/README.md) — One-click scripts for initial setup (`deploy/setup-ec2.sh`), full builds (`deploy/deploy.sh`), and SSL configuration (`deploy/setup-nginx-ssl.sh`).
 - ☁️ [**AWS EC2 Initial Deployment Guide**](./doc/aws-ec2-initial-deployment.md) — **Master Guide**: Step-by-step instructions for AWS EC2 instance launch, security groups, Elastic IP, Route 53 DNS, SSH with `.pem` key, swap memory, PostgreSQL, Backend API, Frontend SPA, Nginx, Let's Encrypt SSL, and PM2.
 - ⚙️ [**Backend Deployment Guide**](./doc/backend-deployment.md) — Production build, Prisma migrations, PM2 daemon configuration, upload permissions.
 - 🖥️ [**Frontend Deployment Guide**](./doc/frontend-deployment.md) — Vite production build, SEO metadata generator, Nginx SPA routing fallback.
