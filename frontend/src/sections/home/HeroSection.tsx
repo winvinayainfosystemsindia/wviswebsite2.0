@@ -9,12 +9,12 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { Button } from '../../components'
-import hero1 from '../../assets/hero/hero_1.png'
-import hero2 from '../../assets/hero/hero_2.png'
-import hero3 from '../../assets/hero/hero_3.png'
-import hero4 from '../../assets/hero/hero_4.png'
-import hero5 from '../../assets/hero/hero_5.png'
-import hero6 from '../../assets/hero/hero_6.png'
+import hero1 from '../../assets/hero/hero_1.webp'
+import hero2 from '../../assets/hero/hero_2.webp'
+import hero3 from '../../assets/hero/hero_3.webp'
+import hero4 from '../../assets/hero/hero_4.webp'
+import hero5 from '../../assets/hero/hero_5.webp'
+import hero6 from '../../assets/hero/hero_6.webp'
 
 const HERO_SLIDES = [
   {

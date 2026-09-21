@@ -15,7 +15,7 @@ import VerifiedUserIcon from '@mui/icons-material/VerifiedUser'
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded'
 import { Button, Chip } from '../../../components'
 import { testimonialsHeroData } from '../../../data/impact/testimonials'
-import heroBg from '../../../assets/hero/hero_5.png'
+import heroBg from '../../../assets/hero/hero_5.webp'
 const heroBgMobile = heroBg
 
 // Keyframe animations for ambient micro-interactions

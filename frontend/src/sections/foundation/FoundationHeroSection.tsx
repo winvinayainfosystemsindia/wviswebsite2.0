@@ -11,7 +11,7 @@ import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined'
 import Diversity2Icon from '@mui/icons-material/Diversity2'
 import { Button, Chip } from '../../components'
 import { foundationHero } from '../../data'
-import heroBg from '../../assets/hero/hero_1.png'
+import heroBg from '../../assets/hero/hero_1.webp'
 const heroBgMobile = heroBg
 
 // Keyframe animations for floating and pulse effects

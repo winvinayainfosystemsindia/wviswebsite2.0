@@ -17,7 +17,7 @@ import HubOutlinedIcon from '@mui/icons-material/HubOutlined'
 import InsightsOutlinedIcon from '@mui/icons-material/InsightsOutlined'
 import { Button, Chip } from '../../../components'
 import { successStoriesHeroData } from '../../../data/impact/successStories'
-import heroBg from '../../../assets/hero/hero_6.png'
+import heroBg from '../../../assets/hero/hero_6.webp'
 const heroBgMobile = heroBg
 
 // Keyframe animations for ambient micro-interactions

@@ -10,7 +10,7 @@ import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium'
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined'
 import { Chip } from '../../components'
 import { awardsHero } from '../../data'
-import heroBg from '../../assets/hero/hero_6.png'
+import heroBg from '../../assets/hero/hero_6.webp'
 const heroBgMobile = heroBg
 
 // Keyframe animations for floating and pulse effects

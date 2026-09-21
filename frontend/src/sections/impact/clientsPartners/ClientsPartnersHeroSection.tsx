@@ -15,7 +15,7 @@ import VolunteerActivismOutlinedIcon from '@mui/icons-material/VolunteerActivism
 import AccountBalanceOutlinedIcon from '@mui/icons-material/AccountBalanceOutlined'
 import { Button, Chip } from '../../../components'
 import { clientsPartnersHeroData } from '../../../data/impact/clientsPartners'
-import heroBg from '../../../assets/hero/hero_2.png'
+import heroBg from '../../../assets/hero/hero_2.webp'
 const heroBgMobile = heroBg
 
 // Keyframe animations for ambient micro-interactions

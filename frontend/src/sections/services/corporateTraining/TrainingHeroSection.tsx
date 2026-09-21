@@ -17,7 +17,7 @@ import PsychologyOutlinedIcon from '@mui/icons-material/PsychologyOutlined'
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined'
 import { Button, Chip } from '../../../components'
 import { corporateTrainingHeroData } from '../../../data/services/corporateTraining'
-import heroBg from '../../../assets/hero/hero_4.png'
+import heroBg from '../../../assets/hero/hero_4.webp'
 const heroBgMobile = heroBg
 
 // Keyframe animations for ambient micro-interactions

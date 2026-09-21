@@ -17,7 +17,7 @@ import SpeedOutlinedIcon from '@mui/icons-material/SpeedOutlined'
 import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined'
 import { Button, Chip } from '../../../components'
 import { agenticHeroData } from '../../../data/services/agenticAiCustomApps'
-import heroBg from '../../../assets/hero/hero_3.png'
+import heroBg from '../../../assets/hero/hero_3.webp'
 const heroBgMobile = heroBg
 
 // Keyframe animations for ambient micro-interactions
