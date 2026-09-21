@@ -174,13 +174,14 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
             paper: {
               sx: (theme) => ({
                 mt: 1.5,
-                p: 3,
-                width: { md: 800, lg: 900 },
+                p: { md: 3, lg: 3.5 },
+                width: { md: 920, lg: 1040 },
                 maxWidth: 'calc(100vw - 32px)',
+                maxHeight: 'calc(100vh - 110px)',
+                overflowY: 'auto',
                 borderRadius: 3,
                 boxShadow: `0 20px 45px -15px ${alpha(theme.palette.common.black, 0.22)}`,
                 border: `1px solid ${theme.palette.divider}`,
-                overflow: 'hidden',
               }),
             },
           }}

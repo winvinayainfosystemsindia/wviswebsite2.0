@@ -56,12 +56,11 @@ export const primaryNavItems: NavItem[] = [
       {
         id: 'corporate-sector',
         title: 'Corporates',
-        subtitle: 'Enterprise Accessibility, AI & Workforce Enablement',
-        // badge: 'Corporate',
+        subtitle: 'Enterprise Learning, DEI, Accessibility & Technology Solutions',
         groups: [
           {
-            id: 'corp-training-cluster',
-            title: 'Corporate Training & Upskilling',
+            id: 'corp-ld',
+            title: '1. Learning & Development',
             href: '/services/corporate-training',
             items: [
               {
@@ -70,74 +69,124 @@ export const primaryNavItems: NavItem[] = [
                 href: '/services/corporate-training',
               },
               {
-                id: 'corp-at-skills',
-                label: 'Digital Skills & Assistive Tech Enablement',
+                id: 'corp-digital-skills',
+                label: 'Digital Skills & Assistive Technology Enablement',
                 href: '/services/corporate-training',
+              },
+              {
+                id: 'corp-namm-pathways',
+                label: 'NammAcademy Corporate E-Learning Pathways',
+                href: '/services/capacity-building-adoption',
               },
             ],
           },
           {
-            id: 'corp-dei-cluster',
-            title: 'DEI & Disability Services',
-            href: '/services/capacity-building-adoption',
+            id: 'corp-dei',
+            title: '2. Diversity, Equity & Inclusion (DEI)',
+            href: '/services/corporate-training',
             items: [
               {
-                id: 'corp-inclusion',
-                label: 'Disability Awareness & Orientations (DAO)',
+                id: 'corp-dao',
+                label: 'Disability Awareness & Orientation (DAO)',
                 href: '/services/corporate-training',
               },
               {
-                id: 'corp-dei-isl',
-                label: 'Indian Sign Language (ISL) & CSR Support',
+                id: 'corp-isl',
+                label: 'Indian Sign Language (ISL) Workplace Programs',
+                href: '/services/corporate-training',
+              },
+              {
+                id: 'corp-csr-advisory',
+                label: 'CSR & PwD Inclusion Advisory',
                 href: '/services/corporate-training',
               },
             ],
           },
           {
-            id: 'corp-audit-cluster',
-            title: 'Digital Accessibility Audits',
+            id: 'corp-accessibility',
+            title: '3. Digital Accessibility',
             href: '/services/accessibility-audit-testing',
             items: [
               {
-                id: 'corp-audit',
-                label: 'Web, App & Portal Audits (WCAG 2.1/2.2 & ADA)',
+                id: 'corp-audits',
+                label: 'Web, App & Portal Audits (WCAG 2.1 / 2.2 & ADA)',
+                href: '/services/accessibility-audit-testing',
+              },
+              {
+                id: 'corp-uiux-consulting',
+                label: 'Accessible UI/UX Consulting',
+                href: '/services/accessibility-audit-testing',
+              },
+              {
+                id: 'corp-iaap-reporting',
+                label: 'IAAP-Certified Compliance Reporting',
                 href: '/services/accessibility-audit-testing',
               },
             ],
           },
           {
-            id: 'corp-remediation-cluster',
-            title: 'Document Remediation',
+            id: 'corp-remediation',
+            title: '4. Document & Content Accessibility',
             href: '/services/document-accessibility-remediation',
             items: [
               {
-                id: 'corp-remediation',
+                id: 'corp-doc-remediation',
                 label: 'Corporate PDF, Word & PowerPoint Remediation',
+                href: '/services/document-accessibility-remediation',
+              },
+              {
+                id: 'corp-courseware-remediation',
+                label: 'Accessible Courseware & Training Material Production',
                 href: '/services/document-accessibility-remediation',
               },
             ],
           },
           {
-            id: 'corp-powerbi-cluster',
-            title: 'Power Platform Solutions',
+            id: 'corp-powerplatform',
+            title: '5. Microsoft Power Platform & Consultancy',
             href: '/services/microsoft-power-platform-solutions',
             items: [
               {
-                id: 'corp-powerbi',
-                label: 'Power BI & Enterprise Executive Dashboards',
+                id: 'corp-powerbi-design',
+                label: 'Power BI Dashboard Design & Consultancy',
+                href: '/services/microsoft-power-platform-solutions',
+              },
+              {
+                id: 'corp-powerplatform-training',
+                label: 'Power Platform Corporate Training (Power BI, Power Apps, Power Automate)',
+                href: '/services/microsoft-power-platform-solutions',
+              },
+              {
+                id: 'corp-enterprise-reporting',
+                label: 'Enterprise Reporting & Executive Dashboard Solutions',
+                href: '/services/microsoft-power-platform-solutions',
+              },
+              {
+                id: 'corp-dei-analytics',
+                label: 'Workforce Inclusion & DEI Analytics',
                 href: '/services/microsoft-power-platform-solutions',
               },
             ],
           },
           {
-            id: 'corp-lms-cluster',
-            title: 'NammAcademy LMS Solutions',
-            href: '/services/capacity-building-adoption',
+            id: 'corp-tech-solutions',
+            title: '6. Technology Development & Solutions',
+            href: '/services/agentic-ai-custom-application-development',
             items: [
               {
-                id: 'corp-lms',
-                label: 'Customized Corporate E-Learning Pathways',
-                href: '/services/capacity-building-adoption',
+                id: 'corp-web-mobile-dev',
+                label: 'Web & Mobile Application Development',
+                href: '/services/agentic-ai-custom-application-development',
+              },
+              {
+                id: 'corp-agentic-ai',
+                label: 'Customized Agentic AI Solutions',
+                href: '/services/agentic-ai-custom-application-development',
+              },
+              {
+                id: 'corp-mis-tracking',
+                label: 'MIS & Impact Tracking System Development',
+                href: '/services/agentic-ai-custom-application-development',
               },
             ],
           },
@@ -146,88 +195,164 @@ export const primaryNavItems: NavItem[] = [
       {
         id: 'npo-sector',
         title: 'NPO / NGO / Social Sector',
-        subtitle: 'Capacity Building, Beneficiary Upskilling & Inclusion',
-        // badge: 'NGO / NPO',
+        subtitle: 'Capacity Building, Inclusion, Accessibility & Impact Measurement',
         groups: [
           {
-            id: 'npo-training-cluster',
-            title: 'Capacity Building & NPO Training',
+            id: 'npo-capacity-building',
+            title: '1. Capacity Building & Training',
             href: '/services/capacity-building-adoption',
             items: [
               {
-                id: 'npo-genai',
+                id: 'npo-genai-grant',
                 label: 'GenAI for Grant Writing & Impact Storytelling',
                 href: '/services/capacity-building-adoption',
               },
               {
-                id: 'npo-skills',
+                id: 'npo-beneficiary-digital',
                 label: 'Beneficiary Digital Literacy & Exam Enablement',
                 href: '/services/capacity-building-adoption',
               },
-            ],
-          },
-          {
-            id: 'npo-dei-cluster',
-            title: 'Community DEI & ISL Support',
-            href: '/services/capacity-building-adoption',
-            items: [
               {
-                id: 'npo-inclusion',
-                label: 'Volunteer & Field Operations Orientations',
-                href: '/services/corporate-training',
-              },
-              {
-                id: 'npo-dei-isl',
-                label: 'ISL Interpretation & PwD Placement Support',
+                id: 'npo-field-staff-orientation',
+                label: 'Field Staff & Volunteer Technology Orientation',
                 href: '/services/capacity-building-adoption',
               },
             ],
           },
           {
-            id: 'npo-audit-cluster',
-            title: 'NPO Portal & Website Audits',
+            id: 'npo-community-isl',
+            title: '2. Community Inclusion & ISL Support',
+            href: '/services/capacity-building-adoption',
+            items: [
+              {
+                id: 'npo-isl-services',
+                label: 'Indian Sign Language (ISL) Interpretation Services',
+                href: '/services/capacity-building-adoption',
+              },
+              {
+                id: 'npo-pwd-employment',
+                label: 'PwD Employment & Placement Support',
+                href: '/services/capacity-building-adoption',
+              },
+              {
+                id: 'npo-volunteer-orientation',
+                label: 'Volunteer & Field Operations DEI Orientation',
+                href: '/services/corporate-training',
+              },
+            ],
+          },
+          {
+            id: 'npo-portal-accessibility',
+            title: '3. Website & Portal Accessibility',
             href: '/services/accessibility-audit-testing',
             items: [
               {
-                id: 'npo-audit',
-                label: 'Donor Portals & Public Website WCAG Audits',
+                id: 'npo-donor-portal-audit',
+                label: 'Donor Portal & Public Website WCAG Audits',
+                href: '/services/accessibility-audit-testing',
+              },
+              {
+                id: 'npo-website-remediation',
+                label: 'Accessible Website Remediation for NGOs',
+                href: '/services/accessibility-audit-testing',
+              },
+              {
+                id: 'npo-sec508-wcag',
+                label: 'Section 508 & WCAG 2.2 Compliance Reporting',
                 href: '/services/accessibility-audit-testing',
               },
             ],
           },
           {
-            id: 'npo-remediation-cluster',
-            title: 'Academic & Textbook Remediation',
+            id: 'npo-academic-accessibility',
+            title: '4. Academic & Publication Accessibility',
             href: '/services/document-accessibility-remediation',
             items: [
               {
-                id: 'npo-remediation',
-                label: 'Educational Textbooks & Sugamya Pustakalaya',
+                id: 'npo-textbook-remediation',
+                label: 'Educational Textbook Remediation',
+                href: '/services/document-accessibility-remediation',
+              },
+              {
+                id: 'npo-sugamya-conversion',
+                label: 'Sugamya Pustakalaya-Ready Document Conversion',
+                href: '/services/document-accessibility-remediation',
+              },
+              {
+                id: 'npo-exam-materials',
+                label: 'Accessible Exam & Assessment Material Production',
                 href: '/services/document-accessibility-remediation',
               },
             ],
           },
           {
-            id: 'npo-powerbi-cluster',
-            title: 'NPO Impact & Donor Dashboards',
+            id: 'npo-impact-dashboards',
+            title: '5. Impact Measurement & Dashboards',
             href: '/services/microsoft-power-platform-solutions',
             items: [
               {
-                id: 'npo-powerbi',
-                label: 'Donor-Ready Impact & Beneficiary Tracking',
+                id: 'npo-donor-dashboards',
+                label: 'Donor-Ready Impact & Beneficiary Tracking Dashboards',
+                href: '/services/microsoft-power-platform-solutions',
+              },
+              {
+                id: 'npo-mel-reporting',
+                label: 'MEL (Monitoring, Evaluation & Learning) Reporting',
+                href: '/services/microsoft-power-platform-solutions',
+              },
+              {
+                id: 'npo-grant-visualisation',
+                label: 'Grant-Ready Data Visualisation',
                 href: '/services/microsoft-power-platform-solutions',
               },
             ],
           },
           {
-            id: 'npo-lms-cluster',
-            title: 'NammAcademy Community LMS',
+            id: 'npo-community-lms',
+            title: '6. Community LMS',
             href: '/services/capacity-building-adoption',
             items: [
               {
-                id: 'npo-lms',
-                label: '24/7 Accessible Community LMS Hosting',
+                id: 'npo-lms-hosting',
+                label: 'NammAcademy Community LMS Hosting (24/7)',
                 href: '/services/capacity-building-adoption',
+              },
+              {
+                id: 'npo-online-learning',
+                label: 'Accessible Online Learning for Beneficiaries',
+                href: '/services/capacity-building-adoption',
+              },
+              {
+                id: 'npo-staff-skills',
+                label: 'NGO Staff Skill Development Pathways',
+                href: '/services/capacity-building-adoption',
+              },
+            ],
+          },
+          {
+            id: 'npo-tech-solutions',
+            title: '7. Technology Development & Solutions',
+            href: '/services/agentic-ai-custom-application-development',
+            items: [
+              {
+                id: 'npo-custom-mis',
+                label: 'Custom MIS Development for NGO Program Tracking',
+                href: '/services/agentic-ai-custom-application-development',
+              },
+              {
+                id: 'npo-web-mobile-app',
+                label: 'Web & Mobile Application Development',
+                href: '/services/agentic-ai-custom-application-development',
+              },
+              {
+                id: 'npo-agentic-ai-social',
+                label: 'Agentic AI Solutions for Social Sector Workflows',
+                href: '/services/agentic-ai-custom-application-development',
+              },
+              {
+                id: 'npo-donor-mgmt-system',
+                label: 'Donor & Beneficiary Management System Development',
+                href: '/services/agentic-ai-custom-application-development',
               },
             ],
           },
