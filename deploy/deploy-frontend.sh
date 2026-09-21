@@ -70,6 +70,16 @@ fi
 
 # 3. Production Build
 log_step "Building Frontend Production Assets (Vite + React 19)"
+
+# Ensure current user owns dist folder before Vite cleans/recreates it
+if [[ -d "${FRONTEND_DIR}/dist" ]]; then
+    if [ "$EUID" -eq 0 ]; then
+        chown -R "$USER":"$USER" "${FRONTEND_DIR}/dist" 2>/dev/null || true
+    elif command -v sudo &>/dev/null && sudo -n true 2>/dev/null; then
+        sudo chown -R "$USER":"$USER" "${FRONTEND_DIR}/dist" 2>/dev/null || true
+    fi
+fi
+
 npm run build
 
 if [[ ! -f "dist/index.html" ]]; then
