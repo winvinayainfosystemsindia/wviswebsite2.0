@@ -1,17 +1,13 @@
 import { useState, useEffect, useCallback } from 'react'
-import { alpha, styled } from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
-import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
-import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined'
-import RecordVoiceOverOutlinedIcon from '@mui/icons-material/RecordVoiceOverOutlined'
-import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined'
 import { Button } from '../../components'
 import hero1 from '../../assets/hero/hero_1.png'
 import hero2 from '../../assets/hero/hero_2.png'
@@ -121,55 +117,6 @@ const IndicatorDot = styled(Box)<{ isActive: boolean }>(({ isActive }) => ({
   },
 }))
 
-// Credentials section strip at bottom
-const CredentialsSection = styled(Box)(({ theme }) => ({
-  position: 'relative',
-  zIndex: 3,
-  backgroundColor: theme.palette.background.paper,
-  borderTop: `1px solid ${theme.palette.divider}`,
-  paddingTop: theme.spacing(3.5),
-  paddingBottom: theme.spacing(4),
-}))
-
-const CredentialCard = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'flex-start',
-  gap: theme.spacing(2),
-  padding: theme.spacing(2.25, 2.75),
-  borderRadius: Number(theme.shape.borderRadius) * 1.6,
-  backgroundColor: alpha(theme.palette.background.default, 0.6),
-  border: `1px solid ${theme.palette.divider}`,
-  transition: theme.transitions.create(['background-color', 'border-color', 'transform', 'box-shadow']),
-  height: '100%',
-  '&:hover': {
-    backgroundColor: theme.palette.background.paper,
-    borderColor: theme.palette.primary.main,
-    transform: 'translateY(-2px)',
-    boxShadow: `0 8px 20px ${alpha(theme.palette.primary.main, 0.1)}`,
-  },
-}))
-
-const CREDENTIALS = [
-  {
-    icon: CheckCircleOutlinedIcon,
-    tone: 'primary' as const,
-    title: 'WCAG 2.1 & 2.2 Compliance',
-    detail: '50+ Verified Checkpoints across Web & Mobile Platforms',
-  },
-  {
-    icon: RecordVoiceOverOutlinedIcon,
-    tone: 'accent' as const,
-    title: 'Lived-Experience Validation',
-    detail: 'Audited by NVDA, JAWS, VoiceOver & TalkBack Native Users',
-  },
-  {
-    icon: ShieldOutlinedIcon,
-    tone: 'info' as const,
-    title: 'Enterprise VPAT & ACR',
-    detail: 'Audit-Ready Voluntary Product Accessibility Documentation',
-  },
-]
-
 export const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
@@ -225,17 +172,14 @@ export const HeroSection = () => {
           }}
         >
           <Box sx={{ maxWidth: { xs: '100%', md: '620px', lg: '680px' } }}>
-            {/* Bold Headline */}
+            {/* Headline using theme 'h1' variant with max font-weight 600 */}
             <Typography
               id="hero-heading"
               variant="h1"
               component="h1"
               sx={{
                 color: '#ffffff',
-                fontSize: { xs: '2.25rem', sm: '2.85rem', md: '3.35rem', lg: '3.75rem' },
-                lineHeight: { xs: 1.16, sm: 1.12, md: 1.1 },
                 fontWeight: 600,
-                letterSpacing: '-0.025em',
                 mb: 2.25,
                 textShadow: '0 2px 12px rgba(0,0,0,0.6)',
               }}
@@ -243,13 +187,12 @@ export const HeroSection = () => {
               Digital Solutions Built Without Barriers.
             </Typography>
 
-            {/* Subheadline Paragraph */}
+            {/* Subheadline using theme 'subtitle1' variant with font-weight <= 600 */}
             <Typography
+              variant="subtitle1"
               sx={{
-                fontSize: { xs: '1rem', sm: '1.125rem' },
-                lineHeight: 1.65,
                 color: 'rgba(255, 255, 255, 0.92)',
-                fontWeight: 450,
+                fontWeight: 400,
                 mb: 3.5,
                 maxWidth: '580px',
                 textShadow: '0 1px 6px rgba(0,0,0,0.5)',
@@ -276,8 +219,7 @@ export const HeroSection = () => {
                 sx={{
                   backgroundColor: '#2e7d32',
                   color: '#ffffff',
-                  fontWeight: 700,
-                  fontSize: '0.9375rem',
+                  fontWeight: 600,
                   px: 3,
                   py: 1.15,
                   borderRadius: '6px',
@@ -301,7 +243,6 @@ export const HeroSection = () => {
                   color: '#ffffff',
                   borderColor: 'rgba(255, 255, 255, 0.35)',
                   fontWeight: 600,
-                  fontSize: '0.9375rem',
                   px: 2.75,
                   py: 1.15,
                   borderRadius: '6px',
@@ -316,7 +257,7 @@ export const HeroSection = () => {
               </Button>
             </Stack>
 
-            {/* Key Metrics / Stats Row */}
+            {/* Key Metrics / Stats Row using theme typography variants */}
             <Stack
               direction="row"
               spacing={{ xs: 3.5, sm: 5, md: 6 }}
@@ -329,20 +270,20 @@ export const HeroSection = () => {
             >
               <Box>
                 <Typography
+                  variant="h3"
+                  component="div"
                   sx={{
                     color: '#ffffff',
-                    fontSize: { xs: '1.75rem', sm: '2.1rem' },
-                    fontWeight: 800,
+                    fontWeight: 600,
                     lineHeight: 1.1,
-                    letterSpacing: '-0.01em',
                   }}
                 >
                   100+
                 </Typography>
                 <Typography
+                  variant="body2"
                   sx={{
                     color: 'rgba(255, 255, 255, 0.75)',
-                    fontSize: '0.85rem',
                     fontWeight: 500,
                     mt: 0.5,
                   }}
@@ -353,20 +294,20 @@ export const HeroSection = () => {
 
               <Box>
                 <Typography
+                  variant="h3"
+                  component="div"
                   sx={{
                     color: '#ffffff',
-                    fontSize: { xs: '1.75rem', sm: '2.1rem' },
-                    fontWeight: 800,
+                    fontWeight: 600,
                     lineHeight: 1.1,
-                    letterSpacing: '-0.01em',
                   }}
                 >
                   50%+
                 </Typography>
                 <Typography
+                  variant="body2"
                   sx={{
                     color: 'rgba(255, 255, 255, 0.75)',
-                    fontSize: '0.85rem',
                     fontWeight: 500,
                     mt: 0.5,
                   }}
@@ -377,20 +318,20 @@ export const HeroSection = () => {
 
               <Box>
                 <Typography
+                  variant="h3"
+                  component="div"
                   sx={{
                     color: '#ffffff',
-                    fontSize: { xs: '1.75rem', sm: '2.1rem' },
-                    fontWeight: 800,
+                    fontWeight: 600,
                     lineHeight: 1.1,
-                    letterSpacing: '-0.01em',
                   }}
                 >
                   100%
                 </Typography>
                 <Typography
+                  variant="body2"
                   sx={{
                     color: 'rgba(255, 255, 255, 0.75)',
-                    fontSize: '0.85rem',
                     fontWeight: 500,
                     mt: 0.5,
                   }}
@@ -408,8 +349,7 @@ export const HeroSection = () => {
               sx={{
                 backgroundColor: '#8b1e1e',
                 color: '#ffffff',
-                fontWeight: 700,
-                fontSize: '0.9375rem',
+                fontWeight: 600,
                 px: 3,
                 py: 1.25,
                 borderRadius: '8px',
@@ -474,44 +414,6 @@ export const HeroSection = () => {
           </IconButton>
         </CarouselCapsule>
       </SlideContainer>
-
-      {/* Credentials / Trust Signals Bar */}
-      <CredentialsSection>
-        <Container maxWidth="xl">
-          <Grid container spacing={3}>
-            {CREDENTIALS.map((credential) => (
-              <Grid key={credential.title} size={{ xs: 12, md: 4 }}>
-                <CredentialCard>
-                  <Box
-                    sx={(theme) => ({
-                      p: 1.5,
-                      borderRadius: Number(theme.shape.borderRadius) * 1.4,
-                      bgcolor: alpha(theme.palette[credential.tone].main, 0.12),
-                      color: theme.palette[credential.tone].main,
-                      display: 'flex',
-                      flexShrink: 0,
-                      border: `1px solid ${alpha(theme.palette[credential.tone].main, 0.2)}`,
-                    })}
-                  >
-                    <credential.icon sx={{ fontSize: 26 }} />
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="subtitle2"
-                      sx={{ fontWeight: 700, color: 'text.primary', mb: 0.5, fontSize: '0.9375rem' }}
-                    >
-                      {credential.title}
-                    </Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', lineHeight: 1.5 }}>
-                      {credential.detail}
-                    </Typography>
-                  </Box>
-                </CredentialCard>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </CredentialsSection>
     </Root>
   )
 }
