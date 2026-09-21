@@ -53,7 +53,7 @@ const Root = styled('section')({
 const SlideContainer = styled(Box)({
   position: 'relative',
   width: '100%',
-  minHeight: '620px',
+  minHeight: '480px',
   display: 'flex',
   alignItems: 'center',
 })
@@ -144,7 +144,7 @@ export const HeroSection = () => {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <SlideContainer sx={{ minHeight: { xs: '600px', sm: '660px', md: '720px', lg: '780px' } }}>
+      <SlideContainer sx={{ minHeight: { xs: '540px', sm: '580px', md: '630px', lg: '660px' } }}>
         {/* Background Images Slider */}
         {HERO_SLIDES.map((slide, index) => (
           <SlideBackground
@@ -167,8 +167,8 @@ export const HeroSection = () => {
           sx={{
             position: 'relative',
             zIndex: 2,
-            pt: { xs: 8, md: 9 },
-            pb: { xs: 8, md: 10 },
+            pt: { xs: 6, sm: 6.5, md: 7 },
+            pb: { xs: 6, sm: 6.5, md: 7 },
           }}
         >
           <Box sx={{ maxWidth: { xs: '100%', md: '620px', lg: '680px' } }}>
@@ -180,7 +180,7 @@ export const HeroSection = () => {
               sx={{
                 color: '#ffffff',
                 fontWeight: 600,
-                mb: 2.25,
+                mb: 2,
                 textShadow: '0 2px 12px rgba(0,0,0,0.6)',
               }}
             >
@@ -193,7 +193,7 @@ export const HeroSection = () => {
               sx={{
                 color: 'rgba(255, 255, 255, 0.92)',
                 fontWeight: 400,
-                mb: 3.5,
+                mb: 2.75,
                 maxWidth: '580px',
                 textShadow: '0 1px 6px rgba(0,0,0,0.5)',
               }}
@@ -206,7 +206,7 @@ export const HeroSection = () => {
               direction="row"
               spacing={1.5}
               sx={{
-                mb: 4,
+                mb: 3,
                 flexWrap: 'wrap',
                 gap: 1.5,
                 alignItems: 'center',
@@ -262,7 +262,7 @@ export const HeroSection = () => {
               direction="row"
               spacing={{ xs: 3.5, sm: 5, md: 6 }}
               sx={{
-                mb: 3.5,
+                mb: 3,
                 alignItems: 'flex-start',
                 flexWrap: 'wrap',
                 gap: { xs: 2.5, sm: 0 },
@@ -351,7 +351,7 @@ export const HeroSection = () => {
                 color: '#ffffff',
                 fontWeight: 600,
                 px: 3,
-                py: 1.25,
+                py: 1.15,
                 borderRadius: '8px',
                 textTransform: 'none',
                 border: '1px solid rgba(255, 255, 255, 0.18)',
