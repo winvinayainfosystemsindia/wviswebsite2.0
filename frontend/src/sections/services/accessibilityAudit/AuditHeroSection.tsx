@@ -14,8 +14,8 @@ import PolicyOutlinedIcon from '@mui/icons-material/PolicyOutlined'
 import RecordVoiceOverOutlinedIcon from '@mui/icons-material/RecordVoiceOverOutlined'
 import { Button, Chip } from '../../../components'
 import { auditHeroData } from '../../../data/services/accessibilityAudit'
-import heroBg from '../../../assets/hero-bg.jpg'
-import heroBgMobile from '../../../assets/hero-bg-mobile.jpg'
+import heroBg from '../../../assets/hero/hero_2.png'
+const heroBgMobile = heroBg
 
 // Keyframe animations for subtle ambient effects
 const floatAnimation = keyframes`

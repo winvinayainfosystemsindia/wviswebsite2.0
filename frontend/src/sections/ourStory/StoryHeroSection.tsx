@@ -10,8 +10,8 @@ import TaskAltIcon from '@mui/icons-material/TaskAlt'
 import TimelineIcon from '@mui/icons-material/Timeline'
 import { Chip, Timeline, type TimelineItem } from '../../components'
 import { storyHero } from '../../data'
-import heroBg from '../../assets/hero-bg.jpg'
-import heroBgMobile from '../../assets/hero-bg-mobile.jpg'
+import heroBg from '../../assets/hero/hero_1.png'
+const heroBgMobile = heroBg
 
 // Keyframe animations for floating and pulse effects
 const floatAnimation = keyframes`

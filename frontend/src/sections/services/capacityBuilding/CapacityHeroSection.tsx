@@ -16,8 +16,8 @@ import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined'
 import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined'
 import { Button, Chip } from '../../../components'
 import { capacityHeroData } from '../../../data/services/capacityBuilding'
-import heroBg from '../../../assets/hero-bg.jpg'
-import heroBgMobile from '../../../assets/hero-bg-mobile.jpg'
+import heroBg from '../../../assets/hero/hero_5.png'
+const heroBgMobile = heroBg
 
 // Keyframe animations for ambient micro-interactions
 const floatAnimation = keyframes`

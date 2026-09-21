@@ -17,8 +17,8 @@ import TableChartOutlinedIcon from '@mui/icons-material/TableChartOutlined'
 import FunctionsIcon from '@mui/icons-material/Functions'
 import { Button, Chip } from '../../../components'
 import { remediationHeroData } from '../../../data/services/documentRemediation'
-import heroBg from '../../../assets/hero-bg.jpg'
-import heroBgMobile from '../../../assets/hero-bg-mobile.jpg'
+import heroBg from '../../../assets/hero/hero_2.png'
+const heroBgMobile = heroBg
 
 // Keyframe animations for subtle ambient effects
 const floatAnimation = keyframes`

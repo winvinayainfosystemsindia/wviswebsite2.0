@@ -15,8 +15,8 @@ import GavelOutlinedIcon from '@mui/icons-material/GavelOutlined'
 import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined'
 import { Button, Chip } from '../../../components'
 import { approvalsCertificationsHeroData } from '../../../data/impact/approvalsCertifications'
-import heroBg from '../../../assets/hero-bg.jpg'
-import heroBgMobile from '../../../assets/hero-bg-mobile.jpg'
+import heroBg from '../../../assets/hero/hero_4.png'
+const heroBgMobile = heroBg
 
 // Keyframe animations for ambient micro-interactions
 const floatAnimation = keyframes`

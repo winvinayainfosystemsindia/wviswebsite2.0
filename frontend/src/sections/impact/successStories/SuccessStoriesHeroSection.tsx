@@ -17,8 +17,8 @@ import HubOutlinedIcon from '@mui/icons-material/HubOutlined'
 import InsightsOutlinedIcon from '@mui/icons-material/InsightsOutlined'
 import { Button, Chip } from '../../../components'
 import { successStoriesHeroData } from '../../../data/impact/successStories'
-import heroBg from '../../../assets/hero-bg.jpg'
-import heroBgMobile from '../../../assets/hero-bg-mobile.jpg'
+import heroBg from '../../../assets/hero/hero_6.png'
+const heroBgMobile = heroBg
 
 // Keyframe animations for ambient micro-interactions
 const floatAnimation = keyframes`

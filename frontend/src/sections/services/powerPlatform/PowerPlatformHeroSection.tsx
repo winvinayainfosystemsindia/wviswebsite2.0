@@ -17,8 +17,8 @@ import SyncAltOutlinedIcon from '@mui/icons-material/SyncAltOutlined'
 import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined'
 import { Button, Chip } from '../../../components'
 import { powerPlatformHeroData } from '../../../data/services/powerPlatform'
-import heroBg from '../../../assets/hero-bg.jpg'
-import heroBgMobile from '../../../assets/hero-bg-mobile.jpg'
+import heroBg from '../../../assets/hero/hero_3.png'
+const heroBgMobile = heroBg
 
 // Keyframe animations for ambient micro-interactions
 const floatAnimation = keyframes`
