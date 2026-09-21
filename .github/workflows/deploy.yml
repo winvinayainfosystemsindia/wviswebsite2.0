@@ -1,0 +1,102 @@
+name: WinVinaya Production CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - production
+  workflow_dispatch:
+
+jobs:
+  # -------------------------------------------------------------
+  # Job 1: Continuous Integration (Audit & Build Verification)
+  # -------------------------------------------------------------
+  ci-audit:
+    name: Build & Code Verification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: |
+            backend/package-lock.json
+            frontend/package-lock.json
+
+      # Backend Checks
+      - name: Install Backend Dependencies
+        run: |
+          cd backend
+          npm ci
+
+      - name: Validate Backend TypeScript & Prisma Schema
+        env:
+          DATABASE_URL: "postgresql://dummy:dummy@localhost:5432/dummy?schema=public"
+        run: |
+          cd backend
+          npx prisma validate
+          npx prisma generate
+          npx tsc --noEmit
+
+      # Frontend Checks
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Build Frontend Production Assets
+        run: |
+          cd frontend
+          npm run build
+
+      # Shell Scripts Validation
+      - name: Validate Deployment Scripts Syntax
+        run: |
+          bash -n deploy/*.sh
+
+  # -------------------------------------------------------------
+  # Job 2: Continuous Deployment (SSH to Production Server)
+  # -------------------------------------------------------------
+  cd-deploy:
+    name: Production SSH Deployment
+    needs: ci-audit
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Execute Remote SSH Deployment
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PRODUCTION_HOST }}
+          username: ${{ secrets.PRODUCTION_USER }}
+          key: ${{ secrets.PRODUCTION_SSH_KEY }}
+          port: ${{ secrets.PRODUCTION_PORT || 22 }}
+          script: |
+            set -e
+            echo "Starting WinVinaya Automated Deployment via deploy.sh..."
+
+            # Resolve project root directory on server
+            DEPLOY_PATH="${{ secrets.PRODUCTION_DEPLOY_PATH || '/var/www/wvis' }}"
+            if [ ! -d "$DEPLOY_PATH" ] && [ -d "/var/www/wviswebsite2.0" ]; then
+              DEPLOY_PATH="/var/www/wviswebsite2.0"
+            fi
+
+            cd "$DEPLOY_PATH"
+
+            # Pull latest git commit so deploy/ scripts are present
+            echo "Fetching latest changes from origin/${{ github.ref_name }}..."
+            git fetch origin ${{ github.ref_name }}
+            git reset --hard origin/${{ github.ref_name }}
+
+            # Ensure deployment scripts are executable
+            chmod +x deploy/*.sh
+
+            # Execute master deployment pipeline with health check
+            ./deploy/deploy.sh --skip-git --branch ${{ github.ref_name }}
+
+            echo "WinVinaya Deployment Pipeline Completed Successfully!"
