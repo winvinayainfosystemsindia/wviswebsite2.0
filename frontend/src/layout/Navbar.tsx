@@ -13,9 +13,14 @@ import Typography from '@mui/material/Typography'
 import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
+import Popover from '@mui/material/Popover'
+import Chip from '@mui/material/Chip'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import BusinessIcon from '@mui/icons-material/Business'
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Button } from '../components'
 import { primaryNavItems, contactNavItem } from '../data'
 import type { NavItem } from '../data'
@@ -132,7 +137,7 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
   const triggerId = `nav-trigger-${item.id}`
   const menuId = `nav-menu-${item.id}`
 
-  if (!item.children) {
+  if (!item.children && !item.megaMenuColumns) {
     return (
       <NavLink key={item.id} href={item.href}>
         {item.label}
@@ -142,6 +147,180 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
 
   const handleOpen = (event: MouseEvent<HTMLButtonElement>) => setAnchorEl(event.currentTarget)
   const handleClose = () => setAnchorEl(null)
+
+  if (item.isMegaMenu && item.megaMenuColumns) {
+    return (
+      <>
+        <NavTrigger
+          id={triggerId}
+          type="button"
+          open={open}
+          aria-haspopup="true"
+          aria-controls={open ? menuId : undefined}
+          aria-expanded={open || undefined}
+          onClick={handleOpen}
+        >
+          {item.label}
+          <ExpandMoreIcon aria-hidden="true" />
+        </NavTrigger>
+        <Popover
+          id={menuId}
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+          transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+          slotProps={{
+            paper: {
+              sx: (theme) => ({
+                mt: 1.5,
+                p: 3,
+                width: { md: 800, lg: 900 },
+                maxWidth: 'calc(100vw - 32px)',
+                borderRadius: 3,
+                boxShadow: `0 20px 45px -15px ${alpha(theme.palette.common.black, 0.22)}`,
+                border: `1px solid ${theme.palette.divider}`,
+                overflow: 'hidden',
+              }),
+            },
+          }}
+        >
+          <Box sx={{ display: 'grid', gridTemplateColumns: { md: '1fr 1fr' }, gap: 4 }}>
+            {item.megaMenuColumns.map((col) => (
+              <Box key={col.id} sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1.5,
+                    mb: 2,
+                    pb: 1,
+                    borderBottom: (theme) =>
+                      `2px solid ${
+                        col.id === 'corporate-sector'
+                          ? alpha(theme.palette.primary.main, 0.25)
+                          : alpha(theme.palette.secondary.main, 0.25)
+                      }`,
+                  }}
+                >
+                  {col.id === 'corporate-sector' ? (
+                    <BusinessIcon sx={{ color: 'primary.main', fontSize: 24 }} />
+                  ) : (
+                    <VolunteerActivismIcon sx={{ color: 'secondary.main', fontSize: 24 }} />
+                  )}
+                  <Box>
+                    <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 800, color: 'text.primary', lineHeight: 1.2 }}>
+                        {col.title}
+                      </Typography>
+                      {col.badge && (
+                        <Chip
+                          label={col.badge}
+                          size="small"
+                          color={col.id === 'corporate-sector' ? 'primary' : 'secondary'}
+                          variant="outlined"
+                          sx={{ height: 20, fontSize: '0.68rem', fontWeight: 700 }}
+                        />
+                      )}
+                    </Stack>
+                  </Box>
+                </Box>
+
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, flexGrow: 1 }}>
+                  {col.groups.map((group) => (
+                    <Box key={group.id}>
+                      <Typography
+                        component="a"
+                        href={group.href || '#'}
+                        onClick={handleClose}
+                        variant="caption"
+                        sx={{
+                          fontWeight: 700,
+                          color: col.id === 'corporate-sector' ? 'primary.main' : 'secondary.main',
+                          textTransform: 'uppercase',
+                          letterSpacing: 0.5,
+                          display: 'inline-block',
+                          mb: 0.5,
+                          textDecoration: 'none',
+                          '&:hover': { textDecoration: 'underline' },
+                        }}
+                      >
+                        {group.title}
+                      </Typography>
+                      <Stack spacing={0.25} sx={{ pl: 0.5 }}>
+                        {group.items.map((service) => (
+                          <Box
+                            key={service.id}
+                            component="a"
+                            href={service.href}
+                            onClick={handleClose}
+                            sx={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              py: 0.4,
+                              px: 1,
+                              borderRadius: 1,
+                              textDecoration: 'none',
+                              color: 'text.primary',
+                              fontSize: '0.875rem',
+                              fontWeight: 500,
+                              transition: 'color 0.15s, background-color 0.15s',
+                              '&:hover': {
+                                color: 'accent.main',
+                                backgroundColor: (theme) => alpha(theme.palette.accent.main, 0.06),
+                              },
+                              '&:focus-visible': {
+                                outline: (theme) => `2px solid ${alpha(theme.palette.accent.main, 0.6)}`,
+                                borderRadius: 1,
+                              },
+                            }}
+                          >
+                            <Box
+                              component="span"
+                              sx={{
+                                width: 5,
+                                height: 5,
+                                borderRadius: '50%',
+                                backgroundColor: (theme) => alpha(theme.palette.text.secondary, 0.4),
+                                mr: 1.2,
+                                flexShrink: 0,
+                              }}
+                            />
+                            {service.label}
+                          </Box>
+                        ))}
+                      </Stack>
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+            ))}
+          </Box>
+
+          <Divider sx={{ my: 2 }} />
+
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              px: 2,
+              py: 1.25,
+              borderRadius: 2,
+              backgroundColor: (theme) => alpha(theme.palette.primary.main, 0.04),
+            }}
+          >
+            <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 500 }}>
+              Shared mission, not just vendor-client — Flexible engagements across Fee-for-Service & Co-Delivery Models.
+            </Typography>
+            <Button tone="accent" size="small" href="/contact-us" onClick={handleClose} sx={{ flexShrink: 0, ml: 2 }}>
+              Contact Us <ArrowForwardIcon sx={{ fontSize: 14, ml: 0.5 }} />
+            </Button>
+          </Box>
+        </Popover>
+      </>
+    )
+  }
 
   return (
     <>
@@ -175,7 +354,7 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
           },
         }}
       >
-        {item.children.map((child) => (
+        {item.children?.map((child) => (
           <Fragment key={child.id}>
             {child.topDivider && <Divider sx={{ my: 1 }} />}
             <MenuItem component="a" href={child.href} onClick={handleClose} sx={{ py: 1 }}>
@@ -191,11 +370,81 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
 }
 
 const MobileNavSection = ({ item }: { item: NavItem }) => {
-  if (!item.children) {
+  if (!item.children && !item.megaMenuColumns) {
     return (
       <MobileNavLink key={item.id} href={item.href}>
         {item.label}
       </MobileNavLink>
+    )
+  }
+
+  if (item.isMegaMenu && item.megaMenuColumns) {
+    return (
+      <Accordion
+        key={item.id}
+        disableGutters
+        elevation={0}
+        square
+        sx={{ '&:before': { display: 'none' }, backgroundColor: 'transparent' }}
+      >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />} sx={{ px: 0 }}>
+          <Typography sx={{ fontWeight: 600 }}>{item.label}</Typography>
+        </AccordionSummary>
+        <AccordionDetails sx={{ px: 0, pt: 0 }}>
+          <Stack spacing={1.5}>
+            {item.megaMenuColumns.map((col) => (
+              <Accordion
+                key={col.id}
+                disableGutters
+                elevation={0}
+                square
+                sx={{
+                  '&:before': { display: 'none' },
+                  backgroundColor: (theme) => alpha(theme.palette.action.hover, 0.4),
+                  borderRadius: 1.5,
+                }}
+              >
+                <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ fontSize: 18 }} />} sx={{ px: 1.5, minHeight: 44 }}>
+                  <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+                    <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
+                      {col.title}
+                    </Typography>
+                    {col.badge && (
+                      <Chip label={col.badge} size="small" variant="outlined" sx={{ height: 18, fontSize: '0.65rem' }} />
+                    )}
+                  </Stack>
+                </AccordionSummary>
+                <AccordionDetails sx={{ px: 1.5, pb: 1.5, pt: 0 }}>
+                  <Stack spacing={1.5}>
+                    {col.groups.map((group) => (
+                      <Box key={group.id}>
+                        <Typography
+                          variant="caption"
+                          sx={{ fontWeight: 700, color: 'text.secondary', textTransform: 'uppercase', display: 'block', mb: 0.5 }}
+                        >
+                          {group.title}
+                        </Typography>
+                        <Stack spacing={0.5}>
+                          {group.items.map((service) => (
+                            <Box
+                              key={service.id}
+                              component="a"
+                              href={service.href}
+                              sx={{ textDecoration: 'none', py: 0.25, color: 'text.primary', fontSize: '0.85rem' }}
+                            >
+                              {service.label}
+                            </Box>
+                          ))}
+                        </Stack>
+                      </Box>
+                    ))}
+                  </Stack>
+                </AccordionDetails>
+              </Accordion>
+            ))}
+          </Stack>
+        </AccordionDetails>
+      </Accordion>
     )
   }
 
@@ -212,7 +461,7 @@ const MobileNavSection = ({ item }: { item: NavItem }) => {
       </AccordionSummary>
       <AccordionDetails sx={{ px: 0, pt: 0 }}>
         <Stack>
-          {item.children.map((child) => (
+          {item.children?.map((child) => (
             <Fragment key={child.id}>
               {child.topDivider && <Divider sx={{ my: 0.5 }} />}
               <MobileChildLink href={child.href}>{child.label}</MobileChildLink>
@@ -223,6 +472,7 @@ const MobileNavSection = ({ item }: { item: NavItem }) => {
     </Accordion>
   )
 }
+
 
 /**
  * Sticky primary navigation: full lock-up logo on the left, section

@@ -15,10 +15,10 @@ export interface ServicesTeaserContent {
 }
 
 export const servicesTeaser: ServicesTeaserContent = {
-  eyebrow: 'Our Core Expertise',
-  heading: 'End-to-End Digital Accessibility & AI Solutions',
+  eyebrow: 'Our Dual-Impact Expertise',
+  heading: 'Corporate & NPO Digital Accessibility & AI Solutions',
   subheading:
-    'Six comprehensive service lines designed to ensure legal compliance, deliver flawless user experiences, and empower inclusive teams.',
+    'Comprehensive dual-impact service lines designed for Corporate Enterprise & NPO Social Sector ecosystems to ensure legal compliance, advance GenAI adoption, and empower inclusive teams.',
   cta: { label: 'Explore All Service Lines', href: '/services' },
   items: [
     {
