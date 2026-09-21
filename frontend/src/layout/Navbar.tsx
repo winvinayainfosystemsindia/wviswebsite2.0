@@ -44,7 +44,7 @@ const Bar = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  height: 76,
+  height: 84,
   [theme.breakpoints.down('md')]: {
     height: 64,
   },
@@ -61,7 +61,7 @@ const NavLink = styled('a')(({ theme }) => ({
   textDecoration: 'none',
   fontFamily: theme.typography.fontFamily,
   fontWeight: 600,
-  fontSize: theme.typography.pxToRem(15),
+  fontSize: theme.typography.pxToRem(17.5),
   padding: theme.spacing(1, 0.5),
   transition: theme.transitions.create('color'),
   '&:hover': { color: theme.palette.accent.main },
@@ -77,14 +77,14 @@ const NavTrigger = styled('button', {
 })<{ open: boolean }>(({ theme, open }) => ({
   display: 'inline-flex',
   alignItems: 'center',
-  gap: 4,
+  gap: 5,
   background: 'none',
   border: 'none',
   cursor: 'pointer',
   color: open ? theme.palette.accent.main : theme.palette.text.primary,
   fontFamily: theme.typography.fontFamily,
   fontWeight: 600,
-  fontSize: theme.typography.pxToRem(15),
+  fontSize: theme.typography.pxToRem(17.5),
   padding: theme.spacing(1, 0.5),
   transition: theme.transitions.create('color'),
   '&:hover': { color: theme.palette.accent.main },
@@ -94,7 +94,7 @@ const NavTrigger = styled('button', {
     borderRadius: 4,
   },
   '& svg': {
-    fontSize: 18,
+    fontSize: 20,
     transform: open ? 'rotate(180deg)' : 'none',
     transition: theme.transitions.create('transform'),
   },
@@ -106,7 +106,7 @@ const MobileNavLink = styled('a')(({ theme }) => ({
   textDecoration: 'none',
   fontFamily: theme.typography.fontFamily,
   fontWeight: 600,
-  fontSize: theme.typography.pxToRem(17),
+  fontSize: theme.typography.pxToRem(18.5),
   padding: theme.spacing(1.5, 0),
   '&:focus-visible': {
     outline: `3px solid ${alpha(theme.palette.accent.main, 0.6)}`,
@@ -121,7 +121,7 @@ const MobileChildLink = styled('a')(({ theme }) => ({
   textDecoration: 'none',
   fontFamily: theme.typography.fontFamily,
   fontWeight: 500,
-  fontSize: theme.typography.pxToRem(15),
+  fontSize: theme.typography.pxToRem(16),
   padding: theme.spacing(1, 0),
   '&:hover': { color: theme.palette.accent.main },
   '&:focus-visible': {
@@ -493,7 +493,7 @@ export const Navbar = () => {
               component="img"
               src={fullLogo}
               alt="WinVinaya Infosystems"
-              sx={{ height: { xs: 36, md: 54 }, width: 'auto' }}
+              sx={{ height: { xs: 36, md: 64 }, width: 'auto' }}
             />
           </LogoLink>
 
