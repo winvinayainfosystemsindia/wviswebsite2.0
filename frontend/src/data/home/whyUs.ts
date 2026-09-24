@@ -1,73 +1,118 @@
 export interface WhyUsItem {
   id: string
   title: string
+  tag: string
   description: string
+  proofPoint: string
 }
 
 export interface WorkflowStep {
   stepNumber: string
+  phase: string
   title: string
   description: string
+  deliverables: string[]
 }
 
 export interface WhyUsContent {
   eyebrow: string
+  badge: string
   heading: string
+  subheading: string
+  spotlightHeading: string
+  spotlightDescription: string
+  spotlightStats: { value: string; label: string }[]
   items: WhyUsItem[]
+  workflowEyebrow: string
   workflowHeading: string
+  workflowSubheading: string
   workflowSteps: WorkflowStep[]
 }
 
 export const whyUs: WhyUsContent = {
   eyebrow: 'Why WinVinaya',
-  heading: 'Authentic Accessibility Driven by Lived Experience',
+  badge: 'The Lived-Experience Advantage',
+  heading: 'Authentic Accessibility Backed by Deep IT Engineering',
+  subheading:
+    'Automated tools miss over 60% of critical WCAG barriers. We combine automated precision with certified human lived-experience testing to deliver complete compliance and effortless user experience.',
+  spotlightHeading: 'Why Global Enterprises Trust WinVinaya',
+  spotlightDescription:
+    'Accessibility is not just an inspection checkpoint for us — it is our core foundation. We protect your enterprise from legal risk, expand your audience reach to 1.3 billion people with disabilities worldwide, and empower your teams to build inclusively from day one.',
+  spotlightStats: [
+    { value: '50%+', label: 'PwD Testing Engineers' },
+    { value: '100%', label: 'Human-Validated Audits' },
+    { value: '0', label: 'Compliance Guesswork' },
+  ],
   items: [
     {
       id: 'lived-expertise',
-      title: 'Lived-Experience Testing',
+      title: 'Real Lived-Experience Validation',
+      tag: 'Human-Led Audits',
       description:
-        'Over 50% of our testing engineers are Persons with Disabilities (PwDs). We catch real-world usability barriers that automated scans miss.',
+        'Over half of our accessibility specialists are Persons with Disabilities who use NVDA, JAWS, VoiceOver, and Braille daily. We catch real interaction barriers that automated scanners never detect.',
+      proofPoint: 'Tested on actual assistive hardware & software',
     },
     {
       id: 'standards',
-      title: 'Strict Global Standards',
+      title: 'Global Regulatory & Legal Assurance',
+      tag: 'Global Compliance',
       description:
-        'Full compliance with WCAG 2.1/2.2 AA & AAA, Section 508, ADA, GIGW, and PDF/UA standards backed by formal VPAT / ACR documentation.',
+        'Rigorous conformance mapping for WCAG 2.1/2.2 AA & AAA, Section 508, ADA Title III, and European Accessibility Act (EAA 2025) backed by formal VPAT / ACR documentation.',
+      proofPoint: 'Litigation-ready VPAT and ACR compliance reports',
     },
     {
       id: 'compliant-and-usable',
-      title: 'Zero Compliance Risk',
+      title: 'Developer-Ready Actionable Code Fixes',
+      tag: 'Engineering First',
       description:
-        'We deliver accessible code fixes, remediated documents, and verified UI components that satisfy regulatory audits and legal requirements.',
+        'We do not just hand over a list of errors. Our software engineers provide precise code snippets, ARIA refactoring guidance, and direct PR support to resolve issues quickly.',
+      proofPoint: 'Zero ambiguity for your frontend and dev teams',
     },
     {
       id: 'one-partner',
-      title: 'Single Accountable Partner',
+      title: 'Single End-to-End Accountable Partner',
+      tag: 'Full Lifecycle',
       description:
-        'From initial audit to code remediation, staff training, custom software build, and ongoing monitoring — all under one roof.',
+        'From initial WCAG audits and high-volume document remediation to custom AI apps, corporate skilling masterclasses, and ongoing governance — all under one unified team.',
+      proofPoint: 'Complete lifecycle accountability under one roof',
     },
   ],
-  workflowHeading: 'Our Proven 4-Step Engagement Process',
+  workflowEyebrow: 'HOW WE WORK',
+  workflowHeading: 'Our 4-Phase Proven Engagement Stepper',
+  workflowSubheading:
+    'A transparent, agile, and structured roadmap designed to transition your digital ecosystem from non-compliant to fully certified and continuously governed.',
   workflowSteps: [
     {
       stepNumber: '01',
-      title: 'Audit & Diagnose',
-      description: 'Comprehensive automated scans + manual testing by assistive-technology power users.',
+      phase: 'Phase 1: Discover & Audit',
+      title: 'Comprehensive Diagnostic Audit',
+      description:
+        'Automated scans combined with extensive manual testing by certified PwD engineers across desktop, mobile, and assistive tech.',
+      deliverables: ['Automated + Manual WCAG Scans', 'Screen Reader Interaction Logs', 'Prioritized Defect Matrix'],
     },
     {
       stepNumber: '02',
-      title: 'Remediate & Refactor',
-      description: 'Direct code & document remediation with developer-friendly refactoring guidelines.',
+      phase: 'Phase 2: Fix & Remediate',
+      title: 'Developer-Led Code Remediation',
+      description:
+        'Actionable code fixes, ARIA pattern adjustments, and bulk PDF/document remediation with step-by-step developer guidelines.',
+      deliverables: ['Exact Code Fix Snippets', 'PDF/UA Document Remediation', 'Engineering Pair-Programming'],
     },
     {
       stepNumber: '03',
-      title: 'Validate & Certify',
-      description: 'Lived-experience user validation, screen-reader testing, and VPAT/ACR issuance.',
+      phase: 'Phase 3: Validate & Certify',
+      title: 'Lived-Experience Verification',
+      description:
+        'Secondary validation by native assistive technology users to ensure genuine real-world usability and official VPAT issuance.',
+      deliverables: ['Human Usability Sign-Off', 'Official VPAT / ACR Issuance', 'Compliance Certificate'],
     },
     {
       stepNumber: '04',
-      title: 'Train & Sustain',
-      description: 'Custom team skilling workshops and continuous accessibility governance frameworks.',
+      phase: 'Phase 4: Train & Govern',
+      title: 'Continuous Skilling & Policy',
+      description:
+        'Role-specific training for engineers and designers alongside automated regression monitoring for sustained compliance.',
+      deliverables: ['Dev & UX Masterclasses', 'Continuous Monitoring Guardrails', 'DEI Governance Framework'],
     },
   ],
 }
