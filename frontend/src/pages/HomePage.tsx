@@ -18,7 +18,7 @@ export const HomePage = () => (
     <WhyWinVinayaSection />
     <ImpactSection />
     <TestimonialsSection />
-    <FinalCtaSection />
     <ResourcesTeaserSection />
+    <FinalCtaSection />
   </>
 )

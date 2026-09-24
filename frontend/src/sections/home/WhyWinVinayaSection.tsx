@@ -1,45 +1,22 @@
-import type { ReactNode } from 'react'
 import { alpha, styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import AccessibleOutlinedIcon from '@mui/icons-material/AccessibleOutlined'
-import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined'
-import CodeRoundedIcon from '@mui/icons-material/CodeRounded'
-import HandshakeOutlinedIcon from '@mui/icons-material/HandshakeOutlined'
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
+import CancelRoundedIcon from '@mui/icons-material/CancelRounded'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
 import BuildCircleOutlinedIcon from '@mui/icons-material/BuildCircleOutlined'
 import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined'
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined'
-import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import StarRoundedIcon from '@mui/icons-material/StarRounded'
 import TaskAltRoundedIcon from '@mui/icons-material/TaskAltRounded'
+import StarRoundedIcon from '@mui/icons-material/StarRounded'
 import { Button, SectionHeading } from '../../components'
 import { whyUs } from '../../data'
 
-const ADVANTAGE_ICONS: Record<string, { icon: ReactNode; color: 'accent' | 'primary' | 'secondary' | 'info' }> = {
-  'lived-expertise': {
-    icon: <AccessibleOutlinedIcon sx={{ fontSize: '1.65rem' }} />,
-    color: 'accent',
-  },
-  standards: {
-    icon: <WorkspacePremiumOutlinedIcon sx={{ fontSize: '1.65rem' }} />,
-    color: 'primary',
-  },
-  'compliant-and-usable': {
-    icon: <CodeRoundedIcon sx={{ fontSize: '1.65rem' }} />,
-    color: 'secondary',
-  },
-  'one-partner': {
-    icon: <HandshakeOutlinedIcon sx={{ fontSize: '1.65rem' }} />,
-    color: 'info',
-  },
-}
-
-const STEP_ICONS: Record<string, ReactNode> = {
+const STEP_ICONS: Record<string, React.ReactNode> = {
   '01': <SearchRoundedIcon sx={{ fontSize: '1.35rem' }} />,
   '02': <BuildCircleOutlinedIcon sx={{ fontSize: '1.35rem' }} />,
   '03': <VerifiedUserOutlinedIcon sx={{ fontSize: '1.35rem' }} />,
@@ -49,13 +26,17 @@ const STEP_ICONS: Record<string, ReactNode> = {
 const SectionWrapper = styled('section')(({ theme }) => ({
   position: 'relative',
   overflow: 'hidden',
-  backgroundColor: theme.palette.mode === 'light' ? '#FFFDF9' : '#14100D',
+  backgroundColor: theme.palette.mode === 'light' ? '#FCFAF6' : '#14100D',
   borderTop: `1px solid ${theme.palette.divider}`,
   borderBottom: `1px solid ${theme.palette.divider}`,
+  padding: theme.spacing(9, 0),
+  [theme.breakpoints.up('md')]: {
+    padding: theme.spacing(13, 0),
+  },
   '&::before': {
     content: '""',
     position: 'absolute',
-    top: '20%',
+    top: '15%',
     left: '-5%',
     width: '500px',
     height: '500px',
@@ -65,90 +46,23 @@ const SectionWrapper = styled('section')(({ theme }) => ({
   },
 }))
 
-const SpotlightCard = styled(Box)(({ theme }) => ({
-  position: 'sticky',
-  top: 100,
-  padding: theme.spacing(4.5),
-  borderRadius: 18,
-  backgroundColor: theme.palette.mode === 'light' ? '#FFFFFF' : alpha(theme.palette.background.paper, 0.9),
+const ComparisonBox = styled(Box)(({ theme }) => ({
+  width: '100%',
+  borderRadius: 22,
+  backgroundColor: theme.palette.mode === 'light' ? '#FFFFFF' : alpha(theme.palette.background.paper, 0.95),
   border: `1px solid ${theme.palette.divider}`,
-  boxShadow: `0 12px 36px -8px ${alpha(theme.palette.primary.main, 0.08)}`,
-  display: 'flex',
-  flexDirection: 'column',
-  gap: theme.spacing(3),
-  [theme.breakpoints.down('md')]: {
-    position: 'static',
-    padding: theme.spacing(3),
-  },
+  boxShadow: `0 10px 32px -6px ${alpha(theme.palette.text.primary, 0.05)}`,
+  overflow: 'hidden',
 }))
 
-const FeatureRow = styled(Box)<{ colorScheme: 'accent' | 'primary' | 'secondary' | 'info' }>(
-  ({ theme, colorScheme }) => {
-    const colorMap = {
-      accent: theme.palette.accent.main,
-      primary: theme.palette.primary.main,
-      secondary: theme.palette.secondary.main,
-      info: theme.palette.info.main,
-    }
-    const targetColor = colorMap[colorScheme]
-
-    return {
-      padding: theme.spacing(3, 3.5),
-      borderRadius: 16,
-      backgroundColor: theme.palette.mode === 'light' ? '#FFFFFF' : alpha(theme.palette.background.paper, 0.8),
-      border: `1px solid ${theme.palette.divider}`,
-      boxShadow: `0 4px 16px -2px ${alpha(theme.palette.text.primary, 0.03)}`,
-      display: 'flex',
-      gap: theme.spacing(2.5),
-      alignItems: 'flex-start',
-      transition: theme.transitions.create(['border-color', 'box-shadow', 'transform']),
-      '&:hover': {
-        borderColor: alpha(targetColor, 0.45),
-        boxShadow: `0 12px 28px -6px ${alpha(targetColor, 0.14)}`,
-        transform: 'translateX(4px)',
-      },
-      [theme.breakpoints.down('sm')]: {
-        flexDirection: 'column',
-        padding: theme.spacing(2.5),
-      },
-    }
-  }
-)
-
-const FeatureIconCircle = styled(Box)<{ colorScheme: 'accent' | 'primary' | 'secondary' | 'info' }>(
-  ({ theme, colorScheme }) => {
-    const colorMap = {
-      accent: { bg: alpha(theme.palette.accent.main, 0.1), color: theme.palette.accent.main, border: alpha(theme.palette.accent.main, 0.25) },
-      primary: { bg: alpha(theme.palette.primary.main, 0.1), color: theme.palette.primary.main, border: alpha(theme.palette.primary.main, 0.25) },
-      secondary: { bg: alpha(theme.palette.secondary.main, 0.1), color: theme.palette.secondary.main, border: alpha(theme.palette.secondary.main, 0.25) },
-      info: { bg: alpha(theme.palette.info.main, 0.1), color: theme.palette.info.main, border: alpha(theme.palette.info.main, 0.25) },
-    }
-    const current = colorMap[colorScheme]
-
-    return {
-      width: 52,
-      height: 52,
-      borderRadius: 14,
-      backgroundColor: current.bg,
-      color: current.color,
-      border: `1px solid ${current.border}`,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexShrink: 0,
-    }
-  }
-)
-
-/* Stepper Component Styles */
 const StepperTrack = styled(Box)(({ theme }) => ({
   position: 'relative',
   width: '100%',
-  padding: theme.spacing(4, 0),
+  padding: theme.spacing(2, 0),
   '&::before': {
     content: '""',
     position: 'absolute',
-    top: 60,
+    top: 54,
     left: '8%',
     right: '8%',
     height: 3,
@@ -166,7 +80,7 @@ const StepCardNode = styled(Box)(({ theme }) => ({
   zIndex: 1,
   height: '100%',
   padding: theme.spacing(3.5, 3),
-  borderRadius: 16,
+  borderRadius: 18,
   backgroundColor: theme.palette.mode === 'light' ? '#FFFFFF' : alpha(theme.palette.background.paper, 0.9),
   border: `1px solid ${theme.palette.divider}`,
   boxShadow: `0 6px 20px -4px ${alpha(theme.palette.text.primary, 0.04)}`,
@@ -182,7 +96,6 @@ const StepCardNode = styled(Box)(({ theme }) => ({
     '& .step-number-badge': {
       backgroundColor: theme.palette.primary.main,
       color: '#FFFFFF',
-      transform: 'scale(1.08)',
     },
   },
   [theme.breakpoints.down('sm')]: {
@@ -205,161 +118,136 @@ const StepNumberBadge = styled(Box)(({ theme }) => ({
   transition: theme.transitions.create(['all']),
 }))
 
+const COMPARISON_DATA = [
+  {
+    feature: 'Detection Coverage',
+    automated: 'Misses over 60% of WCAG barriers (keyboard traps, dynamic focus, aria context)',
+    winvinaya: '100% Comprehensive coverage validated by PwD engineers using NVDA, JAWS & VoiceOver',
+  },
+  {
+    feature: 'False Positives',
+    automated: 'High rate of false alarms that overwhelm software engineering teams',
+    winvinaya: 'Zero false positives: Every reported defect is manually verified with clear reproduction steps',
+  },
+  {
+    feature: 'Remediation Support',
+    automated: 'Generic automated warnings without actionable engineering solutions',
+    winvinaya: 'Direct code-level fix guidelines, ARIA patterns, and engineering pair-programming',
+  },
+  {
+    feature: 'Legal Defensibility',
+    automated: 'Automated scan badges offer zero legal protection under ADA Title III or EAA 2025',
+    winvinaya: 'Court-tested VPAT and ACR documentation certified by IAAP-recognized specialists',
+  },
+]
+
 export const WhyWinVinayaSection = () => (
   <SectionWrapper aria-labelledby="why-us-heading">
-    <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1, py: { xs: 9, md: 14 } }}>
+    <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
       <Stack spacing={{ xs: 8, md: 12 }} sx={{ alignItems: 'center' }}>
-        {/* Top Header */}
+        {/* Section Heading */}
         <SectionHeading
           headingId="why-us-heading"
-          eyebrow={whyUs.eyebrow}
-          heading={whyUs.heading}
-          description={whyUs.subheading}
-          maxWidth={820}
+          eyebrow="The WinVinaya Advantage"
+          heading="Why Global Enterprises Choose Lived-Experience Assurance"
+          description="Automated tools alone create a false sense of compliance. We combine automated diagnostics with genuine lived-experience testing to deliver complete usability and risk mitigation."
+          maxWidth={840}
         />
 
-        {/* Part 1: The WinVinaya Advantage (Pleasant Split Showcase Layout) */}
-        <Grid container spacing={{ xs: 4, lg: 5 }} sx={{ width: '100%', alignItems: 'stretch' }}>
-          {/* Left Column: Spotlight Showcase Card */}
-          <Grid size={{ xs: 12, lg: 5 }}>
-            <SpotlightCard>
-              <Stack spacing={2.5}>
-                <Box
-                  sx={(theme) => ({
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 0.75,
-                    px: 1.5,
-                    py: 0.5,
-                    borderRadius: 1.5,
-                    bgcolor: alpha(theme.palette.primary.main, 0.1),
-                    color: theme.palette.primary.main,
-                    border: `1px solid ${alpha(theme.palette.primary.main, 0.25)}`,
-                    fontWeight: 700,
-                    fontSize: '0.8125rem',
-                    alignSelf: 'flex-start',
-                  })}
-                >
-                  <StarRoundedIcon sx={{ fontSize: '1rem' }} />
-                  {whyUs.badge}
+        {/* Part 1: Interactive Side-by-Side Comparison Matrix */}
+        <ComparisonBox>
+          <Grid container>
+            {/* Left Comparison: Automated Tools Only */}
+            <Grid
+              size={{ xs: 12, md: 5 }}
+              sx={(theme) => ({
+                p: { xs: 3.5, md: 4.5 },
+                bgcolor: theme.palette.mode === 'light' ? alpha(theme.palette.text.primary, 0.02) : alpha(theme.palette.background.default, 0.5),
+                borderRight: { md: `1px solid ${theme.palette.divider}` },
+                borderBottom: { xs: `1px solid ${theme.palette.divider}`, md: 'none' },
+              })}
+            >
+              <Stack spacing={3}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <CancelRoundedIcon sx={{ color: 'error.main', fontSize: '1.35rem' }} />
+                  <Typography variant="h6" sx={{ fontWeight: 700, color: 'text.secondary', fontSize: '1.1rem' }}>
+                    Conventional Automated Scanners
+                  </Typography>
                 </Box>
 
-                <Typography variant="h5" sx={{ fontWeight: 800, color: 'text.primary', lineHeight: 1.3 }}>
-                  {whyUs.spotlightHeading}
-                </Typography>
-
-                <Typography variant="body1" color="text.secondary" sx={{ fontSize: '0.96875rem', lineHeight: 1.75 }}>
-                  {whyUs.spotlightDescription}
-                </Typography>
-
-                {/* Micro Stat Badges */}
-                <Grid container spacing={1.5} sx={{ pt: 1 }}>
-                  {whyUs.spotlightStats.map((stat, idx) => (
-                    <Grid key={idx} size={{ xs: 4 }}>
-                      <Box
-                        sx={(theme) => ({
-                          p: 1.5,
-                          borderRadius: 2,
-                          textAlign: 'center',
-                          bgcolor: alpha(theme.palette.accent.main, 0.05),
-                          border: `1px solid ${alpha(theme.palette.accent.main, 0.15)}`,
-                        })}
-                      >
-                        <Typography
-                          variant="h6"
-                          sx={{ fontWeight: 800, color: 'accent.main', fontSize: '1.25rem', lineHeight: 1 }}
-                        >
-                          {stat.value}
-                        </Typography>
-                        <Typography
-                          variant="caption"
-                          color="text.secondary"
-                          sx={{ fontWeight: 600, fontSize: '0.71875rem', display: 'block', mt: 0.5 }}
-                        >
-                          {stat.label}
-                        </Typography>
-                      </Box>
-                    </Grid>
-                  ))}
-                </Grid>
-              </Stack>
-
-              <Box sx={{ pt: 2, borderTop: (theme) => `1px solid ${theme.palette.divider}` }}>
-                <Button
-                  tone="primary"
-                  variant="contained"
-                  href="/contact"
-                  fullWidth
-                  endIcon={<ArrowForwardIcon />}
-                  sx={{ py: 1.3, fontWeight: 600 }}
-                >
-                  Schedule Accessibility Consultation
-                </Button>
-              </Box>
-            </SpotlightCard>
-          </Grid>
-
-          {/* Right Column: Stacked Feature Row List */}
-          <Grid size={{ xs: 12, lg: 7 }}>
-            <Stack spacing={2.5}>
-              {whyUs.items.map((item) => {
-                const conf = ADVANTAGE_ICONS[item.id] || {
-                  icon: <AccessibleOutlinedIcon />,
-                  color: 'primary',
-                }
-
-                return (
-                  <FeatureRow key={item.id} colorScheme={conf.color}>
-                    <FeatureIconCircle colorScheme={conf.color}>{conf.icon}</FeatureIconCircle>
-                    <Stack spacing={0.85} sx={{ flex: 1 }}>
-                      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1 }}>
-                        <Typography variant="h6" sx={{ fontSize: '1.0625rem', fontWeight: 700, color: 'text.primary' }}>
-                          {item.title}
-                        </Typography>
-                        <Box
-                          sx={(theme) => ({
-                            px: 1,
-                            py: 0.25,
-                            borderRadius: 1,
-                            fontSize: '0.6875rem',
-                            fontWeight: 700,
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.04em',
-                            bgcolor: alpha(theme.palette.text.primary, 0.05),
-                            color: 'text.secondary',
-                            border: `1px solid ${theme.palette.divider}`,
-                          })}
-                        >
-                          {item.tag}
-                        </Box>
-                      </Box>
-
-                      <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.875rem', lineHeight: 1.65 }}>
-                        {item.description}
+                <Stack spacing={2.5}>
+                  {COMPARISON_DATA.map((row, idx) => (
+                    <Box key={idx} sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.25 }}>
+                      <CancelRoundedIcon sx={{ color: 'error.main', fontSize: '1.1rem', mt: 0.25, flexShrink: 0 }} />
+                      <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.875rem', lineHeight: 1.55 }}>
+                        {row.automated}
                       </Typography>
+                    </Box>
+                  ))}
+                </Stack>
+              </Stack>
+            </Grid>
 
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, pt: 0.5 }}>
-                        <CheckCircleRoundedIcon sx={{ fontSize: '0.9375rem', color: 'accent.main' }} />
-                        <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.primary', fontSize: '0.78125rem' }}>
-                          {item.proofPoint}
-                        </Typography>
-                      </Box>
-                    </Stack>
-                  </FeatureRow>
-                )
+            {/* Right Comparison: The WinVinaya Advantage */}
+            <Grid
+              size={{ xs: 12, md: 7 }}
+              sx={(theme) => ({
+                p: { xs: 3.5, md: 4.5 },
+                bgcolor: theme.palette.mode === 'light' ? alpha(theme.palette.accent.main, 0.04) : alpha(theme.palette.accent.main, 0.08),
               })}
-            </Stack>
-          </Grid>
-        </Grid>
+            >
+              <Stack spacing={3}>
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <CheckCircleRoundedIcon sx={{ color: 'accent.main', fontSize: '1.35rem' }} />
+                    <Typography variant="h6" sx={{ fontWeight: 800, color: 'text.primary', fontSize: '1.15rem' }}>
+                      The WinVinaya Lived-Experience Standard
+                    </Typography>
+                  </Box>
 
-        {/* Part 2: How We Work — Modern 4-Phase Stepper */}
-        <Stack spacing={{ xs: 5, md: 6 }} sx={{ width: '100%', alignItems: 'center', pt: 2 }}>
+                  <Box
+                    sx={(theme) => ({
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 0.5,
+                      px: 1.25,
+                      py: 0.35,
+                      borderRadius: 1,
+                      fontSize: '0.75rem',
+                      fontWeight: 700,
+                      bgcolor: alpha(theme.palette.accent.main, 0.15),
+                      color: theme.palette.mode === 'light' ? theme.palette.accent.dark : theme.palette.accent.light,
+                      border: `1px solid ${alpha(theme.palette.accent.main, 0.3)}`,
+                    })}
+                  >
+                    <StarRoundedIcon sx={{ fontSize: '0.875rem' }} />
+                    <span>50%+ PwD QA Team</span>
+                  </Box>
+                </Box>
+
+                <Stack spacing={2.5}>
+                  {COMPARISON_DATA.map((row, idx) => (
+                    <Box key={idx} sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.25 }}>
+                      <CheckCircleRoundedIcon sx={{ color: 'accent.main', fontSize: '1.15rem', mt: 0.25, flexShrink: 0 }} />
+                      <Typography variant="body2" sx={{ fontWeight: 600, color: 'text.primary', fontSize: '0.90625rem', lineHeight: 1.55 }}>
+                        {row.winvinaya}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Stack>
+              </Stack>
+            </Grid>
+          </Grid>
+        </ComparisonBox>
+
+        {/* Part 2: How We Work — 4-Phase Stepper */}
+        <Stack spacing={{ xs: 5, md: 6 }} sx={{ width: '100%', alignItems: 'center' }}>
           <SectionHeading
-            eyebrow={whyUs.workflowEyebrow}
-            heading={whyUs.workflowHeading}
-            description={whyUs.workflowSubheading}
+            eyebrow="Proven Methodology"
+            heading="Our 4-Phase Engagement Stepper"
+            description="A structured, transparent roadmap designed to transition your digital assets from non-compliant to fully certified and continuously governed."
             headingVariant="h3"
-            maxWidth={780}
+            maxWidth={800}
           />
 
           <StepperTrack>
@@ -465,6 +353,19 @@ export const WhyWinVinayaSection = () => (
               ))}
             </Grid>
           </StepperTrack>
+
+          <Box sx={{ pt: 1, textAlign: 'center' }}>
+            <Button
+              tone="primary"
+              variant="contained"
+              href="/contact"
+              size="large"
+              endIcon={<ArrowForwardIcon />}
+              sx={{ px: 3.5, py: 1.35, fontWeight: 600 }}
+            >
+              Get Started with Phase 1 Diagnostic
+            </Button>
+          </Box>
         </Stack>
       </Stack>
     </Container>
