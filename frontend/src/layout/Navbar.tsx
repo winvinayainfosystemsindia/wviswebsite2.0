@@ -227,70 +227,76 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
                   </Box>
                 </Box>
 
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, flexGrow: 1 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, flexGrow: 1 }}>
                   {col.groups.map((group) => (
-                    <Box key={group.id}>
-                      <Typography
-                        component="a"
-                        href={group.href || '#'}
-                        onClick={handleClose}
-                        variant="caption"
-                        sx={{
-                          fontWeight: 700,
-                          color: col.id === 'corporate-sector' ? 'primary.main' : 'secondary.main',
-                          textTransform: 'uppercase',
-                          letterSpacing: 0.5,
-                          display: 'inline-block',
-                          mb: 0.5,
-                          textDecoration: 'none',
-                          '&:hover': { textDecoration: 'underline' },
-                        }}
-                      >
-                        {group.title}
-                      </Typography>
-                      <Stack spacing={0.25} sx={{ pl: 0.5 }}>
-                        {group.items.map((service) => (
-                          <Box
-                            key={service.id}
-                            component="a"
-                            href={service.href}
-                            onClick={handleClose}
-                            sx={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              py: 0.4,
-                              px: 1,
-                              borderRadius: 1,
-                              textDecoration: 'none',
-                              color: 'text.primary',
-                              fontSize: '0.875rem',
-                              fontWeight: 500,
-                              transition: 'color 0.15s, background-color 0.15s',
-                              '&:hover': {
-                                color: 'accent.main',
-                                backgroundColor: (theme) => alpha(theme.palette.accent.main, 0.06),
-                              },
-                              '&:focus-visible': {
-                                outline: (theme) => `2px solid ${alpha(theme.palette.accent.main, 0.6)}`,
-                                borderRadius: 1,
-                              },
-                            }}
-                          >
-                            <Box
-                              component="span"
-                              sx={{
-                                width: 5,
-                                height: 5,
-                                borderRadius: '50%',
-                                backgroundColor: (theme) => alpha(theme.palette.text.secondary, 0.4),
-                                mr: 1.2,
-                                flexShrink: 0,
-                              }}
-                            />
-                            {service.label}
-                          </Box>
-                        ))}
-                      </Stack>
+                    <Box
+                      key={group.id}
+                      component="a"
+                      href={group.href}
+                      onClick={handleClose}
+                      sx={(theme) => ({
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 0.35,
+                        p: 1.5,
+                        borderRadius: 2,
+                        textDecoration: 'none',
+                        bgcolor:
+                          theme.palette.mode === 'light'
+                            ? alpha(theme.palette.text.primary, 0.02)
+                            : alpha(theme.palette.background.paper, 0.6),
+                        border: `1px solid ${theme.palette.divider}`,
+                        transition: 'all 0.15s ease',
+                        '&:hover': {
+                          bgcolor:
+                            col.id === 'corporate-sector'
+                              ? alpha(theme.palette.primary.main, 0.08)
+                              : alpha(theme.palette.secondary.main, 0.08),
+                          borderColor:
+                            col.id === 'corporate-sector'
+                              ? alpha(theme.palette.primary.main, 0.35)
+                              : alpha(theme.palette.secondary.main, 0.35),
+                          transform: 'translateX(3px)',
+                          '& .group-title': {
+                            color: col.id === 'corporate-sector' ? 'primary.main' : 'secondary.main',
+                          },
+                          '& .group-arrow': {
+                            color: col.id === 'corporate-sector' ? 'primary.main' : 'secondary.main',
+                            transform: 'translateX(2px)',
+                          },
+                        },
+                      })}
+                    >
+                      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 1 }}>
+                        <Typography
+                          className="group-title"
+                          variant="subtitle2"
+                          sx={{
+                            fontWeight: 700,
+                            color: 'text.primary',
+                            fontSize: '0.90625rem',
+                            lineHeight: 1.3,
+                            transition: 'color 0.15s ease',
+                          }}
+                        >
+                          {group.title}
+                        </Typography>
+                        <ArrowForwardIcon
+                          className="group-arrow"
+                          sx={{
+                            fontSize: 15,
+                            color: 'text.secondary',
+                            opacity: 0.7,
+                            transition: 'all 0.15s ease',
+                            flexShrink: 0,
+                          }}
+                        />
+                      </Box>
+                      {group.description && (
+                        <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: '0.8125rem', lineHeight: 1.45 }}>
+                          {group.description}
+                        </Typography>
+                      )}
                     </Box>
                   ))}
                 </Box>
@@ -416,27 +422,38 @@ const MobileNavSection = ({ item }: { item: NavItem }) => {
                   </Stack>
                 </AccordionSummary>
                 <AccordionDetails sx={{ px: 1.5, pb: 1.5, pt: 0 }}>
-                  <Stack spacing={1.5}>
+                  <Stack spacing={1}>
                     {col.groups.map((group) => (
-                      <Box key={group.id}>
+                      <Box
+                        key={group.id}
+                        component="a"
+                        href={group.href}
+                        sx={(theme) => ({
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: 0.25,
+                          p: 1.25,
+                          borderRadius: 1.5,
+                          textDecoration: 'none',
+                          bgcolor: alpha(theme.palette.background.paper, 0.6),
+                          border: `1px solid ${theme.palette.divider}`,
+                        })}
+                      >
                         <Typography
-                          variant="caption"
-                          sx={{ fontWeight: 700, color: 'text.secondary', textTransform: 'uppercase', display: 'block', mb: 0.5 }}
+                          variant="subtitle2"
+                          sx={{
+                            fontWeight: 700,
+                            color: 'text.primary',
+                            fontSize: '0.875rem',
+                          }}
                         >
                           {group.title}
                         </Typography>
-                        <Stack spacing={0.5}>
-                          {group.items.map((service) => (
-                            <Box
-                              key={service.id}
-                              component="a"
-                              href={service.href}
-                              sx={{ textDecoration: 'none', py: 0.25, color: 'text.primary', fontSize: '0.85rem' }}
-                            >
-                              {service.label}
-                            </Box>
-                          ))}
-                        </Stack>
+                        {group.description && (
+                          <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: '0.78125rem', lineHeight: 1.4 }}>
+                            {group.description}
+                          </Typography>
+                        )}
                       </Box>
                     ))}
                   </Stack>
