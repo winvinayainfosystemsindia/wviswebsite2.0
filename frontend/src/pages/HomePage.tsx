@@ -1,11 +1,11 @@
 import {
   AboutTeaserSection,
   FinalCtaSection,
-  FoundationSection,
   HeroSection,
   ImpactSection,
   ResourcesTeaserSection,
   ServicesSection,
+  TestimonialsSection,
   WhyWinVinayaSection,
 } from '../sections/home'
 
@@ -17,8 +17,8 @@ export const HomePage = () => (
     <ServicesSection />
     <WhyWinVinayaSection />
     <ImpactSection />
-    <FoundationSection />
-    <ResourcesTeaserSection />
+    <TestimonialsSection />
     <FinalCtaSection />
+    <ResourcesTeaserSection />
   </>
 )

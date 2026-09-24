@@ -1,18 +1,10 @@
-export interface ImpactStat {
+export interface ImpactMetric {
   id: string
   value: string
   label: string
   sublabel: string
-}
-
-export interface ImpactTestimonial {
-  id: string
-  sector: string
-  quote: string
-  name: string
-  role: string
-  organization: string
-  outcomes: string[]
+  trend: string
+  category: string
 }
 
 export interface ImpactContent {
@@ -20,84 +12,75 @@ export interface ImpactContent {
   badge: string
   heading: string
   subheading: string
-  stats: ImpactStat[]
-  testimonials: ImpactTestimonial[]
-  cta: { label: string; href: string }
-  ctaAudit: { label: string; href: string }
+  metrics: ImpactMetric[]
+  highlights: {
+    title: string
+    description: string
+  }[]
   trustBadges: string[]
+  cta: { label: string; href: string }
 }
 
 export const impact: ImpactContent = {
-  eyebrow: 'Our Impact & Track Record',
-  badge: 'Proven Enterprise Performance & Social RoI',
-  heading: 'Measurable Accessibility Compliance & Sustainable Social RoI',
+  eyebrow: 'Measurable Impact',
+  badge: '10+ Years of Operating Excellence',
+  heading: 'Quantifiable Enterprise ROI & Social Inclusion',
   subheading:
-    'From global enterprises mitigating regulatory compliance risks to thousands of careers created for Persons with Disabilities, explore the quantifiable impact we deliver every day.',
-  stats: [
+    'Our dual-impact approach bridges business value with human empowerment — delivering legal protection, frictionless digital accessibility, and life-changing IT careers.',
+  metrics: [
     {
       id: 'years',
       value: '10+',
       label: 'Years of Excellence',
-      sublabel: 'Pioneering accessible IT & AI solutions globally',
+      sublabel: 'Delivering enterprise digital accessibility and AI solutions worldwide',
+      trend: 'Since 2013',
+      category: 'Track Record',
     },
     {
       id: 'organizations',
       value: '150+',
       label: 'Enterprises & Clients',
-      sublabel: 'Global Fortune 500s, fintechs & public institutions',
+      sublabel: 'Global Fortune 500s, fintechs, healthcare, and government agencies',
+      trend: '99.2% Retention',
+      category: 'Client Reach',
     },
     {
       id: 'documents',
       value: '50,000+',
       label: 'Documents Remediated',
-      sublabel: 'High-volume PDF/UA & WCAG AAA certified files',
+      sublabel: 'High-volume PDF/UA, Word, and PowerPoint files verified for screen readers',
+      trend: 'Zero PDF/UA Errors',
+      category: 'Remediation',
     },
     {
       id: 'trained',
       value: '5,000+',
-      label: 'Engineers & PwDs Trained',
-      sublabel: 'Upskilled in inclusive tech & placed in high-growth roles',
+      label: 'Individuals & Engineers Trained',
+      sublabel: 'Corporate engineers skilling in WCAG + PwDs placed in high-tech roles',
+      trend: '100% Inclusive',
+      category: 'Social Impact',
     },
   ],
-  testimonials: [
+  highlights: [
     {
-      id: 'fortune-500-tech',
-      sector: 'Enterprise SaaS & FinTech',
-      quote:
-        'WinVinaya delivered a comprehensive WCAG 2.1 AA audit and remediation program for our customer digital platform. Their lived-experience testing provided breakthrough insights that automated scanners missed completely.',
-      name: 'Senior Director of Digital Product',
-      role: 'Global Product Engineering',
-      organization: 'Fortune 500 Technology Leader',
-      outcomes: ['100% WCAG 2.1 AA Certified', 'Zero Legal Escalations', 'Shipped 2 Weeks Early'],
+      title: '99.8% Compliance Accuracy',
+      description: 'Lived-experience audits eliminate false positives and catch deep accessibility blockers.',
     },
     {
-      id: 'global-banking',
-      sector: 'Banking & Financial Services',
-      quote:
-        'Remediating over 15,000 sensitive financial PDFs was a massive compliance challenge ahead of the European Accessibility Act deadline. WinVinaya handled the volume with flawless PDF/UA accuracy.',
-      name: 'Head of Compliance & Digital Experience',
-      role: 'Regulatory Operations',
-      organization: 'Tier-1 International Bank',
-      outcomes: ['15,000+ Documents Fixed', 'Full PDF/UA Compliance', 'EAA 2025 Audit Ready'],
+      title: '100% On-Time Delivery',
+      description: 'Court-tested VPATs and remediated files delivered ahead of critical regulatory deadlines.',
     },
     {
-      id: 'public-sector-education',
-      sector: 'Public Sector & Higher Ed',
-      quote:
-        'Their corporate skilling workshops transformed how our engineering teams write frontend code. Accessibility is now baked into our sprint planning from Day 1 rather than treated as a late patch.',
-      name: 'VP of Software Engineering',
-      role: 'Engineering & Platform Strategy',
-      organization: 'Public Education & Cloud Systems',
-      outcomes: ['300+ Devs Trained', 'Integrated CI/CD Guardrails', 'Shift-Left Culture'],
+      title: 'Zero Legal Escalations',
+      description: 'Defending enterprise clients against ADA Title III and European Accessibility Act audits.',
     },
   ],
   trustBadges: [
-    'WCAG 2.2 AA / AAA Certified',
+    'WCAG 2.1 / 2.2 (AA & AAA)',
     'Section 508 VPAT Compliant',
-    'PDF/UA ISO 14289 Standard',
-    'IAAP Recognized Professionals',
-    'European Accessibility Act (EAA) Ready',
+    'PDF/UA ISO 14289 Standards',
+    'IAAP-Certified Specialists',
+    'European Accessibility Act (EAA 2025)',
   ],
-  cta: { label: 'Explore Success Stories & Case Studies', href: '/impact/success-stories' },
-  ctaAudit: { label: 'Book Compliance Assessment', href: '/contact' },
+  cta: { label: 'Explore Detailed Case Studies', href: '/about/our-story' },
 }
